@@ -32,23 +32,23 @@
 | would be loaded.
 */
 
-$route['default_controller'] = "home/first_page";
+$route['default_controller'] = "home";
 $route['admin'] = 'users/admin/auth/login';
 
-$route['vdos/admin/vdos/([^/]+)/form'] = "vdos/admin/vdos/form/$1";
-$route['vdos/admin/vdos/([^/]+)/form/([^/]+)'] = "vdos/admin/vdos/form/$1/$2";
+// $route['vdos/admin/vdos/([^/]+)/form'] = "vdos/admin/vdos/form/$1";
+// $route['vdos/admin/vdos/([^/]+)/form/([^/]+)'] = "vdos/admin/vdos/form/$1/$2";
 
-$route['galleries/admin/galleries/([^/]+)/form'] = "galleries/admin/galleries/form/$1";
-$route['galleries/admin/galleries/([^/]+)/form/([^/]+)'] = "galleries/admin/galleries/form/$1/$2";
+// $route['galleries/admin/galleries/([^/]+)/form'] = "galleries/admin/galleries/form/$1";
+// $route['galleries/admin/galleries/([^/]+)/form/([^/]+)'] = "galleries/admin/galleries/form/$1/$2";
 
 
-$route['categories/admin/categories/save'] = "categories/admin/categories/save";
-$route['categories/admin/categories/form'] = "categories/admin/categories/form";
-$route['categories/admin/categories/delete'] = "categories/admin/categories/delete";
-$route['categories/admin/categories/save_orderlist'] = "categories/admin/categories/save_orderlist";
-$route['categories/admin/categories/([^/]+)'] = "categories/admin/categories/index/$1";
-$route['categories/admin/categories/([^/]+)/form'] = "categories/admin/categories/form/$1";
-$route['categories/admin/categories/([^/]+)/form/([^/]+)'] = "categories/admin/categories/form/$1/$2";
+// $route['categories/admin/categories/save'] = "categories/admin/categories/save";
+// $route['categories/admin/categories/form'] = "categories/admin/categories/form";
+// $route['categories/admin/categories/delete'] = "categories/admin/categories/delete";
+// $route['categories/admin/categories/save_orderlist'] = "categories/admin/categories/save_orderlist";
+// $route['categories/admin/categories/([^/]+)'] = "categories/admin/categories/index/$1";
+// $route['categories/admin/categories/([^/]+)/form'] = "categories/admin/categories/form/$1";
+// $route['categories/admin/categories/([^/]+)/form/([^/]+)'] = "categories/admin/categories/form/$1/$2";
 
  
 /* Ex : $route['contents/([^/]+)'] = "contents/index/$1"; */

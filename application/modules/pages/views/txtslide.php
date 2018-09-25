@@ -1,1 +1,0 @@
-<marquee  align="middle" scrollamount="5" scrolldelay="91" onmouseover="this.stop();" onmouseout="this.start();"><?=strip_tags(lang_decode($page->detail));?></marquee>

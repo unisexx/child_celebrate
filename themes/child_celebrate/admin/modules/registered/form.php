@@ -1,4 +1,4 @@
-<h3 style="text-align:center; margin:0; padding:15px 0; background:#FFF;">ลงทะเบียนแบบเสนอผลงาน <br>กิจกรรมสรรหาและเชิดชูเด็กและเยาวชนดีเด่นแห่งชาติ และผู้ทำคุณประโยชน์ต่อเด็กและเยาวชน</h3>
+<h3 style="text-align:center; margin:0; padding:15px 0; background:#FFF;">เสนอผลงานกิจกรรมสรรหาและเชิดชูเด็กและเยาวชนดีเด่นแห่งชาติ และผู้ทำคุณประโยชน์ต่อเด็กและเยาวชน</h3>
 <div style="margin-left:40%">
 <select name="" class="form-control" style="width:auto; margin-top:10px; background:#FF9">
   <option value="1">ประเภท เด็กและเยาวชนดีเด่นแห่งชาติ</option>
@@ -15,6 +15,20 @@
 <legend>ข้อมูลส่วนตัว</legend>
 <table class="tbRegister">
 <tr>
+  <th>วันเวลาที่ลงทะเบียน</th>
+  <td>01/07/2560  14.50 น.</td>
+</tr>
+<tr>
+  <th>สถานะ</th>
+  <td><div class="form-inline">
+    <select name="lunch" class="selectpicker" id="lunch2" title="เลือกจังหวัด" data-live-search="true">
+      <option selected="selected">รอการตรวจสอบ</option>
+      <option>ผ่านการตรวจสอบ</option>
+      <option>ไม่ผ่าน</option>
+    </select> <input name="input" type="button" title="บันทึก" value="บันทึก" class="btn btn-primary" style="width:100px;"/>
+  </div></td>
+</tr>
+<tr>
   <th>เลขบัตรประชาชน <span class="Txt_red_12"> *</span>/ ชื่อ-สกุล<span class="Txt_red_12"> *</span></th>
   <td><div class="form-inline">
   <input name="textarea3" type="text" class="form-control fidcard" id="textarea3" value="" style="width:200px;" placeholder="เลขบัตรประชาชน"/>
@@ -26,7 +40,7 @@
   <th>วันเดือนปีเกิืด <span class="Txt_red_12"> *</span></th>
   <td><div class="form-inline">
     <input name="textarea4" type="text" class="form-control fdate" id="textarea4" value="" style="width:120px;"/>
-    <img src="themes/child_celebrate/admin/images/calendar.png" />
+    <img src="images/calendar.png" />
     (อายุ xx ปี)
     </div>
   </td>
@@ -395,10 +409,10 @@
 
 
 
-<div id="btnBoxAdd">
+<!--<div id="btnBoxAdd">
   <input name="input" type="button" title="บันทึก" value="บันทึก" class="btn btn-primary" style="width:100px;"/>
   <input name="input2" type="button" title="ย้อนกลับ" value="ย้อนกลับ"  onclick="history.back(-1)"  class="btn btn-default" style="width:100px;"/>
-</div>
+</div>-->
 </fieldset>
 
 </div>
