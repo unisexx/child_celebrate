@@ -1,5 +1,7 @@
-<link rel="stylesheet" type="text/css" href="themes/child_celebrate/css/template.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="themes/child_celebrate/css/template.css"/>
 <script type="text/javascript" src="themes/child_celebrate/js/cufon/cufon-yui.js"></script>
 <script type="text/javascript" src="themes/child_celebrate/js/cufon/supermarket_400.font.js"></script>
 <script type="text/javascript">
@@ -107,13 +109,3 @@ $(document).ready(function(){
 
 <link rel="stylesheet" href="themes/child_celebrate/css/bootstrap-select.css">
 <script src="themes/child_celebrate/js/bootstrap-select.js"></script>
-
-
-
-
-
-
-
-
-
-

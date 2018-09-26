@@ -10,5 +10,29 @@ class Home extends Public_Controller {
 		$this->template->build('index');
 	}
 
+	function save($id=false){
+		if($_POST){
+            $applicant = new Applicant($id);
+            // $_POST['start_date'] = Date2DB($_POST['start_date']);
+            // $_POST['status'] = 'approve';
+            $applicant->from_array($_POST);
+            $applicant->save();
+            set_notify('success', lang('save_data_complete'));
+        }
+        redirect($_POST['referer']);
+	}
+
+	// เลือกจังหวัด select อำเภอ
+    public function ajaxselectdistrict()
+    {
+		echo form_dropdown('district_id', get_option('id','name','st_districts where st_province_id = '.@$_GET['province_id'].' order by name asc'), "",'class="selectpicker chainselect-subdistrict" data-live-search="true" data-size="7" title="เลือกอำเภอ" target="[name=subdistrict_id]"');
+    }
+
+	// เลือกอำเภอ หา ตำบล
+    public function ajaxselectsubdistrict()
+    {
+        echo form_dropdown('subdistrict_id', get_option('id','name','st_subdistricts where st_province_id = '.@$_GET['province_id'].' and st_district_id = '.@$_GET['st_district_id'].' order by name asc'), "",'class="selectpicker" data-live-search="true" data-size="7" title="เลือกตำบล"');
+    }
+
 }
 ?>

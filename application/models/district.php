@@ -1,11 +1,7 @@
 <?php
 class District extends ORM {
 
-    var $table = 'districts';
-	
-	var $has_one = array("amphur",'province');
-	
-	var $has_many = array("register","v_nursery","nursery","v_user","user");
+    var $table = 'st_districts';
 
     function __construct($id = NULL)
     {
