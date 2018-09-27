@@ -44,10 +44,10 @@
                 style="width:500px; margin-bottom:5px;" />
               <div class="form-inline">
                 
-                <?php echo form_dropdown('province_id', get_option('id','name','st_provinces order by name asc'), @$_GET['province_id'],'class="selectpicker chainselect-district" data-live-search="true" data-size="7" title="เลือกจังหวัด" target="[name=district_id]"');?>
+                <?php echo form_dropdown('province_id', get_option('id','name','st_provinces order by name asc'), @$_GET['province_id'],'class="selectpicker province" data-live-search="true" data-size="7" title="เลือกจังหวัด"');?>
 
                 <span class="spanDistrict">
-                  <select name="district_id" class="selectpicker chainselect-subdistrict" data-live-search="true" title="เลือกอำเภอ" disabled="disabled" target="[name=subdistrict_id]">
+                  <select name="district_id" class="selectpicker" data-live-search="true" title="เลือกอำเภอ" disabled="disabled">
                       <option>--</option>
                   </select>
                 </span>
@@ -466,57 +466,59 @@
 </form>
 
 <script>
-// วิธีใช้
-// -- ใส่ class .chainselect-district, attribute target ให้กับ select ที่เป็น "จังหวัด"
-// -- ใส่ class .chainselect-subdistrict, attribute target ให้กับ select ที่เป็น "อำเภอ"
-function chainDistrictActive(obj) {
-	obj.on('change',function(){
-		var province_obj = $(this); // province select box	
-		var district_obj = $($(this).attr('target')); //distirct select box
-		var subdistrict_obj = $(district_obj.attr('target'));//subdistrict select box
-		//Subdistrict::
-		var subdistrict_placeholder = subdistrict_obj.find('option[value=""]').text();
-		subdistrict_obj.html('<option value="">'+subdistrict_placeholder+'</option>').selectpicker('refresh');
-		//District::
-		var district_placeholder = district_obj.find('option[value=""]').text();
-		district_obj.html('<option value="">'+(province_obj.val()?'Loading...':district_placeholder)+'</option>').selectpicker('refresh'); //Loading หรือ placeholder
-		if(province_obj.val()) { //load ajax เมื่อมีค่า province_id
-			$.getJSON(
-				'home/ajaxselectdistrict',
-				{province_id:province_obj.val()},
-				function(data) {
-					district_obj.html('<option value="">'+district_placeholder+'</option>');
-					$.map(data, function (i) { district_obj.append('<option value="' + i.id + '">' + i.name + '</option>'); }); //option list.
-					district_obj.selectpicker('refresh');
-				}
-			);
-		}
-	});
-}//n-chainDistrictActive();
+$(document).ready(function(){
 
-function chainSubdistrictActive(obj) {
-	obj.on('change',function(){
-		var district_obj = $(this);
-		//Subdistrict::
-		subdistrict_obj = $(district_obj.attr('target'));//subdistrict select box
-		var subdistrict_placeholder = subdistrict_obj.find('option[value=""]').text();
-		subdistrict_obj.html('<option value="">'+(district_obj.val()?'Loading...':subdistrict_placeholder)+'</option>').selectpicker('refresh'); //Loading หรือ placeholder
-		if(district_obj.val()) { //load ajax เมื่อมีค่า district_id
-			$.getJSON(
-				'{{ url("ajax/select-subdistrict") }}',
-				{district_id:district_obj.val()},
-				function(data) {
-					subdistrict_obj.html('<option value="">'+subdistrict_placeholder+'</option>');
-					$.map(data, function (i) { subdistrict_obj.append('<option value="' + i.id + '">' + i.name + '</option>'); }); //option list.
-					subdistrict_obj.selectpicker('refresh');//.selectpicker('refresh');
-				}
-			);
-		}
-	});
-}//n-chainSubdistrictActive();
+  // select จังหวัด หา อำเภอ
+  $(document).on('change', "select.province", function() {
+    var province_id = $(this).val();
+    AjaxSelectDistrict(province_id);
 
-$(function(){
-	chainDistrictActive($('.chainselect-district'));
-	chainSubdistrictActive($('.chainselect-subdistrict'));
+    // disable all child Element
+    $('.spanSubdistrict').find('select').val('เลือกตำบล');
+    $('.spanSubdistrict').find('select').prop('disabled', true);
+    $('.spanSubdistrict').find('select').selectpicker('refresh');
+  });
+
+  // select อำเภอ หา ตำบล
+  $(document).on('change', "select.district", function() {
+    var province_id = $('select.province').val();
+    var district_id = $(this).val();
+    AjaxSelectSubdistrict(province_id,district_id);
+  });
+
 });
+
+
+// เลือกจังหวัด แสดงอำเภอ
+function AjaxSelectDistrict($province_id){
+  if($province_id == ""){
+    $('.spanDistrict').find('select').val('').attr("disabled", true);
+    $('.spanDistrict').find('select').selectpicker('refresh');
+  }else{
+    $.get('home/ajaxselectdistrict',{
+      'province_id' : $province_id
+    },function(data){
+      $('.spanDistrict').html(data);
+      $('.spanDistrict').find('select option:contains("เลือกอำเภอ")').text('+ เลือกอำเภอ +');
+      $('.spanDistrict').find('select').selectpicker('refresh');
+    });
+  }
+}
+
+// เลือกอำเภอ แสดงตำบล
+function AjaxSelectSubdistrict($province_id,$district_id){
+  if($district_id == ""){
+    $('.spanSubdistrict').find('select').val('').attr("disabled", true);
+    $('.spanSubdistrict').find('select').selectpicker('refresh');
+  }else{
+    $.get('home/ajaxselectsubdistrict',{
+      'province_id' : $province_id,
+      'district_id' :  $district_id
+    },function(data){
+      $('.spanSubdistrict').html(data);
+      $('.spanSubdistrict').find('select option:contains("เลือกตำบล")').text('+ เลือกตำบล +');
+      $('.spanSubdistrict').find('select').selectpicker('refresh');
+    });
+  }
+}
 </script>

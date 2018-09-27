@@ -1,5 +1,5 @@
 <?php
-class Home extends Public_Controller {
+class Home extends Admin_Controller {
 
 	function __construct()
 	{
@@ -7,7 +7,7 @@ class Home extends Public_Controller {
 	}
 
 	function index(){
-		$this->template->build('index');
+		$this->template->build('admin/index');
 	}
 
 	function save($id=false){
