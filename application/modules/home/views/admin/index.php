@@ -34,7 +34,7 @@
     <span><img src="themes/admin/images/ico_reject.png" width="24" height="24" /> <a href="#">ไม่ผ่าน (2)</a></span>
 </div>
 
-<div class="paginationTG">
+<!-- <div class="paginationTG">
     <ul>
         <li style="margin-right:10px;">หน้าที่</li>
         <li class="currentpage">1</li>
@@ -47,7 +47,9 @@
         <li><a href="">20</a></li>
         <li><a href="">21</a></li>
     </ul>
-</div>
+</div> -->
+
+<?php echo $rs->pagination()?>
 
 <table class="tblist">
     <tr>
@@ -58,20 +60,30 @@
         <th class="txtCen">สถานะ</th>
         <th>จัดการ</th>
     </tr>
-    <?php foreach($rs as $row):?>
+    <?php foreach($rs as $key=>$row):?>
     <tr>
-        <td>1</td>
+        <td>
+            <?$_GET['page'] = (@$_GET['page'] == "")?"1":@$_GET['page'];?>
+            <?=($key+1)+(20 * (@$_GET['page'] - 1));?>
+        </td>
         <td>
             <?php echo $row->fullname;?><br />
             <?php echo $row->id_card;?>
         </td>
-        <td>01/07/2560<br />
-            14.50 น.</td>
-        <td>52 หมู่ 6 ต . จรเข้เผือก อ. ด่านมะขามเตี้ย จ . กาญจนบุรี 71260</td>
-        <td class="txtCen"><img src="themes/admin/images/ico_pedding.png" width="32" height="32" class="vtip" title="รอการตรวจสอบ" /></td>
-        <td><a href="<?=basename($_SERVER['PHP_SELF'])?>?act=form"><img src="themes/admin/images/edit.png" width="24" height="24"
-                    class="vtip" title="แก้ไขรายการนี้" /></a> <img src="themes/admin/images/remove.png" width="32" height="32"
-                class="vtip" title="ลบรายการนี้" /></td>
+        <td><?php echo DB2Date($row->created) ?></td>
+        <td>
+            <?php echo $row->address ?>
+            52 หมู่ 6 ต . จรเข้เผือก อ. ด่านมะขามเตี้ย จ . กาญจนบุรี 71260
+        </td>
+        <td class="txtCen">
+            <img src="themes/admin/images/ico_pedding.png" width="32" height="32" class="vtip" title="รอการตรวจสอบ" />
+        </td>
+        <td>
+            <a href="<?=basename($_SERVER['PHP_SELF'])?>?act=form">
+                <img src="themes/admin/images/edit.png" width="24" height="24" class="vtip" title="แก้ไขรายการนี้" />
+            </a> 
+                <img src="themes/admin/images/remove.png" width="32" height="32" class="vtip" title="ลบรายการนี้" />
+        </td>
     </tr>
     <?php endforeach;?>
 
@@ -138,7 +150,9 @@
 
 </table>
 
-<div class="paginationTG">
+<?php echo $rs->pagination()?>
+
+<!-- <div class="paginationTG">
     <ul>
         <li style="margin-right:10px;">หน้าที่</li>
         <li class="currentpage">1</li>
@@ -151,4 +165,4 @@
         <li><a href="">20</a></li>
         <li><a href="">21</a></li>
     </ul>
-</div>
+</div> -->

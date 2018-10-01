@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2018-09-26 16:08:43
+Date: 2018-10-01 16:29:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -62,13 +62,32 @@ CREATE TABLE `applicants` (
   `owner` text,
   `attitude` text,
   `moral` text,
+  `created` datetime DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of applicants
 -- ----------------------------
-INSERT INTO `applicants` VALUES ('1', '2', 'id_card', 'fullname', '0000-00-00', 'address', '0', '0', '0', 'postc', '1234567890', 'mobile', 'fax', 'example@example.com', 'f_id_card', 'f_fullname', '1234567890', 'm_id_card', 'm_fullname', '1234567890', 'p_id_card', 'p_fullname', '1234567890', 'r_id_card', 'r_fullname', '1234567890', 'r_fax', 'example@example.com', 'a', 'studying_name', 'a', 'graduate_name', 'position', null, 'way', 'outstand', 'contest_1', 'contest_2', 'behavior', 'owner', 'attitude', 'moral');
+INSERT INTO `applicants` VALUES ('1', '2', 'id_card', 'fullname', '0000-00-00', 'address', '0', '0', '0', 'postc', '1234567890', 'mobile', 'fax', 'example@example.com', 'f_id_card', 'f_fullname', '1234567890', 'm_id_card', 'm_fullname', '1234567890', 'p_id_card', 'p_fullname', '1234567890', 'r_id_card', 'r_fullname', '1234567890', 'r_fax', 'example@example.com', 'a', 'studying_name', 'a', 'graduate_name', 'position', null, 'way', 'outstand', 'contest_1', 'contest_2', 'behavior', 'owner', 'attitude', 'moral', '2018-10-01 14:45:28', null);
+INSERT INTO `applicants` VALUES ('2', '1', 'id_card', 'fullname', '1984-08-14', 'address', '10', '1030', '10300500', '99999', '1234567890', 'mobile', 'fax', 'example@example.com', 'f_id_card', 'f_fullname', '1234567890', 'm_id_card', 'm_fullname', '1234567890', 'p_id_card', 'p_fullname', '1234567890', 'r_id_card', 'r_fullname', '1234567890', 'r_fax', 'example@example.com', 'a', 'studying_name', 'a', 'graduate_name', 'position', 'mindful', 'way', 'outstand', 'contest_1', 'contest_2', 'behavior', 'owner', 'attitude', 'moral', '2018-10-02 14:45:35', null);
+
+-- ----------------------------
+-- Table structure for levels
+-- ----------------------------
+DROP TABLE IF EXISTS `levels`;
+CREATE TABLE `levels` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `level` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of levels
+-- ----------------------------
+INSERT INTO `levels` VALUES ('1', 'Administrator');
+INSERT INTO `levels` VALUES ('2', 'Member');
 
 -- ----------------------------
 -- Table structure for st_districts
@@ -10081,3 +10100,50 @@ INSERT INTO `st_subdistricts` VALUES ('96130100', '96130100', 'จวบ', '96',
 INSERT INTO `st_subdistricts` VALUES ('96130200', '96130200', 'บูกิต', '96', '9613', '1');
 INSERT INTO `st_subdistricts` VALUES ('96130300', '96130300', 'มะรือโบออก', '96', '9613', '1');
 INSERT INTO `st_subdistricts` VALUES ('97059600', '97059600', 'โคกสอาด*', '97', '9705', '1');
+
+-- ----------------------------
+-- Table structure for users
+-- ----------------------------
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `level_id` int(11) DEFAULT '2',
+  `user_type_id` int(11) DEFAULT NULL,
+  `display` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `username` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
+  `password` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `email` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `signature` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `m_status` varchar(30) COLLATE utf8_unicode_ci DEFAULT 'active',
+  `auth_key` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `facebook_id` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `facebook_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `facebook_link` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3484 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of users
+-- ----------------------------
+INSERT INTO `users` VALUES ('49', '1', '1', 'Administrator', 'admin', 'fd1234', 'example@gmail.com', 'http://25.media.tumblr.com/tumblr_lsjtfo8dZx1qcyq8xo7_250.png', '<p><img src=\"http://upic.me/i/t7/5158475720110318144258086.jpg\" alt=\"\" /><br /><br /></p>', '2012-10-12 00:11:31', '2013-11-25 10:59:17', null, 'Administrator', null, 'active', null, null, null, null);
+
+-- ----------------------------
+-- Table structure for user_types
+-- ----------------------------
+DROP TABLE IF EXISTS `user_types`;
+CREATE TABLE `user_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_types
+-- ----------------------------
+INSERT INTO `user_types` VALUES ('1', 'ผู้ดูแลระบบ');

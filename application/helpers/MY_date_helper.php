@@ -57,7 +57,15 @@ function DB2Date($Dt){
 	if(($Dt!=NULL)&&($Dt != '0000-00-00')){
 		@list($date,$time) = explode(" ",$Dt);
 		list($y,$m,$d) = explode("-",$date);
-		return $d."/".$m."/".($y+543);
+
+		$r = $d."/".$m."/".($y+543);
+
+		$datetime = mysql_to_unix($Dt);
+		if($time){
+			$r .= '<br>'.date('H', $datetime).':'.date('i', $datetime).' น.';
+		}
+
+		return $r;
 	}else{
 		$Dt = "";
 		return $Dt; 
