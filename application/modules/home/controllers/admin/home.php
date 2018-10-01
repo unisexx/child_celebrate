@@ -7,7 +7,9 @@ class Home extends Admin_Controller {
 	}
 
 	function index(){
-		$this->template->build('admin/index');
+        $rs = new Applicant();
+        $data['rs'] = $rs->order_by('id','desc')->get_paged();
+        $this->template->build('admin/index',$data);
 	}
 
 	function save($id=false){
