@@ -10,7 +10,12 @@ class Home extends Admin_Controller {
         $rs = new Applicant();
         $data['rs'] = $rs->order_by('id','desc')->get_paged();
         $this->template->build('admin/index',$data);
-	}
+    }
+    
+    function form($id=false){
+    	$data['rs'] = new Applicant($id);
+        $this->template->build('admin/form',$data);
+    }
 
 	function save($id=false){
 		if($_POST){

@@ -73,16 +73,27 @@
         <td><?php echo DB2Date($row->created) ?></td>
         <td>
             <?php echo $row->address ?>
-            ต . จรเข้เผือก อ. ด่านมะขามเตี้ย จ . กาญจนบุรี 71260
+            ต. <?php echo empty($row->subdistrict_id)?'-':$row->subdistrict->name; ?>
+            อ. <?php echo empty($row->district_id)?'-':$row->district->name; ?>
+            จ. <?php echo empty($row->province_id)?'-':$row->province->name; ?>
+            <?php echo $row->postcode ?>
         </td>
         <td class="txtCen">
-            <img src="themes/admin/images/ico_pedding.png" width="32" height="32" class="vtip" title="รอการตรวจสอบ" />
+            <?php if($row->status == 'รอการตรวจสอบ') :?>
+                <img src="themes/admin/images/ico_pedding.png" width="32" height="32" class="vtip" title="รอการตรวจสอบ" />
+            <?php elseif($row->status == 'ผ่านการตรวจสอบ'):?>
+                <img src="images/ico_passed.png" width="32" height="32" class="vtip" title="ผ่านการตรวจสอบ">
+            <?php elseif($row->status == 'ไม่ผ่านการตรวจสอบ'):?>
+                <img src="images/ico_reject.png" width="32" height="32" class="vtip" title="ไม่ผ่าน">
+            <?php endif;?>
         </td>
         <td>
-            <a href="<?=basename($_SERVER['PHP_SELF'])?>?act=form">
+            <a href="home/admin/home/form/<?php echo $row->id?>">
                 <img src="themes/admin/images/edit.png" width="24" height="24" class="vtip" title="แก้ไขรายการนี้" />
             </a> 
+            <a href="home/admin/home/delete/<?php echo $row->id?>">
                 <img src="themes/admin/images/remove.png" width="32" height="32" class="vtip" title="ลบรายการนี้" />
+            </a>
         </td>
     </tr>
     <?php endforeach;?>
