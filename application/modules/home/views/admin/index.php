@@ -73,7 +73,7 @@
         <td><?php echo DB2Date($row->created) ?></td>
         <td>
             <?php echo $row->address ?>
-            52 หมู่ 6 ต . จรเข้เผือก อ. ด่านมะขามเตี้ย จ . กาญจนบุรี 71260
+            ต . จรเข้เผือก อ. ด่านมะขามเตี้ย จ . กาญจนบุรี 71260
         </td>
         <td class="txtCen">
             <img src="themes/admin/images/ico_pedding.png" width="32" height="32" class="vtip" title="รอการตรวจสอบ" />
