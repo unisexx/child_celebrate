@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2018-10-01 16:29:29
+Date: 2018-10-03 15:16:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -62,16 +62,42 @@ CREATE TABLE `applicants` (
   `owner` text,
   `attitude` text,
   `moral` text,
+  `status` varchar(100) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `updated` datetime DEFAULT NULL,
+  `g_name` varchar(255) DEFAULT NULL,
+  `g_create` varchar(255) DEFAULT NULL,
+  `g_age` varchar(255) DEFAULT NULL,
+  `g_address` varchar(255) DEFAULT NULL,
+  `g_province_id` int(11) DEFAULT NULL,
+  `g_district_id` int(11) DEFAULT NULL,
+  `g_subdistrict_id` int(11) DEFAULT NULL,
+  `g_postcode` varchar(255) DEFAULT NULL,
+  `g_tel` varchar(255) DEFAULT NULL,
+  `g_mobile` varchar(255) DEFAULT NULL,
+  `g_fax` varchar(255) DEFAULT NULL,
+  `g_email` varchar(255) DEFAULT NULL,
+  `gp_id_card` varchar(255) DEFAULT NULL,
+  `gp_fullname` varchar(255) DEFAULT NULL,
+  `gp_tel` varchar(255) DEFAULT NULL,
+  `gpr_id_card` varchar(255) DEFAULT NULL,
+  `gpr_fullname` varchar(255) DEFAULT NULL,
+  `gpr_tel` varchar(255) DEFAULT NULL,
+  `g_history` text,
+  `g_objective` text,
+  `g_nature_type` varchar(255) DEFAULT NULL,
+  `g_nature_name` varchar(255) DEFAULT NULL,
+  `g_philo` text,
+  `g_member_count` varchar(255) DEFAULT NULL,
+  `g_member_detail` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of applicants
 -- ----------------------------
-INSERT INTO `applicants` VALUES ('1', '2', 'id_card', 'fullname', '0000-00-00', 'address', '0', '0', '0', 'postc', '1234567890', 'mobile', 'fax', 'example@example.com', 'f_id_card', 'f_fullname', '1234567890', 'm_id_card', 'm_fullname', '1234567890', 'p_id_card', 'p_fullname', '1234567890', 'r_id_card', 'r_fullname', '1234567890', 'r_fax', 'example@example.com', 'a', 'studying_name', 'a', 'graduate_name', 'position', null, 'way', 'outstand', 'contest_1', 'contest_2', 'behavior', 'owner', 'attitude', 'moral', '2018-10-01 14:45:28', null);
-INSERT INTO `applicants` VALUES ('2', '1', 'id_card', 'fullname', '1984-08-14', 'address', '10', '1030', '10300500', '99999', '1234567890', 'mobile', 'fax', 'example@example.com', 'f_id_card', 'f_fullname', '1234567890', 'm_id_card', 'm_fullname', '1234567890', 'p_id_card', 'p_fullname', '1234567890', 'r_id_card', 'r_fullname', '1234567890', 'r_fax', 'example@example.com', 'a', 'studying_name', 'a', 'graduate_name', 'position', 'mindful', 'way', 'outstand', 'contest_1', 'contest_2', 'behavior', 'owner', 'attitude', 'moral', '2018-10-02 14:45:35', null);
+INSERT INTO `applicants` VALUES ('1', '2', 'id_card', 'fullname', '0000-00-00', 'address', '0', '0', '0', 'postc', '1234567890', 'mobile', 'fax', 'example@example.com', 'f_id_card', 'f_fullname', '1234567890', 'm_id_card', 'm_fullname', '1234567890', 'p_id_card', 'p_fullname', '1234567890', 'r_id_card', 'r_fullname', '1234567890', 'r_fax', 'example@example.com', 'a', 'studying_name', 'a', 'graduate_name', 'position', null, 'way', 'outstand', 'contest_1', 'contest_2', 'behavior', 'owner', 'attitude', 'moral', 'รอการตรวจสอบ', '2018-10-01 14:45:28', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `applicants` VALUES ('2', '2', '1-1111-11111-11-1', 'fullname', '1984-08-14', 'address', '10', '1030', '10300500', '99999', '1234567890', 'mobile', 'fax', 'example@example.com', '2-2222-22222-22-2', 'f_fullname', '1234567890', '3-3333-33333-33-3', 'm_fullname', '1234567890', '4-4444-44444-44-4', 'p_fullname', '1234567890', '5-5555-55555-55-5', 'r_fullname', '1234567890', 'r_fax', 'example@example.com', 'b', 'studying_name', 'b', 'graduate_name', 'position', 'mindful', 'way', 'outstand', 'contest_1', 'contest_2', 'behavior', 'owner', 'attitude', 'moral', 'ผ่านการตรวจสอบ', '2018-10-02 14:45:35', '2018-10-03 14:25:15', '', '2560', '', '', null, null, null, '', '', '', '', '', '', '', '', '', '', '', '', '', null, '', '', '', '');
 
 -- ----------------------------
 -- Table structure for levels
