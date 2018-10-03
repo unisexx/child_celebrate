@@ -82,9 +82,9 @@
             <?php if($row->status == 'รอการตรวจสอบ') :?>
                 <img src="themes/admin/images/ico_pedding.png" width="32" height="32" class="vtip" title="รอการตรวจสอบ" />
             <?php elseif($row->status == 'ผ่านการตรวจสอบ'):?>
-                <img src="images/ico_passed.png" width="32" height="32" class="vtip" title="ผ่านการตรวจสอบ">
+                <img src="themes/admin/images/ico_passed.png" width="32" height="32" class="vtip" title="ผ่านการตรวจสอบ">
             <?php elseif($row->status == 'ไม่ผ่านการตรวจสอบ'):?>
-                <img src="images/ico_reject.png" width="32" height="32" class="vtip" title="ไม่ผ่าน">
+                <img src="themes/admin/images/ico_reject.png" width="32" height="32" class="vtip" title="ไม่ผ่าน">
             <?php endif;?>
         </td>
         <td>

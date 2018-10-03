@@ -495,7 +495,7 @@ function AjaxSelectDistrict($province_id){
     $('.spanDistrict').find('select').val('').attr("disabled", true);
     $('.spanDistrict').find('select').selectpicker('refresh');
   }else{
-    $.get('home/ajaxselectdistrict',{
+    $.get('ajax/ajaxselectdistrict',{
       'province_id' : $province_id
     },function(data){
       $('.spanDistrict').html(data);
@@ -511,7 +511,7 @@ function AjaxSelectSubdistrict($province_id,$district_id){
     $('.spanSubdistrict').find('select').val('').attr("disabled", true);
     $('.spanSubdistrict').find('select').selectpicker('refresh');
   }else{
-    $.get('home/ajaxselectsubdistrict',{
+    $.get('ajax/ajaxselectsubdistrict',{
       'province_id' : $province_id,
       'district_id' :  $district_id
     },function(data){
