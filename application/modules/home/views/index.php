@@ -1,8 +1,21 @@
-<form method="post" action="home/save">
+<form method="post" action="home/save" enctype="multipart/form-data">
 
   <h3 style="text-align:center; margin:0; padding:15px 0; background:#FFF;">ลงทะเบียนแบบเสนอผลงาน <br>กิจกรรมสรรหาและเชิดชูเด็กและเยาวชนดีเด่นแห่งชาติ
     และผู้ทำคุณประโยชน์ต่อเด็กและเยาวชน</h3>
   <div style="margin-left:40%">
+    <select name="career" class="form-control" style="width:auto; margin-top:10px; background:#FF9">
+      <option>สาขากฏหมายและการปกป้องคุ้มครองสิทธิเด็กและเยาวชน</option>
+      <option>สาขาการศึกษาและวิชาการ</option>
+      <option>สาขากีฬาและนันทนาการ</option>
+      <option>สาขาคณิตศาสตร์ วิทยาศาสตร์ คอมพิวเตอร์ และเทคโนโลยี</option>
+      <option>สาขาทรัยากรธรรมชาติและสิ่งแวดล้อม</option>
+      <option>สาขาพัฒนาเยาวชน บำเพ็ญประโยชน์ และส่งเสริมการมีส่วนร่วมของเยาวชน</option>
+      <option>สาขาศิลปวัฒนธรรม</option>
+      <option>สาขาศีลธรรม จริยธรรม และคุณธรรม</option>
+      <option>สาขาสิ่งประดิษฐ์และนวัตกรรม</option>
+      <option>สาขาสือมวลชนเพื่อเด็กและเยาวชนที่ป้องกันปัญหาสังคม</option>
+    </select>
+
     <select name="type" class="form-control" style="width:auto; margin-top:10px; background:#FF9">
       <option value="1">ประเภท เด็กและเยาวชนดีเด่นแห่งชาติ</option>
       <option value="2">ประเภท บุคคลผู้ทำคุณประโยชน์ต่อเด็กและเยาวชน</option>
@@ -18,6 +31,10 @@
         <legend>ข้อมูลส่วนตัว</legend>
         <table class="tbRegister">
           <tr>
+            <th>แนบไฟล์รูปภาพ <span class="Txt_red_12"> *</span></th>
+            <td><input type="file" name="image" id="fileField" class="form-control" style="width:auto"></td>
+          </tr>
+          <tr>
             <th>เลขบัตรประชาชน <span class="Txt_red_12"> *</span>/ ชื่อ-สกุล<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
@@ -29,7 +46,7 @@
             </td>
           </tr>
           <tr>
-            <th>วันเดือนปีเกิืด <span class="Txt_red_12"> *</span></th>
+            <th>วันเดือนปีเกิด <span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
                 <input name="birthdate" type="text" class="form-control fdate" id="textarea4" value="" style="width:120px;" />
@@ -64,7 +81,7 @@
             </td>
           </tr>
           <tr>
-            <th>โทรศัพท์ / มือถือ</th>
+            <th>โทรศัพท์ / มือถือ<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
                 <input name="tel" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
@@ -75,7 +92,7 @@
             </td>
           </tr>
           <tr>
-            <th>โทรสาร / อีเมล์</th>
+            <th>โทรสาร / อีเมล์<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
                 <input name="fax" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
@@ -92,7 +109,7 @@
         <legend>ข้อมูลบิดา มารดา และผู้ปกครอง</legend>
         <table class="tbRegister">
           <tr>
-            <th>เลขบัตรประชาชน / ชื่อ-สกุล (บิดา)</th>
+            <th>เลขบัตรประชาชน / ชื่อ-สกุล (บิดา)<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
                 <input name="f_id_card" type="text" class="form-control fidcard" id="textarea3" value="" style="width:200px;"
@@ -103,14 +120,14 @@
             </td>
           </tr>
           <tr>
-            <th>โทรศัพท์/มือถือ (บิดา)</th>
+            <th>โทรศัพท์/มือถือ (บิดา)<span class="Txt_red_12"> *</span></th>
             <td>
               <input name="f_tel" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
                 placeholder="โทรศัพท์/มือถือ บิดา" />
             </td>
           </tr>
           <tr>
-            <th>เลขบัตรประชาชน / ชื่อ-สกุล (มารดา)</th>
+            <th>เลขบัตรประชาชน / ชื่อ-สกุล (มารดา)<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
                 <input name="m_id_card" type="text" class="form-control fidcard" id="textarea3" value="" style="width:200px;"
@@ -121,7 +138,7 @@
             </td>
           </tr>
           <tr>
-            <th>โทรศัพท์/มือถือ (มารดา)</th>
+            <th>โทรศัพท์/มือถือ (มารดา)<span class="Txt_red_12"> *</span></th>
             <td>
               <input name="m_tel" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
                 placeholder="โทรศัพท์/มือถือ มารดา" />
@@ -152,7 +169,7 @@
         <legend>ข้อมูลบุคคลอ้างอิง (ไม่ใช่บุคคลในครอบครัว)</legend>
         <table class="tbRegister">
           <tr>
-            <th>เลขบัตรประชาชน / ชื่อ-สกุล</th>
+            <th>เลขบัตรประชาชน<span class="Txt_red_12"> *</span> / ชื่อ-สกุล<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
                 <input name="r_id_card" type="text" class="form-control fidcard" id="textarea3" value="" style="width:200px;"
@@ -163,7 +180,7 @@
             </td>
           </tr>
           <tr>
-            <th>โทรศัพท์/มือถือ</th>
+            <th>โทรศัพท์/มือถือ<span class="Txt_red_12"> *</span></th>
             <td>
               <input name="r_tel" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
                 placeholder="โทรศัพท์/มือถือ ผู้ปกครอง" />
@@ -191,8 +208,17 @@
             <td>
               <div class="form-inline">
                 <select name="studying_type" class="form-control" style="width:auto">
-                  <option>a</option>
-                  <option>b</option>
+                  <option>มัธยมศึกษาปีที่ 1</option>
+                  <option>มัธยมศึกษาปีที่ 2</option>
+                  <option>มัธยมศึกษาปีที่ 3</option>
+                  <option>มัธยมศึกษาปีที่ 4 / ปวช. ปีที่ 1</option>
+                  <option>มัธยมศึกษาปีที่ 5 / ปวช. ปีที่ 2</option>
+                  <option>มัธยมศึกษาปีที่ 6 / / ปวช. ปีที่ 3</option>
+                  <option>บัณฑิตปี 1 (ปริญญาตรี) / ปวส. ปีที่ 1</option>
+                  <option>บัณฑิตปี 2 (ปริญญาตรี) / ปวส. ปีที่ 2</option>
+                  <option>บัณฑิตปี 3 (ปริญญาตรี)</option>
+                  <option>บัณฑิตปี 4 (ปริญญาตรี)</option>
+                  <option>มหาบัณฑิต (ปริญญาโท)</option>
                 </select>
                 <input name="studying_name" type="text" class="form-control" id="textarea7" value="" style="width:300px;"
                   placeholder="ชื่อสถานศึกษา" />
@@ -204,8 +230,17 @@
             <td>
               <div class="form-inline">
                 <select name="graduate_type" class="form-control" style="width:auto">
-                  <option>a</option>
-                  <option>b</option>
+                  <option>มัธยมศึกษาปีที่ 1</option>
+                  <option>มัธยมศึกษาปีที่ 2</option>
+                  <option>มัธยมศึกษาปีที่ 3</option>
+                  <option>มัธยมศึกษาปีที่ 4 / ปวช. ปีที่ 1</option>
+                  <option>มัธยมศึกษาปีที่ 5 / ปวช. ปีที่ 2</option>
+                  <option>มัธยมศึกษาปีที่ 6 / / ปวช. ปีที่ 3</option>
+                  <option>บัณฑิตปี 1 (ปริญญาตรี) / ปวส. ปีที่ 1</option>
+                  <option>บัณฑิตปี 2 (ปริญญาตรี) / ปวส. ปีที่ 2</option>
+                  <option>บัณฑิตปี 3 (ปริญญาตรี)</option>
+                  <option>บัณฑิตปี 4 (ปริญญาตรี)</option>
+                  <option>มหาบัณฑิต (ปริญญาโท)</option>
                 </select>
                 <input name="graduate_name" type="text" class="form-control" id="textarea7" value="" style="width:300px;"
                   placeholder="ชื่อสถานศึกษา" /></div>
@@ -246,6 +281,10 @@
       <fieldset>
         <legend>ข้อมูลเบื้องต้น</legend>
         <table class="tbRegister">
+          <tr>
+            <th>แนบไฟล์รูปประจำกลุ่ม / สัญลักษณ์ <span class="Txt_red_12"> *</span></th>
+            <td><input type="file" name="fileField2" id="fileField2" class="form-control" style="width:auto"></td>
+          </tr>
           <tr>
             <th>ชื่อกลุ่ม/องค์กร<span class="Txt_red_12"> *</span></th>
             <td><input name="textarea7" type="text" class="form-control" id="textarea7" value="" style="width:500px;"
@@ -293,7 +332,7 @@
             </td>
           </tr>
           <tr>
-            <th>โทรศัพท์ / มือถือ</th>
+            <th>โทรศัพท์ / มือถือ<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
                 <input name="textarea8" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
@@ -304,7 +343,7 @@
             </td>
           </tr>
           <tr>
-            <th>โทรสาร / อีเมล์</th>
+            <th>โทรสาร / อีเมล์<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
                 <input name="textarea8" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
@@ -321,7 +360,7 @@
         <legend>ข้อมูลประธานกลุ่ม/ผู้ก่อตั้ง และบุคคลอ้างอิง</legend>
         <table class="tbRegister">
           <tr>
-            <th>เลขบัตรประชาชน / ชื่อ-สกุล (ประธานกลุ่ม/ผู้ก่อตั้ง)</th>
+            <th>เลขบัตรประชาชน / ชื่อ-สกุล (ประธานกลุ่ม/ผู้ก่อตั้ง)<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
                 <input name="textarea3" type="text" class="form-control fidcard" id="textarea3" value="" style="width:200px;"
@@ -332,7 +371,7 @@
             </td>
           </tr>
           <tr>
-            <th>โทรศัพท์/มือถือ (ประธานกลุ่ม)</th>
+            <th>โทรศัพท์/มือถือ (ประธานกลุ่ม)<span class="Txt_red_12"> *</span></th>
             <td>
               <input name="textarea8" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
                 placeholder="โทรศัพท์/มือถือ ประธานกลุ่ม" />
@@ -407,12 +446,12 @@
         <legend>สรุปข้อมูลผลงานดีเด่น </legend>
         <table class="tbRegister">
           <tr>
-            <th>ผลงานดีเด่นที่ได้รับการยอมรับและเป็นประโยชน์ต่อสังคม</th>
+            <th>ผลงานดีเด่นที่ได้รับการยอมรับและเป็นประโยชน์ต่อสังคม (พอสังเขป)</th>
             <td><textarea name="outstand" cols="" rows="" class="form-control" placeholder="ระบุปีที่ดำเนินการและผลงาน  (เป็นผลงานต่อเนื่องไม่น้อยกว่า ๓ ปี และยังดำเนินการจนถึงปัจจุบัน)"></textarea>
             </td>
           </tr>
           <tr>
-            <th>ผลงานที่ผ่านการประกวดหรือแข่งขัน </th>
+            <th>ผลงานที่ผ่านการประกวดหรือแข่งขัน (พอสังเขป)</th>
             <td>
               <textarea name="contest_1" cols="" rows="" class="form-control" placeholder="ผลงานระดับนานาชาติ" style="margin-bottom:5px;"></textarea>
               <textarea name="contest_2" cols="" rows="" class="form-control" placeholder="ผลงานระดับชาติ"></textarea>
@@ -426,7 +465,13 @@
             </td>
           </tr>
           <tr>
-            <th>เจ้าของผลงาน </th>
+            <th>ทัศนคติของผู้สมัครฯ</th>
+            <td>
+              <textarea name="attitude" cols="" rows="" class="form-control" placeholder="ทัศนคติของผู้สมัครในเรื่องการทำประโยชน์หรือการเสียสละต่อสังคม"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <th>เจ้าของผลงาน <span class="Txt_red_12"> *</span></th>
             <td>
               <span style="color:#C00; font-size:12px;">หากข้าพเจ้าได้รับการคัดเลือกเข้ารับพระราชทานรางวัล
                 ยินดีเข้าร่วมกิจกรรมกับกรมกิจการเด็กและเยาวชน
@@ -435,16 +480,22 @@
                 placeholder="ชื่อเจ้าของผลงาน" />
             </td>
           </tr>
-          <tr>
-            <th>ทัศนคติของผู้สมัครฯ</th>
-            <td>
-              <textarea name="attitude" cols="" rows="" class="form-control" placeholder="ทัศนคติของผู้สมัครในเรื่องการทำประโยชน์หรือการเสียสละต่อสังคม"></textarea>
-            </td>
-          </tr>
-          <tr>
+          <!-- <tr>
             <th>ความเห็นสนับสนุนด้านศีลธรรมฯ</th>
             <td>
               <textarea name="moral" cols="" rows="" class="form-control" placeholder="ความเห็นสนับสนุนด้านศีลธรรม จริยธรรม และคุณธรรม ของผู้เสนอ/ผู้รับรอง ที่มีต่อผู้สมัครฯ"></textarea>
+            </td>
+          </tr> -->
+          <tr>
+            <th>ผู้รับรองผลงาน <span class="Txt_red_12"> *</span></th>
+            <td>
+              <div class="form-inline">
+                <input name="textarea2" type="text" class="form-control" id="textarea2" value="" style="width:300px;" placeholder="ชื่อและนามสกุล" />
+                <input name="textarea5" type="text" class="form-control" id="textarea5" value="" style="width:300px;" placeholder="ตำแหน่ง" />
+                <input name="textarea9" type="text" class="form-control" id="textarea6" value="" style="width:300px;" placeholder="สังกัด" />
+                <input name="textarea10" type="text" class="form-control" id="textarea10" value="" style="width:300px;"
+                  placeholder="เบอร์ติดต่อ" />
+              </div>
             </td>
           </tr>
         </table>

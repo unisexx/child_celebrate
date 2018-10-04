@@ -3,6 +3,19 @@
 <h3 style="text-align:center; margin:0; padding:15px 0; background:#FFF;">เสนอผลงานกิจกรรมสรรหาและเชิดชูเด็กและเยาวชนดีเด่นแห่งชาติ
     และผู้ทำคุณประโยชน์ต่อเด็กและเยาวชน</h3>
 <div style="margin-left:40%">
+    <select name="career" class="form-control" style="width:auto; margin-top:10px; background:#FF9">
+        <option value="1" <?php echo $rs->career == 1 ? 'selected=selected' : '';?>>สาขากฏหมายและการปกป้องคุ้มครองสิทธิเด็กและเยาวชน</option>
+        <option value="2" <?php echo $rs->career == 2 ? 'selected=selected' : '';?>>สาขาการศึกษาและวิชาการ</option>
+        <option value="3" <?php echo $rs->career == 3 ? 'selected=selected' : '';?>>สาขากีฬาและนันทนาการ</option>
+        <option value="4" <?php echo $rs->career == 4 ? 'selected=selected' : '';?>>สาขาคณิตศาสตร์ วิทยาศาสตร์ คอมพิวเตอร์ และเทคโนโลยี</option>
+        <option value="5" <?php echo $rs->career == 5 ? 'selected=selected' : '';?>>สาขาทรัยากรธรรมชาติและสิ่งแวดล้อม</option>
+        <option value="6" <?php echo $rs->career == 6 ? 'selected=selected' : '';?>>สาขาพัฒนาเยาวชน บำเพ็ญประโยชน์ และส่งเสริมการมีส่วนร่วมของเยาวชน</option>
+        <option value="7" <?php echo $rs->career == 7 ? 'selected=selected' : '';?>>สาขาศิลปวัฒนธรรม</option>
+        <option value="8" <?php echo $rs->career == 8 ? 'selected=selected' : '';?>>สาขาศีลธรรม จริยธรรม และคุณธรรม</option>
+        <option value="9" <?php echo $rs->career == 9 ? 'selected=selected' : '';?>>สาขาสิ่งประดิษฐ์และนวัตกรรม</option>
+        <option value="10" <?php echo $rs->career == 10 ? 'selected=selected' : '';?>>สาขาสือมวลชนเพื่อเด็กและเยาวชนที่ป้องกันปัญหาสังคม</option>
+    </select>
+    
     <select name="type" class="form-control" style="width:auto; margin-top:10px; background:#FF9">
         <option value="1" <?php echo $rs->type == 1 ? 'selected=selected' : '';?>>ประเภท เด็กและเยาวชนดีเด่นแห่งชาติ</option>
         <option value="2" <?php echo $rs->type == 2 ? 'selected=selected' : '';?>>ประเภท บุคคลผู้ทำคุณประโยชน์ต่อเด็กและเยาวชน</option>
@@ -33,6 +46,10 @@
                                 style="width:100px;" />
                         </div>
                     </td>
+                </tr>
+                <tr>
+                    <th>แนบไฟล์รูปภาพ <span class="Txt_red_12"> *</span></th>
+                    <td><input type="file" name="image" id="fileField" class="form-control" style="width:auto"></td>
                 </tr>
                 <tr>
                     <th>เลขบัตรประชาชน <span class="Txt_red_12"> *</span>/ ชื่อ-สกุล<span class="Txt_red_12"> *</span></th>
@@ -217,8 +234,19 @@
                     <td>
                         <div class="form-inline">
                             <select name="studying_type" class="form-control" style="width:auto">
-                                <option value="a" <?php echo $rs->studying_type == 'a' ? 'selected=selected' : '';?>>a</option>
-                                <option value="b" <?php echo $rs->studying_type == 'b' ? 'selected=selected' : '';?>>b</option>
+                                <!-- <option value="a" <?php echo $rs->studying_type == 'a' ? 'selected=selected' : '';?>>a</option>
+                                <option value="b" <?php echo $rs->studying_type == 'b' ? 'selected=selected' : '';?>>b</option> -->
+                                <option value="1" <?php echo $rs->studying_type == 1 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 1</option>
+                                <option value="2" <?php echo $rs->studying_type == 2 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 2</option>
+                                <option value="3" <?php echo $rs->studying_type == 3 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 3</option>
+                                <option value="4" <?php echo $rs->studying_type == 4 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 4 / ปวช. ปีที่ 1</option>
+                                <option value="5" <?php echo $rs->studying_type == 5 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 5 / ปวช. ปีที่ 2</option>
+                                <option value="6" <?php echo $rs->studying_type == 6 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 6 / / ปวช. ปีที่ 3</option>
+                                <option value="7" <?php echo $rs->studying_type == 7 ? 'selected=selected' : '';?>>บัณฑิตปี 1 (ปริญญาตรี) / ปวส. ปีที่ 1</option>
+                                <option value="8" <?php echo $rs->studying_type == 8 ? 'selected=selected' : '';?>>บัณฑิตปี 2 (ปริญญาตรี) / ปวส. ปีที่ 2</option>
+                                <option value="9" <?php echo $rs->studying_type == 9 ? 'selected=selected' : '';?>>บัณฑิตปี 3 (ปริญญาตรี)</option>
+                                <option value="10" <?php echo $rs->studying_type == 10 ? 'selected=selected' : '';?>>บัณฑิตปี 4 (ปริญญาตรี)</option>
+                                <option value="11" <?php echo $rs->studying_type == 11 ? 'selected=selected' : '';?>>มหาบัณฑิต (ปริญญาโท)</option>
                             </select>
                             <input name="studying_name" type="text" class="form-control" value="<?php echo @$rs->studying_name?>" style="width:300px;"
                                 placeholder="ชื่อสถานศึกษา" />
@@ -230,8 +258,19 @@
                     <td>
                         <div class="form-inline">
                             <select name="graduate_type" class="form-control" style="width:auto">
-                                <option value="a" <?php echo $rs->graduate_type == 'a' ? 'selected=selected' : '';?>>a</option>
-                                <option value="b" <?php echo $rs->graduate_type == 'b' ? 'selected=selected' : '';?>>b</option>
+                                <!-- <option value="a" <?php echo $rs->graduate_type == 'a' ? 'selected=selected' : '';?>>a</option>
+                                <option value="b" <?php echo $rs->graduate_type == 'b' ? 'selected=selected' : '';?>>b</option> -->
+                                <option value="1" <?php echo $rs->studying_type == 1 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 1</option>
+                                <option value="2" <?php echo $rs->studying_type == 2 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 2</option>
+                                <option value="3" <?php echo $rs->studying_type == 3 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 3</option>
+                                <option value="4" <?php echo $rs->studying_type == 4 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 4 / ปวช. ปีที่ 1</option>
+                                <option value="5" <?php echo $rs->studying_type == 5 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 5 / ปวช. ปีที่ 2</option>
+                                <option value="6" <?php echo $rs->studying_type == 6 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 6 / / ปวช. ปีที่ 3</option>
+                                <option value="7" <?php echo $rs->studying_type == 7 ? 'selected=selected' : '';?>>บัณฑิตปี 1 (ปริญญาตรี) / ปวส. ปีที่ 1</option>
+                                <option value="8" <?php echo $rs->studying_type == 8 ? 'selected=selected' : '';?>>บัณฑิตปี 2 (ปริญญาตรี) / ปวส. ปีที่ 2</option>
+                                <option value="9" <?php echo $rs->studying_type == 9 ? 'selected=selected' : '';?>>บัณฑิตปี 3 (ปริญญาตรี)</option>
+                                <option value="10" <?php echo $rs->studying_type == 10 ? 'selected=selected' : '';?>>บัณฑิตปี 4 (ปริญญาตรี)</option>
+                                <option value="11" <?php echo $rs->studying_type == 11 ? 'selected=selected' : '';?>>มหาบัณฑิต (ปริญญาโท)</option>
                             </select>
                             <input name="graduate_name" type="text" class="form-control" value="<?php echo @$rs->graduate_name?>" style="width:300px;"
                                 placeholder="ชื่อสถานศึกษา" /></div>
@@ -451,6 +490,12 @@
                     </td>
                 </tr>
                 <tr>
+                    <th>ทัศนคติของผู้สมัครฯ</th>
+                    <td>
+                        <textarea name="attitude" cols="" rows="" class="form-control" placeholder="ทัศนคติของผู้สมัครในเรื่องการทำประโยชน์หรือการเสียสละต่อสังคม"><?php echo @$rs->attitude?></textarea>
+                    </td>
+                </tr>
+                <tr>
                     <th>เจ้าของผลงาน </th>
                     <td>
                         <span style="color:#C00; font-size:12px;">หากข้าพเจ้าได้รับการคัดเลือกเข้ารับพระราชทานรางวัล
@@ -460,16 +505,22 @@
                             placeholder="ชื่อเจ้าของผลงาน" />
                     </td>
                 </tr>
-                <tr>
-                    <th>ทัศนคติของผู้สมัครฯ</th>
-                    <td>
-                        <textarea name="attitude" cols="" rows="" class="form-control" placeholder="ทัศนคติของผู้สมัครในเรื่องการทำประโยชน์หรือการเสียสละต่อสังคม"><?php echo @$rs->attitude?></textarea>
-                    </td>
-                </tr>
-                <tr>
+                <!-- <tr>
                     <th>ความเห็นสนับสนุนด้านศีลธรรมฯ</th>
                     <td>
                         <textarea name="moral" cols="" rows="" class="form-control" placeholder="ความเห็นสนับสนุนด้านศีลธรรม จริยธรรม และคุณธรรม ของผู้เสนอ/ผู้รับรอง ที่มีต่อผู้สมัครฯ"><?php echo @$rs->moral?></textarea>
+                    </td>
+                </tr> -->
+                <tr>
+                    <th>ผู้รับรองผลงาน <span class="Txt_red_12"> *</span></th>
+                    <td>
+                        <div class="form-inline">
+                            <input name="contributor_name" type="text" class="form-control" value="<?php echo @$rs->contributor_name?>" style="width:300px;" placeholder="ชื่อและนามสกุล" />
+                            <input name="contributor_position" type="text" class="form-control" value="<?php echo @$rs->contributor_position?>" style="width:300px;" placeholder="ตำแหน่ง" />
+                            <input name="contributor_aff" type="text" class="form-control" value="<?php echo @$rs->contributor_aff?>" style="width:300px;" placeholder="สังกัด" />
+                            <input name="contributor_tel" type="text" class="form-control" value="<?php echo @$rs->contributor_tel?>" style="width:300px;"
+                            placeholder="เบอร์ติดต่อ" />
+                        </div>
                     </td>
                 </tr>
             </table>

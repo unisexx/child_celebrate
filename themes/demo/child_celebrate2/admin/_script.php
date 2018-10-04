@@ -1,15 +1,15 @@
-<link rel="stylesheet" type="text/css" href="themes/admin/css/template.css"/>
+<link rel="stylesheet" type="text/css" href="css/template.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type="text/javascript" src="themes/admin/js/cufon/cufon-yui.js"></script>
-<script type="text/javascript" src="themes/admin/js/cufon/supermarket_400.font.js"></script>
+<script type="text/javascript" src="js/cufon/cufon-yui.js"></script>
+<script type="text/javascript" src="js/cufon/supermarket_400.font.js"></script>
 <script type="text/javascript">
 	Cufon.replace('h1, h2, h3, h4, #menu');
 
 </script>
 
 <!-- Colorbox jquery -->
-<script src="themes/admin/js/jquery.colorbox.js"></script>
-<link media="screen" rel="stylesheet" href="themes/admin/css/colorbox.css" />
+<script src="js/jquery.colorbox.js"></script>
+<link media="screen" rel="stylesheet" href="css/colorbox.css" />
 <script>
 			$(document).ready(function(){
 				//Examples of how to assign the Colorbox event to elements
@@ -35,11 +35,11 @@
 </script>
 
 <!-- Tooltip jquery -->
-<script type="text/javascript" src="themes/admin/js/vtip.js"></script>
-<link rel="stylesheet" type="text/css" href="themes/admin/css/vtip.css" />
+<script type="text/javascript" src="js/vtip.js"></script>
+<link rel="stylesheet" type="text/css" href="css/vtip.css" />
 
 <!-- number format -->
-<script type="text/javascript" src="themes/admin/js/jquery.number.js"></script>
+<script type="text/javascript" src="js/jquery.number.js"></script>
 <script type="text/javascript">
 $(function(){
 	$('input.numDecimal').number( true, 2 );
@@ -52,7 +52,7 @@ $(function(){
 </script>
 
 <!-- Input format -->
-<script type="text/javascript" src="themes/admin/js/jquery.maskedinput.js"></script>
+<script type="text/javascript" src="js/jquery.maskedinput.js"></script>
 <script type="text/javascript">
 jQuery(function($){
    $(".fdate").mask("99/99/9999");
@@ -68,7 +68,8 @@ jQuery(function($){
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#groupchild").hide();
-    $("select[name=type]").change(function(){
+	$("#remark").hide();
+    $("select").change(function(){
         $(this).find("option:selected").each(function(){
 			
 			if($(this).attr("value")=="1" || $(this).attr("value")=="2"){
@@ -79,6 +80,15 @@ $(document).ready(function(){
                 $("#personalchild").hide();
 				$("#groupchild").show();
             }
+			
+			if($(this).attr("value")=="pass" || $(this).attr("value")=="reject"){
+                $("#remark").show();	
+            }
+			if($(this).attr("value")=="wait" || $(this).attr("value")=="portfolio"){
+                $("#remark").hide();	
+            }
+			
+		
            
         });
     }).change();
@@ -87,17 +97,17 @@ $(document).ready(function(){
 
 
 <!-- bootstrap CSS -->
-<link rel="stylesheet" href="themes/admin/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="themes/admin/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="themes/admin/css/navbar-fixed-top.css" rel="stylesheet">
+    <link href="css/navbar-fixed-top.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="themes/admin/js/ie-emulation-modes-warning.js"></script>
+    <script src="js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -105,5 +115,15 @@ $(document).ready(function(){
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<link rel="stylesheet" href="themes/admin/css/bootstrap-select.css">
-<script src="themes/admin/js/bootstrap-select.js"></script>
+<link rel="stylesheet" href="css/bootstrap-select.css">
+<script src="js/bootstrap-select.js"></script>
+
+
+
+
+
+
+
+
+
+
