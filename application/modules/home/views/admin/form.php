@@ -25,12 +25,40 @@
 </div>
 <div style="width:900px; margin:0 auto;">
 
+        <fieldset>
+            <legend>พิจารณาสถานะ</legend>
+            <table class="tbRegister">
+                <tr>
+                    <th>วันเวลาที่ลงทะเบียน</th>
+                    <td>
+                        <?php echo DB2Date($rs->created) ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th>สถานะ</th>
+                    <td>
+                        <div class="form-inline">
+                            <select name="status" class="form-control" style="width:auto;">
+                                <option value="รอการตรวจสอบ" <?php echo $rs->status == 'รอการตรวจสอบ' ? 'selected=selected' :
+                                    '';?>>รอการตรวจสอบ</option>
+                                <option value="ผ่านการตรวจสอบ" <?php echo $rs->status == 'ผ่านการตรวจสอบ' ? 'selected=selected'
+                                    :
+                                    '';?>>ผ่านการตรวจสอบ</option>
+                                <option value="ไม่ผ่านการตรวจสอบ" <?php echo $rs->status == 'ไม่ผ่านการตรวจสอบ' ?
+                                    'selected=selected' : '';?>>ไม่ผ่านการตรวจสอบ</option>
+                            </select> <input name="input" type="submit" title="บันทึก" value="บันทึก" class="btn btn-primary"
+                                style="width:100px;" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
 
     <div id="personalchild">
         <fieldset>
             <legend>ข้อมูลส่วนตัว</legend>
             <table class="tbRegister">
-                <tr>
+                <!-- <tr>
                     <th>วันเวลาที่ลงทะเบียน</th>
                     <td><?php echo DB2Date($rs->created) ?></td>
                 </tr>
@@ -46,7 +74,7 @@
                                 style="width:100px;" />
                         </div>
                     </td>
-                </tr>
+                </tr> -->
                 <tr>
                     <th>แนบไฟล์รูปภาพ <span class="Txt_red_12"> *</span></th>
                     <td><input type="file" name="image" id="fileField" class="form-control" style="width:auto"></td>
@@ -107,7 +135,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>โทรศัพท์ / มือถือ</th>
+                    <th>โทรศัพท์ / มือถือ<span class="Txt_red_12"> *</span></th>
                     <td>
                         <div class="form-inline">
                             <input name="tel" type="text" class="form-control" value="<?php echo @$rs->tel?>" style="width:250px;"
@@ -118,7 +146,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>โทรสาร / อีเมล์</th>
+                    <th>โทรสาร / อีเมล์<span class="Txt_red_12"> *</span></th>
                     <td>
                         <div class="form-inline">
                             <input name="fax" type="text" class="form-control" value="<?php echo @$rs->fax?>" style="width:250px;"
@@ -135,7 +163,7 @@
             <legend>ข้อมูลบิดา มารดา และผู้ปกครอง</legend>
             <table class="tbRegister">
                 <tr>
-                    <th>เลขบัตรประชาชน / ชื่อ-สกุล (บิดา)</th>
+                    <th>เลขบัตรประชาชน / ชื่อ-สกุล (บิดา)<span class="Txt_red_12"> *</span></th>
                     <td>
                         <div class="form-inline">
                             <input name="f_id_card" type="text" class="form-control fidcard" value="<?php echo @$rs->f_id_card?>"
@@ -146,14 +174,14 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>โทรศัพท์/มือถือ (บิดา)</th>
+                    <th>โทรศัพท์/มือถือ (บิดา)<span class="Txt_red_12"> *</span></th>
                     <td>
                         <input name="f_tel" type="text" class="form-control" value="<?php echo @$rs->f_tel?>" style="width:250px;"
                             placeholder="โทรศัพท์/มือถือ บิดา" />
                     </td>
                 </tr>
                 <tr>
-                    <th>เลขบัตรประชาชน / ชื่อ-สกุล (มารดา)</th>
+                    <th>เลขบัตรประชาชน / ชื่อ-สกุล (มารดา)<span class="Txt_red_12"> *</span></th>
                     <td>
                         <div class="form-inline">
                             <input name="m_id_card" type="text" class="form-control fidcard" value="<?php echo @$rs->m_id_card?>"
@@ -164,7 +192,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>โทรศัพท์/มือถือ (มารดา)</th>
+                    <th>โทรศัพท์/มือถือ (มารดา)<span class="Txt_red_12"> *</span></th>
                     <td>
                         <input name="m_tel" type="text" class="form-control" value="<?php echo @$rs->m_tel?>" style="width:250px;"
                             placeholder="โทรศัพท์/มือถือ มารดา" />
@@ -195,7 +223,7 @@
             <legend>ข้อมูลบุคคลอ้างอิง (ไม่ใช่บุคคลในครอบครัว)</legend>
             <table class="tbRegister">
                 <tr>
-                    <th>เลขบัตรประชาชน / ชื่อ-สกุล</th>
+                    <th>เลขบัตรประชาชน / ชื่อ-สกุล<span class="Txt_red_12"> *</span></th>
                     <td>
                         <div class="form-inline">
                             <input name="r_id_card" type="text" class="form-control fidcard" value="<?php echo @$rs->r_id_card?>"
@@ -206,7 +234,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>โทรศัพท์/มือถือ</th>
+                    <th>โทรศัพท์/มือถือ<span class="Txt_red_12"> *</span></th>
                     <td>
                         <input name="r_tel" type="text" class="form-control" value="<?php echo @$rs->r_tel?>" style="width:250px;"
                             placeholder="โทรศัพท์/มือถือ ผู้ปกครอง" />
@@ -289,7 +317,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>คติธรรมประจำใจ/มือถือ</th>
+                    <th>คติธรรมประจำใจ</th>
                     <td>
                         <textarea name="mindful" cols="" rows="" class="form-control"><?php echo @$rs->mindful?></textarea>
                     </td>
@@ -311,6 +339,10 @@
         <fieldset>
             <legend>ข้อมูลเบื้องต้น</legend>
             <table class="tbRegister">
+                <tr>
+                    <th>แนบไฟล์รูปประจำกลุ่ม / สัญลักษณ์ <span class="Txt_red_12"> *</span></th>
+                    <td><input type="file" name="fileField2" id="fileField2" class="form-control" style="width:auto"></td>
+                </tr>
                 <tr>
                     <th>ชื่อกลุ่ม/องค์กร<span class="Txt_red_12"> *</span></th>
                     <td><input name="g_name" type="text" class="form-control" value="<?php echo @$rs->g_name?>" style="width:500px;"
@@ -358,7 +390,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>โทรศัพท์ / มือถือ</th>
+                    <th>โทรศัพท์ / มือถือ <span class="Txt_red_12"> *</span></th>
                     <td>
                         <div class="form-inline">
                             <input name="g_tel" type="text" class="form-control" value="<?php echo @$rs->g_tel?>" style="width:250px;"
@@ -369,7 +401,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>โทรสาร / อีเมล์</th>
+                    <th>โทรสาร / อีเมล์ <span class="Txt_red_12"> *</span></th>
                     <td>
                         <div class="form-inline">
                             <input name="g_fax" type="text" class="form-control" value="<?php echo @$rs->g_fax?>" style="width:250px;"
@@ -386,7 +418,7 @@
             <legend>ข้อมูลประธานกลุ่ม/ผู้ก่อตั้ง และบุคคลอ้างอิง</legend>
             <table class="tbRegister">
                 <tr>
-                    <th>เลขบัตรประชาชน / ชื่อ-สกุล (ประธานกลุ่ม/ผู้ก่อตั้ง)</th>
+                    <th>เลขบัตรประชาชน / ชื่อ-สกุล (ประธานกลุ่ม/ผู้ก่อตั้ง)<span class="Txt_red_12"> *</span></th>
                     <td>
                         <div class="form-inline">
                             <input name="gp_id_card" type="text" class="form-control fidcard" value="<?php echo @$rs->gp_id_card?>"
@@ -397,7 +429,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>โทรศัพท์/มือถือ (ประธานกลุ่ม)</th>
+                    <th>โทรศัพท์/มือถือ (ประธานกลุ่ม)<span class="Txt_red_12"> *</span></th>
                     <td>
                         <input name="gp_tel" type="text" class="form-control" value="<?php echo @$rs->gp_tel?>" style="width:250px;"
                             placeholder="โทรศัพท์/มือถือ ประธานกลุ่ม" />
@@ -496,7 +528,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>เจ้าของผลงาน </th>
+                    <th>เจ้าของผลงาน<span class="Txt_red_12"> *</span></th>
                     <td>
                         <span style="color:#C00; font-size:12px;">หากข้าพเจ้าได้รับการคัดเลือกเข้ารับพระราชทานรางวัล
                             ยินดีเข้าร่วมกิจกรรมกับกรมกิจการเด็กและเยาวชน

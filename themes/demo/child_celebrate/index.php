@@ -205,7 +205,7 @@ legend { padding-top:20px; margin:0; font-size:16px; color:#999}
   </td>
 </tr>
 <tr>
-  <th>คติธรรมประจำใจ/มือถือ</th>
+  <th>คติธรรมประจำใจ</th>
   <td>
   <textarea name="" cols="" rows="" class="form-control"></textarea>
   </td>
