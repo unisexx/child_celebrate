@@ -371,4 +371,11 @@ function update_last_assessment_status($nursery_id){
 	$n->from_array($data);
     $n->save();
 }
+
+function calAge($birth_date){
+	
+	// $birth_date = '1987-02-18';
+  	return date("Y") - date("Y", strtotime($birth_date));
+
+}
 ?>

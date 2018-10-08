@@ -451,3 +451,8 @@ padding-left: 9px;
 	width:10%
 }
 
+fieldset{
+	margin-bottom:20px !important;
+}
+
+legend{margin-bottom:0px !important;}

@@ -1,4 +1,4 @@
-<form method="post" action="home/admin/home/save/<?php echo $rs->id ?>">
+<form method="post" action="home/admin/home/save/<?php echo $rs->id ?>" enctype="multipart/form-data">
 
 <h3 style="text-align:center; margin:0; padding:15px 0; background:#FFF;">เสนอผลงานกิจกรรมสรรหาและเชิดชูเด็กและเยาวชนดีเด่นแห่งชาติ
     และผู้ทำคุณประโยชน์ต่อเด็กและเยาวชน</h3>
@@ -77,7 +77,10 @@
                 </tr> -->
                 <tr>
                     <th>แนบไฟล์รูปภาพ <span class="Txt_red_12"> *</span></th>
-                    <td><input type="file" name="image" id="fileField" class="form-control" style="width:auto"></td>
+                    <td>
+                        <?=is_file('uploads/applicant/'.$rs->image)?"<a href='uploads/applicant/".$rs->image."' target='_blank'><img src='uploads/applicant/".$rs->image."' width='90'></a>":"";?>
+                        <input type="file" name="image" id="fileField" class="form-control" style="width:auto">
+                    </td>
                 </tr>
                 <tr>
                     <th>เลขบัตรประชาชน <span class="Txt_red_12"> *</span>/ ชื่อ-สกุล<span class="Txt_red_12"> *</span></th>
@@ -97,7 +100,7 @@
                             <input name="birthdate" type="text" class="form-control fdate" value="<?php echo DB2Date($rs->birthdate) ?>"
                                 style="width:120px;" />
                             <img src="themes/admin/images/calendar.png" />
-                            (อายุ xx ปี)
+                            (อายุ <?php echo calAge(@$rs->birthdate) ?> ปี)
                         </div>
                     </td>
                 </tr>
@@ -262,8 +265,6 @@
                     <td>
                         <div class="form-inline">
                             <select name="studying_type" class="form-control" style="width:auto">
-                                <!-- <option value="a" <?php echo $rs->studying_type == 'a' ? 'selected=selected' : '';?>>a</option>
-                                <option value="b" <?php echo $rs->studying_type == 'b' ? 'selected=selected' : '';?>>b</option> -->
                                 <option value="1" <?php echo $rs->studying_type == 1 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 1</option>
                                 <option value="2" <?php echo $rs->studying_type == 2 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 2</option>
                                 <option value="3" <?php echo $rs->studying_type == 3 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 3</option>
@@ -286,19 +287,17 @@
                     <td>
                         <div class="form-inline">
                             <select name="graduate_type" class="form-control" style="width:auto">
-                                <!-- <option value="a" <?php echo $rs->graduate_type == 'a' ? 'selected=selected' : '';?>>a</option>
-                                <option value="b" <?php echo $rs->graduate_type == 'b' ? 'selected=selected' : '';?>>b</option> -->
-                                <option value="1" <?php echo $rs->studying_type == 1 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 1</option>
-                                <option value="2" <?php echo $rs->studying_type == 2 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 2</option>
-                                <option value="3" <?php echo $rs->studying_type == 3 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 3</option>
-                                <option value="4" <?php echo $rs->studying_type == 4 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 4 / ปวช. ปีที่ 1</option>
-                                <option value="5" <?php echo $rs->studying_type == 5 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 5 / ปวช. ปีที่ 2</option>
-                                <option value="6" <?php echo $rs->studying_type == 6 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 6 / / ปวช. ปีที่ 3</option>
-                                <option value="7" <?php echo $rs->studying_type == 7 ? 'selected=selected' : '';?>>บัณฑิตปี 1 (ปริญญาตรี) / ปวส. ปีที่ 1</option>
-                                <option value="8" <?php echo $rs->studying_type == 8 ? 'selected=selected' : '';?>>บัณฑิตปี 2 (ปริญญาตรี) / ปวส. ปีที่ 2</option>
-                                <option value="9" <?php echo $rs->studying_type == 9 ? 'selected=selected' : '';?>>บัณฑิตปี 3 (ปริญญาตรี)</option>
-                                <option value="10" <?php echo $rs->studying_type == 10 ? 'selected=selected' : '';?>>บัณฑิตปี 4 (ปริญญาตรี)</option>
-                                <option value="11" <?php echo $rs->studying_type == 11 ? 'selected=selected' : '';?>>มหาบัณฑิต (ปริญญาโท)</option>
+                                <option value="1" <?php echo $rs->graduate_type == 1 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 1</option>
+                                <option value="2" <?php echo $rs->graduate_type == 2 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 2</option>
+                                <option value="3" <?php echo $rs->graduate_type == 3 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 3</option>
+                                <option value="4" <?php echo $rs->graduate_type == 4 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 4 / ปวช. ปีที่ 1</option>
+                                <option value="5" <?php echo $rs->graduate_type == 5 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 5 / ปวช. ปีที่ 2</option>
+                                <option value="6" <?php echo $rs->graduate_type == 6 ? 'selected=selected' : '';?>>มัธยมศึกษาปีที่ 6 / / ปวช. ปีที่ 3</option>
+                                <option value="7" <?php echo $rs->graduate_type == 7 ? 'selected=selected' : '';?>>บัณฑิตปี 1 (ปริญญาตรี) / ปวส. ปีที่ 1</option>
+                                <option value="8" <?php echo $rs->graduate_type == 8 ? 'selected=selected' : '';?>>บัณฑิตปี 2 (ปริญญาตรี) / ปวส. ปีที่ 2</option>
+                                <option value="9" <?php echo $rs->graduate_type == 9 ? 'selected=selected' : '';?>>บัณฑิตปี 3 (ปริญญาตรี)</option>
+                                <option value="10" <?php echo $rs->graduate_type == 10 ? 'selected=selected' : '';?>>บัณฑิตปี 4 (ปริญญาตรี)</option>
+                                <option value="11" <?php echo $rs->graduate_type == 11 ? 'selected=selected' : '';?>>มหาบัณฑิต (ปริญญาโท)</option>
                             </select>
                             <input name="graduate_name" type="text" class="form-control" value="<?php echo @$rs->graduate_name?>" style="width:300px;"
                                 placeholder="ชื่อสถานศึกษา" /></div>
@@ -341,12 +340,14 @@
             <table class="tbRegister">
                 <tr>
                     <th>แนบไฟล์รูปประจำกลุ่ม / สัญลักษณ์ <span class="Txt_red_12"> *</span></th>
-                    <td><input type="file" name="fileField2" id="fileField2" class="form-control" style="width:auto"></td>
+                    <td>
+                        <?=is_file('uploads/applicant/'.$rs->g_image)?"<a href='uploads/applicant/".$rs->g_image."' target='_blank'><img src='uploads/applicant/".$rs->g_image."' width='90'></a>":"";?>
+                        <input type="file" name="g_image" class="form-control" style="width:auto">
+                    </td>
                 </tr>
                 <tr>
                     <th>ชื่อกลุ่ม/องค์กร<span class="Txt_red_12"> *</span></th>
-                    <td><input name="g_name" type="text" class="form-control" value="<?php echo @$rs->g_name?>" style="width:500px;"
-                            placeholder="ชื่อกลุ่ม" /></td>
+                    <td><input name="g_name" type="text" class="form-control" value="<?php echo @$rs->g_name?>" style="width:500px;" placeholder="ชื่อกลุ่ม" /></td>
                 </tr>
                 <tr>
                     <th>พ.ศ.ที่ก่อตั้ง / อายุกลุ่ม<span class="Txt_red_12"> *</span></th>
@@ -367,23 +368,29 @@
                     <td><input name="g_address" type="text" class="form-control" value="<?php echo @$rs->g_address?>" placeholder="บ้านเลขที่ หมู่ ซอย ถนน"
                             style="width:500px; margin-bottom:5px;" />
                         <div class="form-inline">
-                            <select id="lunch" class="selectpicker" data-live-search="true" title="เลือกจังหวัด">
-                                <option>กรุงเทพมหานคร</option>
-                                <option>กระบี่</option>
-                                <option>กาญจนบุรี</option>
-                            </select>
 
-                            <select id="lunch" class="selectpicker" data-live-search="true" title="เลือกอำเภอ">
-                                <option>ปทุมวัน</option>
-                                <option>พญาไท</option>
-                                <option>สามเสน</option>
-                            </select>
+                            <?php echo form_dropdown('g_province_id', get_option('id','name','st_provinces order by name asc'), @$rs->g_province_id,'class="selectpicker province" data-live-search="true" data-size="7" title="เลือกจังหวัด"');?>
 
-                            <select id="lunch" class="selectpicker" data-live-search="true" title="เลือกตำบล">
-                                <option></option>
-                                <option></option>
-                                <option></option>
-                            </select>
+                            <span class="spang_District">
+                            <?php if(@$rs->g_province_id):?>
+                                <?php echo form_dropdown('g_district_id', get_option('id','name','st_districts where st_province_id = '.$rs->g_province_id.' and status = 1 order by name asc'), @$rs->g_district_id,'class="selectpicker" data-live-search="true" data-size="7" title="เลือกอำเภอ"');?>
+                            <?php else:?>
+                                <select name="g_district_id" class="selectpicker" data-live-search="true" title="เลือกอำเภอ" disabled="disabled">
+                                    <option>--</option>
+                                </select>
+                            <?php endif;?>
+                            </span>
+
+                            <span class="spang_Subdistrict">
+                                <?php if(@$rs->g_province_id and @$rs->g_district_id):?>
+                                    <?php echo form_dropdown('g_subdistrict_id', get_option('id','name','st_subdistricts where st_province_id = '.@$rs->g_province_id.' and st_district_id = '.@$rs->g_district_id.' and status = 1 order by name asc'), @$rs->g_subdistrict_id,'class="selectpicker" data-live-search="true" data-size="7" title="เลือกตำบล"');?>
+                                <?php else:?>
+                                    <select name="g_subdistrict_id" class="selectpicker" data-live-search="true" title="เลือกตำบล" disabled="disabled">
+                                        <option>--</option>
+                                    </select>
+                                <?php endif;?>
+                            </span>
+
                             <input name="g_postcode" type="text" class="form-control" placeholder="รหัสไปรษณีย์" style="width:120px;"
                                 value="<?php echo @$rs->g_postcode?>" maxlength="5" />
                         </div>
@@ -473,16 +480,21 @@
                 <tr>
                     <th>ลักษณะของกลุ่ม / องค์กร/หน่วยงาน </th>
                     <td>
-                        <div><input name="g_nature_type" type="radio" value="1"> เป็นกลุ่มองค์กรอิสระไม่สังกัดหน่วยงานใด ๆ</div>
-                        <div class="form-inline"><input name="g_nature_type" type="radio" value="2"> เป็นกลุ่ม/องค์กร/สังกัดหน่วยงาน
-                            <input name="g_nature_name" type="text" class="form-control" value="<?php echo @$rs->g_nature_name?>" style="width:350px;"
-                                placeholder="ระบุชื่อหน่วยงาน" /></div>
+                        <div>
+                            <input name="g_nature_type" type="radio" value="1" <?php echo $rs->g_nature_type == 1 ? 'checked' : '' ;?>> เป็นกลุ่มองค์กรอิสระไม่สังกัดหน่วยงานใด ๆ
+                        </div>
+                        <div class="form-inline">
+                            <input name="g_nature_type" type="radio" value="2" <?php echo $rs->g_nature_type == 2 ? 'checked' : '' ;?>> 
+                            เป็นกลุ่ม/องค์กร/สังกัดหน่วยงาน
+
+                            <input name="g_nature_name" type="text" class="form-control" value="<?php echo @$rs->g_nature_name?>" style="width:350px;" placeholder="ระบุชื่อหน่วยงาน" />
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <th>ปรัชญาการดำเนินงาน </th>
                     <td>
-                        <textarea name="g_philo" cols="" rows="" class="form-control"></textarea>
+                        <textarea name="g_philo" cols="" rows="" class="form-control"><?php echo @$rs->g_philo?></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -576,9 +588,11 @@
 $(document).ready(function(){
 
   // select จังหวัด หา อำเภอ
-  $(document).on('change', "select.province", function() {
+  $(document).on('change', "select[name=province_id]", function() {
     var province_id = $(this).val();
-    AjaxSelectDistrict(province_id);
+    var district_name = 'district_id';
+    var district_element = $('.spanDistrict');
+    AjaxSelectDistrict(province_id,district_name,district_element);
 
     // disable all child Element
     $('.spanSubdistrict').find('select').val('เลือกตำบล');
@@ -587,44 +601,71 @@ $(document).ready(function(){
   });
 
   // select อำเภอ หา ตำบล
-  $(document).on('change', "select.district", function() {
-    var province_id = $('select.province').val();
+  $(document).on('change', "select[name=district_id]", function() {
+    var province_id = $('select[name=province_id]').val();
     var district_id = $(this).val();
-    AjaxSelectSubdistrict(province_id,district_id);
+    var subdistrict_name = 'subdistrict_id';
+    var subdistrict_element = $('.spanSubdistrict');
+    AjaxSelectSubdistrict(province_id,district_id,subdistrict_name,subdistrict_element);
+  });
+
+
+  // select จังหวัด หา อำเภอ {{กลุ่ม}}
+  $(document).on('change', "select[name=g_province_id]", function() {
+    var province_id = $(this).val();
+    var district_name = 'g_district_id';
+    var district_element = $('.spang_District');
+    AjaxSelectDistrict(province_id,district_name,district_element);
+
+    // disable all child Element
+    $('.spang_Subdistrict').find('select').val('เลือกตำบล');
+    $('.spang_Subdistrict').find('select').prop('disabled', true);
+    $('.spang_Subdistrict').find('select').selectpicker('refresh');
+  });
+
+  // select อำเภอ หา ตำบล {{กลุ่ม}}
+  $(document).on('change', "select[name=g_district_id]", function() {
+    var province_id = $('select[name=g_province_id]').val();
+    var district_id = $(this).val();
+    var subdistrict_name = 'g_subdistrict_id';
+    var subdistrict_element = $('.spang_Subdistrict');
+    AjaxSelectSubdistrict(province_id,district_id,subdistrict_name,subdistrict_element);
   });
 
 });
 
 
 // เลือกจังหวัด แสดงอำเภอ
-function AjaxSelectDistrict($province_id){
+function AjaxSelectDistrict($province_id,$district_name,$district_element){
   if($province_id == ""){
-    $('.spanDistrict').find('select').val('').attr("disabled", true);
-    $('.spanDistrict').find('select').selectpicker('refresh');
+    $district_element.find('select').val('').attr("disabled", true);
+    $district_element.find('select').selectpicker('refresh');
   }else{
     $.get('ajax/ajaxselectdistrict',{
-      'province_id' : $province_id
+      'province_id' : $province_id,
+      'district_name' : $district_name,
     },function(data){
-      $('.spanDistrict').html(data);
-      $('.spanDistrict').find('select option:contains("เลือกอำเภอ")').text('+ เลือกอำเภอ +');
-      $('.spanDistrict').find('select').selectpicker('refresh');
+      $district_element.html(data);
+      $district_element.find('select option:contains("เลือกอำเภอ")').text('+ เลือกอำเภอ +');
+      $district_element.find('select').selectpicker('refresh');
     });
   }
 }
 
 // เลือกอำเภอ แสดงตำบล
-function AjaxSelectSubdistrict($province_id,$district_id){
+function AjaxSelectSubdistrict($province_id,$district_id,$sudistrict_name,$subdistrict_element){
   if($district_id == ""){
-    $('.spanSubdistrict').find('select').val('').attr("disabled", true);
-    $('.spanSubdistrict').find('select').selectpicker('refresh');
+    $subdistrict_element.find('select').val('').attr("disabled", true);
+    $subdistrict_element.find('select').selectpicker('refresh');
   }else{
     $.get('ajax/ajaxselectsubdistrict',{
       'province_id' : $province_id,
-      'district_id' :  $district_id
+      'district_id' :  $district_id,
+      'subdistrict_name' : $sudistrict_name,
     },function(data){
-      $('.spanSubdistrict').html(data);
-      $('.spanSubdistrict').find('select option:contains("เลือกตำบล")').text('+ เลือกตำบล +');
-      $('.spanSubdistrict').find('select').selectpicker('refresh');
+        $subdistrict_element.html(data);
+        $subdistrict_element.find('select option:contains("เลือกตำบล")').text('+ เลือกตำบล +');
+        $subdistrict_element.find('select').selectpicker('refresh');
     });
   }
 }

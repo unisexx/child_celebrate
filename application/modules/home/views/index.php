@@ -3,24 +3,24 @@
   <h3 style="text-align:center; margin:0; padding:15px 0; background:#FFF;">ลงทะเบียนแบบเสนอผลงาน <br>กิจกรรมสรรหาและเชิดชูเด็กและเยาวชนดีเด่นแห่งชาติ
     และผู้ทำคุณประโยชน์ต่อเด็กและเยาวชน</h3>
   <div style="margin-left:40%">
-    <select name="career" class="form-control" style="width:auto; margin-top:10px; background:#FF9">
-      <option>สาขากฏหมายและการปกป้องคุ้มครองสิทธิเด็กและเยาวชน</option>
-      <option>สาขาการศึกษาและวิชาการ</option>
-      <option>สาขากีฬาและนันทนาการ</option>
-      <option>สาขาคณิตศาสตร์ วิทยาศาสตร์ คอมพิวเตอร์ และเทคโนโลยี</option>
-      <option>สาขาทรัยากรธรรมชาติและสิ่งแวดล้อม</option>
-      <option>สาขาพัฒนาเยาวชน บำเพ็ญประโยชน์ และส่งเสริมการมีส่วนร่วมของเยาวชน</option>
-      <option>สาขาศิลปวัฒนธรรม</option>
-      <option>สาขาศีลธรรม จริยธรรม และคุณธรรม</option>
-      <option>สาขาสิ่งประดิษฐ์และนวัตกรรม</option>
-      <option>สาขาสือมวลชนเพื่อเด็กและเยาวชนที่ป้องกันปัญหาสังคม</option>
+  <select name="career" class="form-control" style="width:auto; margin-top:10px; background:#FF9">
+        <option value="1">สาขากฏหมายและการปกป้องคุ้มครองสิทธิเด็กและเยาวชน</option>
+        <option value="2">สาขาการศึกษาและวิชาการ</option>
+        <option value="3">สาขากีฬาและนันทนาการ</option>
+        <option value="4">สาขาคณิตศาสตร์ วิทยาศาสตร์ คอมพิวเตอร์ และเทคโนโลยี</option>
+        <option value="5">สาขาทรัยากรธรรมชาติและสิ่งแวดล้อม</option>
+        <option value="6">สาขาพัฒนาเยาวชน บำเพ็ญประโยชน์ และส่งเสริมการมีส่วนร่วมของเยาวชน</option>
+        <option value="7">สาขาศิลปวัฒนธรรม</option>
+        <option value="8">สาขาศีลธรรม จริยธรรม และคุณธรรม</option>
+        <option value="9">สาขาสิ่งประดิษฐ์และนวัตกรรม</option>
+        <option value="10">สาขาสือมวลชนเพื่อเด็กและเยาวชนที่ป้องกันปัญหาสังคม</option>
     </select>
 
     <select name="type" class="form-control" style="width:auto; margin-top:10px; background:#FF9">
-      <option value="1">ประเภท เด็กและเยาวชนดีเด่นแห่งชาติ</option>
-      <option value="2">ประเภท บุคคลผู้ทำคุณประโยชน์ต่อเด็กและเยาวชน</option>
-      <option value="3">ประเภท กลุ่มเด็กและเยาวชนดีเด่นแห่งชาติ</option>
-      <option value="4">ประเภท องค์กรที่ทำคุณประโยชน์ต่อเด็กและเยาวชน</option>
+        <option value="1">ประเภท เด็กและเยาวชนดีเด่นแห่งชาติ</option>
+        <option value="2">ประเภท บุคคลผู้ทำคุณประโยชน์ต่อเด็กและเยาวชน</option>
+        <option value="3">ประเภท กลุ่มเด็กและเยาวชนดีเด่นแห่งชาติ</option>
+        <option value="4">ประเภท องค์กรที่ทำคุณประโยชน์ต่อเด็กและเยาวชน</option>
     </select>
   </div>
   <div style="width:900px; margin:0 auto;">
@@ -38,9 +38,9 @@
             <th>เลขบัตรประชาชน <span class="Txt_red_12"> *</span>/ ชื่อ-สกุล<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
-                <input name="id_card" type="text" class="form-control fidcard" id="textarea3" value="" style="width:200px;"
+                <input name="id_card" type="text" class="form-control fidcard" value="" style="width:200px;"
                   placeholder="เลขบัตรประชาชน" />
-                <input name="fullname" type="text" class="form-control" id="textarea7" value="" style="width:300px;"
+                <input name="fullname" type="text" class="form-control" value="" style="width:300px;"
                   placeholder="ชื่อและนามสกุล" />
               </div>
             </td>
@@ -84,9 +84,9 @@
             <th>โทรศัพท์ / มือถือ<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
-                <input name="tel" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
+                <input name="tel" type="text" class="form-control" value="" style="width:250px;"
                   placeholder="โทรศัพท์" />/
-                <input name="mobile" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
+                <input name="mobile" type="text" class="form-control" value="" style="width:250px;"
                   placeholder="มือถือ" />
               </div>
             </td>
@@ -95,9 +95,9 @@
             <th>โทรสาร / อีเมล์<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
-                <input name="fax" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
+                <input name="fax" type="text" class="form-control" value="" style="width:250px;"
                   placeholder="โทรสาร" />/
-                <input name="email" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
+                <input name="email" type="text" class="form-control" value="" style="width:250px;"
                   placeholder="อีเมล์" />
               </div>
             </td>
@@ -112,9 +112,9 @@
             <th>เลขบัตรประชาชน / ชื่อ-สกุล (บิดา)<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
-                <input name="f_id_card" type="text" class="form-control fidcard" id="textarea3" value="" style="width:200px;"
+                <input name="f_id_card" type="text" class="form-control fidcard" value="" style="width:200px;"
                   placeholder="เลขบัตรประชาชน บิดา" />
-                <input name="f_fullname" type="text" class="form-control" id="textarea7" value="" style="width:300px;"
+                <input name="f_fullname" type="text" class="form-control" value="" style="width:300px;"
                   placeholder="ชื่อและนามสกุล บิดา" />
               </div>
             </td>
@@ -122,7 +122,7 @@
           <tr>
             <th>โทรศัพท์/มือถือ (บิดา)<span class="Txt_red_12"> *</span></th>
             <td>
-              <input name="f_tel" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
+              <input name="f_tel" type="text" class="form-control" value="" style="width:250px;"
                 placeholder="โทรศัพท์/มือถือ บิดา" />
             </td>
           </tr>
@@ -130,9 +130,9 @@
             <th>เลขบัตรประชาชน / ชื่อ-สกุล (มารดา)<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
-                <input name="m_id_card" type="text" class="form-control fidcard" id="textarea3" value="" style="width:200px;"
+                <input name="m_id_card" type="text" class="form-control fidcard" value="" style="width:200px;"
                   placeholder="เลขบัตรประชาชน มารดา" />
-                <input name="m_fullname" type="text" class="form-control" id="textarea7" value="" style="width:300px;"
+                <input name="m_fullname" type="text" class="form-control" value="" style="width:300px;"
                   placeholder="ชื่อและนามสกุล มารดา" />
               </div>
             </td>
@@ -140,7 +140,7 @@
           <tr>
             <th>โทรศัพท์/มือถือ (มารดา)<span class="Txt_red_12"> *</span></th>
             <td>
-              <input name="m_tel" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
+              <input name="m_tel" type="text" class="form-control" value="" style="width:250px;"
                 placeholder="โทรศัพท์/มือถือ มารดา" />
             </td>
           </tr>
@@ -148,9 +148,9 @@
             <th>เลขบัตรประชาชน / ชื่อ-สกุล (ผู้ปกครอง)</th>
             <td>
               <div class="form-inline">
-                <input name="p_id_card" type="text" class="form-control fidcard" id="textarea3" value="" style="width:200px;"
+                <input name="p_id_card" type="text" class="form-control fidcard" value="" style="width:200px;"
                   placeholder="เลขบัตรประชาชน ผู้ปกครอง" />
-                <input name="p_fullname" type="text" class="form-control" id="textarea7" value="" style="width:300px;"
+                <input name="p_fullname" type="text" class="form-control" value="" style="width:300px;"
                   placeholder="ชื่อและนามสกุล ผู้ปกครอง" />
               </div>
             </td>
@@ -158,7 +158,7 @@
           <tr>
             <th>โทรศัพท์/มือถือ (ผู้ปกครอง)</th>
             <td>
-              <input name="p_tel" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
+              <input name="p_tel" type="text" class="form-control" value="" style="width:250px;"
                 placeholder="โทรศัพท์/มือถือ ผู้ปกครอง" />
             </td>
           </tr>
@@ -172,9 +172,9 @@
             <th>เลขบัตรประชาชน<span class="Txt_red_12"> *</span> / ชื่อ-สกุล<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
-                <input name="r_id_card" type="text" class="form-control fidcard" id="textarea3" value="" style="width:200px;"
+                <input name="r_id_card" type="text" class="form-control fidcard" value="" style="width:200px;"
                   placeholder="เลขบัตรประชาชน" />
-                <input name="r_fullname" type="text" class="form-control" id="textarea7" value="" style="width:300px;"
+                <input name="r_fullname" type="text" class="form-control" value="" style="width:300px;"
                   placeholder="ชื่อและนามสกุล" />
               </div>
             </td>
@@ -182,7 +182,7 @@
           <tr>
             <th>โทรศัพท์/มือถือ<span class="Txt_red_12"> *</span></th>
             <td>
-              <input name="r_tel" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
+              <input name="r_tel" type="text" class="form-control" value="" style="width:250px;"
                 placeholder="โทรศัพท์/มือถือ ผู้ปกครอง" />
             </td>
           </tr>
@@ -190,9 +190,9 @@
             <th>โทรสาร / อีเมล์</th>
             <td>
               <div class="form-inline">
-                <input name="r_fax" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
+                <input name="r_fax" type="text" class="form-control" value="" style="width:250px;"
                   placeholder="โทรสาร" />/
-                <input name="r_email" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
+                <input name="r_email" type="text" class="form-control" value="" style="width:250px;"
                   placeholder="อีเมล์" />
               </div>
             </td>
@@ -207,20 +207,20 @@
             <th>กำลังศึกษา</th>
             <td>
               <div class="form-inline">
-                <select name="studying_type" class="form-control" style="width:auto">
-                  <option>มัธยมศึกษาปีที่ 1</option>
-                  <option>มัธยมศึกษาปีที่ 2</option>
-                  <option>มัธยมศึกษาปีที่ 3</option>
-                  <option>มัธยมศึกษาปีที่ 4 / ปวช. ปีที่ 1</option>
-                  <option>มัธยมศึกษาปีที่ 5 / ปวช. ปีที่ 2</option>
-                  <option>มัธยมศึกษาปีที่ 6 / / ปวช. ปีที่ 3</option>
-                  <option>บัณฑิตปี 1 (ปริญญาตรี) / ปวส. ปีที่ 1</option>
-                  <option>บัณฑิตปี 2 (ปริญญาตรี) / ปวส. ปีที่ 2</option>
-                  <option>บัณฑิตปี 3 (ปริญญาตรี)</option>
-                  <option>บัณฑิตปี 4 (ปริญญาตรี)</option>
-                  <option>มหาบัณฑิต (ปริญญาโท)</option>
+              <select name="studying_type" class="form-control" style="width:auto">
+                    <option value="1">มัธยมศึกษาปีที่ 1</option>
+                    <option value="2">มัธยมศึกษาปีที่ 2</option>
+                    <option value="3">มัธยมศึกษาปีที่ 3</option>
+                    <option value="4">มัธยมศึกษาปีที่ 4 / ปวช. ปีที่ 1</option>
+                    <option value="5">มัธยมศึกษาปีที่ 5 / ปวช. ปีที่ 2</option>
+                    <option value="6">มัธยมศึกษาปีที่ 6 / / ปวช. ปีที่ 3</option>
+                    <option value="7">บัณฑิตปี 1 (ปริญญาตรี) / ปวส. ปีที่ 1</option>
+                    <option value="8">บัณฑิตปี 2 (ปริญญาตรี) / ปวส. ปีที่ 2</option>
+                    <option value="9">บัณฑิตปี 3 (ปริญญาตรี)</option>
+                    <option value="10">บัณฑิตปี 4 (ปริญญาตรี)</option>
+                    <option value="11">มหาบัณฑิต (ปริญญาโท)</option>
                 </select>
-                <input name="studying_name" type="text" class="form-control" id="textarea7" value="" style="width:300px;"
+                <input name="studying_name" type="text" class="form-control" value="" style="width:300px;"
                   placeholder="ชื่อสถานศึกษา" />
               </div>
             </td>
@@ -229,20 +229,20 @@
             <th>จบการศึกษา</th>
             <td>
               <div class="form-inline">
-                <select name="graduate_type" class="form-control" style="width:auto">
-                  <option>มัธยมศึกษาปีที่ 1</option>
-                  <option>มัธยมศึกษาปีที่ 2</option>
-                  <option>มัธยมศึกษาปีที่ 3</option>
-                  <option>มัธยมศึกษาปีที่ 4 / ปวช. ปีที่ 1</option>
-                  <option>มัธยมศึกษาปีที่ 5 / ปวช. ปีที่ 2</option>
-                  <option>มัธยมศึกษาปีที่ 6 / / ปวช. ปีที่ 3</option>
-                  <option>บัณฑิตปี 1 (ปริญญาตรี) / ปวส. ปีที่ 1</option>
-                  <option>บัณฑิตปี 2 (ปริญญาตรี) / ปวส. ปีที่ 2</option>
-                  <option>บัณฑิตปี 3 (ปริญญาตรี)</option>
-                  <option>บัณฑิตปี 4 (ปริญญาตรี)</option>
-                  <option>มหาบัณฑิต (ปริญญาโท)</option>
-                </select>
-                <input name="graduate_name" type="text" class="form-control" id="textarea7" value="" style="width:300px;"
+              <select name="graduate_type" class="form-control" style="width:auto">
+                <option value="1">มัธยมศึกษาปีที่ 1</option>
+                <option value="2">มัธยมศึกษาปีที่ 2</option>
+                <option value="3">มัธยมศึกษาปีที่ 3</option>
+                <option value="4">มัธยมศึกษาปีที่ 4 / ปวช. ปีที่ 1</option>
+                <option value="5">มัธยมศึกษาปีที่ 5 / ปวช. ปีที่ 2</option>
+                <option value="6">มัธยมศึกษาปีที่ 6 / / ปวช. ปีที่ 3</option>
+                <option value="7">บัณฑิตปี 1 (ปริญญาตรี) / ปวส. ปีที่ 1</option>
+                <option value="8">บัณฑิตปี 2 (ปริญญาตรี) / ปวส. ปีที่ 2</option>
+                <option value="9">บัณฑิตปี 3 (ปริญญาตรี)</option>
+                <option value="10">บัณฑิตปี 4 (ปริญญาตรี)</option>
+                <option value="11">มหาบัณฑิต (ปริญญาโท)</option>
+            </select>
+                <input name="graduate_name" type="text" class="form-control" value="" style="width:300px;"
                   placeholder="ชื่อสถานศึกษา" /></div>
             </td>
           </tr>
@@ -283,30 +283,31 @@
         <table class="tbRegister">
           <tr>
             <th>แนบไฟล์รูปประจำกลุ่ม / สัญลักษณ์ <span class="Txt_red_12"> *</span></th>
-            <td><input type="file" name="fileField2" id="fileField2" class="form-control" style="width:auto"></td>
+            <td>
+                <input type="file" name="g_image" class="form-control" style="width:auto">
+            </td>
           </tr>
           <tr>
             <th>ชื่อกลุ่ม/องค์กร<span class="Txt_red_12"> *</span></th>
-            <td><input name="textarea7" type="text" class="form-control" id="textarea7" value="" style="width:500px;"
-                placeholder="ชื่อกลุ่ม" /></td>
+            <td><input name="g_name" type="text" class="form-control" value="<?php echo @$rs->g_name?>" style="width:500px;" placeholder="ชื่อกลุ่ม" /></td>
           </tr>
           <tr>
             <th>พ.ศ.ที่ก่อตั้ง / อายุกลุ่ม<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
-                <select name="" class="form-control" style="width:auto">
+                <select name="g_create" class="form-control" style="width:auto">
                   <option>2560</option>
                   <option>2559</option>
                   <option>2558</option>
                 </select> /
-                <input name="textarea7" type="text" class="form-control" id="textarea7" placeholder="อายุกลุ่ม" style="width:80px;"
+                <input name="g_age" type="text" class="form-control" placeholder="อายุกลุ่ม" style="width:80px;"
                   value="" maxlength="3" /> ปี
               </div>
             </td>
           </tr>
           <tr>
             <th>สถานที่ติดต่อ <span class="Txt_red_12"> *</span></th>
-            <td><input name="textarea6" type="text" class="form-control" id="textarea8" value="" placeholder="บ้านเลขที่ หมู่ ซอย ถนน"
+            <td><input name="g_address" type="text" class="form-control" id="textarea8" value="" placeholder="บ้านเลขที่ หมู่ ซอย ถนน"
                 style="width:500px; margin-bottom:5px;" />
               <div class="form-inline">
                 <select id="lunch" class="selectpicker" data-live-search="true" title="เลือกจังหวัด">
@@ -335,9 +336,9 @@
             <th>โทรศัพท์ / มือถือ<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
-                <input name="textarea8" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
+                <input name="textarea8" type="text" class="form-control" value="" style="width:250px;"
                   placeholder="โทรศัพท์" />/
-                <input name="textarea8" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
+                <input name="textarea8" type="text" class="form-control" value="" style="width:250px;"
                   placeholder="มือถือ" />
               </div>
             </td>
@@ -346,9 +347,9 @@
             <th>โทรสาร / อีเมล์<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
-                <input name="textarea8" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
+                <input name="textarea8" type="text" class="form-control" value="" style="width:250px;"
                   placeholder="โทรสาร" />/
-                <input name="textarea8" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
+                <input name="textarea8" type="text" class="form-control" value="" style="width:250px;"
                   placeholder="อีเมล์" />
               </div>
             </td>
@@ -363,9 +364,9 @@
             <th>เลขบัตรประชาชน / ชื่อ-สกุล (ประธานกลุ่ม/ผู้ก่อตั้ง)<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
-                <input name="textarea3" type="text" class="form-control fidcard" id="textarea3" value="" style="width:200px;"
+                <input name="textarea3" type="text" class="form-control fidcard" value="" style="width:200px;"
                   placeholder="เลขบัตรประชาชน ประธานกลุ่ม" />
-                <input name="textarea7" type="text" class="form-control" id="textarea7" value="" style="width:300px;"
+                <input name="textarea7" type="text" class="form-control" value="" style="width:300px;"
                   placeholder="ชื่อและนามสกุล ประธานกลุ่ม" />
               </div>
             </td>
@@ -373,7 +374,7 @@
           <tr>
             <th>โทรศัพท์/มือถือ (ประธานกลุ่ม)<span class="Txt_red_12"> *</span></th>
             <td>
-              <input name="textarea8" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
+              <input name="textarea8" type="text" class="form-control" value="" style="width:250px;"
                 placeholder="โทรศัพท์/มือถือ ประธานกลุ่ม" />
             </td>
           </tr>
@@ -381,9 +382,9 @@
             <th>เลขบัตรประชาชน / ชื่อ-สกุล (บุคคลอ้างอิง)</th>
             <td>
               <div class="form-inline">
-                <input name="textarea3" type="text" class="form-control fidcard" id="textarea3" value="" style="width:200px;"
+                <input name="textarea3" type="text" class="form-control fidcard" value="" style="width:200px;"
                   placeholder="เลขบัตรประชาชน บุคคลอ้างอิง" />
-                <input name="textarea7" type="text" class="form-control" id="textarea7" value="" style="width:300px;"
+                <input name="textarea7" type="text" class="form-control" value="" style="width:300px;"
                   placeholder="ชื่อและนามสกุล บุคคลอ้างอิง" />
               </div>
             </td>
@@ -391,7 +392,7 @@
           <tr>
             <th>โทรศัพท์/มือถือ (บุคคลอ้างอิง)</th>
             <td>
-              <input name="textarea8" type="text" class="form-control" id="textarea9" value="" style="width:250px;"
+              <input name="textarea8" type="text" class="form-control" value="" style="width:250px;"
                 placeholder="โทรศัพท์/มือถือ บุคคลอ้างอิง" />
             </td>
           </tr>
@@ -417,7 +418,7 @@
             <td>
               <div><input name="1" type="radio" value=""> เป็นกลุ่มองค์กรอิสระไม่สังกัดหน่วยงานใด ๆ</div>
               <div class="form-inline"><input name="1" type="radio" value=""> เป็นกลุ่ม/องค์กร/สังกัดหน่วยงาน <input
-                  name="textarea8" type="text" class="form-control" id="textarea9" value="" style="width:350px;"
+                  name="textarea8" type="text" class="form-control" value="" style="width:350px;"
                   placeholder="ระบุชื่อหน่วยงาน" /></div>
             </td>
           </tr>
@@ -431,7 +432,7 @@
             <th>จำนวนสมาชิกกลุ่ม / ผู้บริหารงานองค์กร </th>
             <td>
               <div class="form-inline" style="margin-bottom:5px;"><input name="textarea8" type="text" class="form-control"
-                  id="textarea9" value="" style="width:80px;" placeholder="จำนวน" /> คน</div>
+                  value="" style="width:80px;" placeholder="จำนวน" /> คน</div>
               <textarea name="" cols="" rows="" class="form-control" placeholder="กรุณาแนบรายชื่อ"></textarea>
             </td>
           </tr>
@@ -476,7 +477,7 @@
               <span style="color:#C00; font-size:12px;">หากข้าพเจ้าได้รับการคัดเลือกเข้ารับพระราชทานรางวัล
                 ยินดีเข้าร่วมกิจกรรมกับกรมกิจการเด็กและเยาวชน
                 ขอรับรองว่าผลงานและเอกสารที่เสนอข้างต้นเป็นความจริงทุกประการ</span>
-              <input name="owner" type="text" class="form-control" id="textarea7" value="" style="width:300px;"
+              <input name="owner" type="text" class="form-control" value="" style="width:300px;"
                 placeholder="ชื่อเจ้าของผลงาน" />
             </td>
           </tr>
@@ -520,9 +521,11 @@
 $(document).ready(function(){
 
   // select จังหวัด หา อำเภอ
-  $(document).on('change', "select.province", function() {
+  $(document).on('change', "select[name=province_id]", function() {
     var province_id = $(this).val();
-    AjaxSelectDistrict(province_id);
+    var district_name = 'district_id';
+    var district_element = $('.spanDistrict');
+    AjaxSelectDistrict(province_id,district_name,district_element);
 
     // disable all child Element
     $('.spanSubdistrict').find('select').val('เลือกตำบล');
@@ -531,44 +534,71 @@ $(document).ready(function(){
   });
 
   // select อำเภอ หา ตำบล
-  $(document).on('change', "select.district", function() {
-    var province_id = $('select.province').val();
+  $(document).on('change', "select[name=district_id]", function() {
+    var province_id = $('select[name=province_id]').val();
     var district_id = $(this).val();
-    AjaxSelectSubdistrict(province_id,district_id);
+    var subdistrict_name = 'subdistrict_id';
+    var subdistrict_element = $('.spanSubdistrict');
+    AjaxSelectSubdistrict(province_id,district_id,subdistrict_name,subdistrict_element);
+  });
+
+
+  // select จังหวัด หา อำเภอ {{กลุ่ม}}
+  $(document).on('change', "select[name=g_province_id]", function() {
+    var province_id = $(this).val();
+    var district_name = 'g_district_id';
+    var district_element = $('.spang_District');
+    AjaxSelectDistrict(province_id,district_name,district_element);
+
+    // disable all child Element
+    $('.spang_Subdistrict').find('select').val('เลือกตำบล');
+    $('.spang_Subdistrict').find('select').prop('disabled', true);
+    $('.spang_Subdistrict').find('select').selectpicker('refresh');
+  });
+
+  // select อำเภอ หา ตำบล {{กลุ่ม}}
+  $(document).on('change', "select[name=g_district_id]", function() {
+    var province_id = $('select[name=g_province_id]').val();
+    var district_id = $(this).val();
+    var subdistrict_name = 'g_subdistrict_id';
+    var subdistrict_element = $('.spang_Subdistrict');
+    AjaxSelectSubdistrict(province_id,district_id,subdistrict_name,subdistrict_element);
   });
 
 });
 
 
 // เลือกจังหวัด แสดงอำเภอ
-function AjaxSelectDistrict($province_id){
+function AjaxSelectDistrict($province_id,$district_name,$district_element){
   if($province_id == ""){
-    $('.spanDistrict').find('select').val('').attr("disabled", true);
-    $('.spanDistrict').find('select').selectpicker('refresh');
+    $district_element.find('select').val('').attr("disabled", true);
+    $district_element.find('select').selectpicker('refresh');
   }else{
     $.get('ajax/ajaxselectdistrict',{
-      'province_id' : $province_id
+      'province_id' : $province_id,
+      'district_name' : $district_name,
     },function(data){
-      $('.spanDistrict').html(data);
-      $('.spanDistrict').find('select option:contains("เลือกอำเภอ")').text('+ เลือกอำเภอ +');
-      $('.spanDistrict').find('select').selectpicker('refresh');
+      $district_element.html(data);
+      $district_element.find('select option:contains("เลือกอำเภอ")').text('+ เลือกอำเภอ +');
+      $district_element.find('select').selectpicker('refresh');
     });
   }
 }
 
 // เลือกอำเภอ แสดงตำบล
-function AjaxSelectSubdistrict($province_id,$district_id){
+function AjaxSelectSubdistrict($province_id,$district_id,$sudistrict_name,$subdistrict_element){
   if($district_id == ""){
-    $('.spanSubdistrict').find('select').val('').attr("disabled", true);
-    $('.spanSubdistrict').find('select').selectpicker('refresh');
+    $subdistrict_element.find('select').val('').attr("disabled", true);
+    $subdistrict_element.find('select').selectpicker('refresh');
   }else{
     $.get('ajax/ajaxselectsubdistrict',{
       'province_id' : $province_id,
-      'district_id' :  $district_id
+      'district_id' :  $district_id,
+      'subdistrict_name' : $sudistrict_name,
     },function(data){
-      $('.spanSubdistrict').html(data);
-      $('.spanSubdistrict').find('select option:contains("เลือกตำบล")').text('+ เลือกตำบล +');
-      $('.spanSubdistrict').find('select').selectpicker('refresh');
+        $subdistrict_element.html(data);
+        $subdistrict_element.find('select option:contains("เลือกตำบล")').text('+ เลือกตำบล +');
+        $subdistrict_element.find('select').selectpicker('refresh');
     });
   }
 }

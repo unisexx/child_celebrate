@@ -21,12 +21,30 @@ class Home extends Admin_Controller {
 		if($_POST){
             $applicant = new Applicant($id);
             $_POST['birthdate'] = Date2DB($_POST['birthdate']);
-            // $_POST['status'] = 'approve';
+
+            // รูปประจำตัว
+            if($_FILES['image']['name'])
+			{
+				if($applicant->id){
+					$applicant->delete_file($applicant->id,'uploads/applicant','image');
+				}
+				$_POST['image'] = $applicant->upload($_FILES['image'],'uploads/applicant/');
+            }
+
+            // รูปประจำกลุ่ม
+            if($_FILES['g_image']['name'])
+			{
+				if($applicant->id){
+					$applicant->delete_file($applicant->id,'uploads/applicant','g_image');
+				}
+				$_POST['g_image'] = $applicant->upload($_FILES['g_image'],'uploads/applicant/');
+            }
+            
             $applicant->from_array($_POST);
             $applicant->save();
             set_notify('success', lang('save_data_complete'));
         }
-        redirect('/home/admin/home/form/'.@$id);
+        redirect('home/admin/home/form/'.@$id);
 	}
 
 }
