@@ -231,17 +231,8 @@ function get_nursery_name($nursery_id=false){
 function get_province_name($id=false){
 	$CI =& get_instance();
 	$p = new Province();
-	$p->query("select name from provinces where id =".$id);
+	$p->query("select name from st_provinces where id =".$id);
 	$name = $p->name;
-
-	return $name;
-}
-
-function get_amphur_name($id=false){
-	$CI =& get_instance();
-	$p = new Province();
-	$p->query("select amphur_name from amphures where id =".$id);
-	$name = $p->amphur_name;
 
 	return $name;
 }
@@ -249,8 +240,17 @@ function get_amphur_name($id=false){
 function get_district_name($id=false){
 	$CI =& get_instance();
 	$p = new Province();
-	$p->query("select district_name from districts where id =".$id);
-	$name = $p->district_name;
+	$p->query("select name from st_districts where id =".$id);
+	$name = $p->name;
+
+	return $name;
+}
+
+function get_subdistrict_name($id=false){
+	$CI =& get_instance();
+	$p = new Province();
+	$p->query("select name from st_subdistricts where id =".$id);
+	$name = $p->name;
 
 	return $name;
 }

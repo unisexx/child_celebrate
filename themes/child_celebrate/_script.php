@@ -70,7 +70,7 @@ jQuery(function($){
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#groupchild").hide();
-    $("select").change(function(){
+    $("select[name=type]").change(function(){
         $(this).find("option:selected").each(function(){
 			
 			if($(this).attr("value")=="1" || $(this).attr("value")=="2"){

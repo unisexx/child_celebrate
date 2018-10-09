@@ -67,16 +67,36 @@
             <?=($key+1)+(20 * (@$_GET['page'] - 1));?>
         </td>
         <td>
-            <?php echo $row->fullname;?><br />
-            <?php echo $row->id_card;?>
+            <?php if($row->type == 1 || $row->type == 2):?>
+
+                <?php echo $row->fullname;?><br />
+                <?php echo $row->id_card;?>
+
+            <?php elseif(($row->type == 3 || $row->type == 4)):?>
+
+                <?php echo $row->g_name;?>
+
+            <?php endif;?>
         </td>
         <td><?php echo DB2Date($row->created) ?></td>
         <td>
-            <?php echo $row->address ?>
-            ต. <?php echo empty($row->subdistrict_id)?'-':$row->subdistrict->name; ?>
-            อ. <?php echo empty($row->district_id)?'-':$row->district->name; ?>
-            จ. <?php echo empty($row->province_id)?'-':$row->province->name; ?>
-            <?php echo $row->postcode ?>
+            <?php if($row->type == 1 || $row->type == 2):?>
+
+                <?php echo $row->address ?>
+                ต. <?php echo empty($row->subdistrict_id)?'-':$row->subdistrict->name; ?>
+                อ. <?php echo empty($row->district_id)?'-':$row->district->name; ?>
+                จ. <?php echo empty($row->province_id)?'-':$row->province->name; ?>
+                <?php echo $row->postcode ?>
+
+            <?php elseif(($row->type == 3 || $row->type == 4)):?>
+
+                <?php echo $row->g_address ?>
+                ต. <?php echo empty($row->g_subdistrict_id)?'-':get_subdistrict_name($row->g_subdistrict_id); ?>
+                อ. <?php echo empty($row->g_district_id)?'-':get_district_name($row->g_district_id); ?>
+                จ. <?php echo empty($row->g_province_id)?'-':get_province_name($row->g_province_id); ?>
+                <?php echo $row->g_postcode ?>
+
+            <?php endif;?>
         </td>
         <td class="txtCen">
             <?php if($row->status == 'รอการตรวจสอบ') :?>
@@ -91,7 +111,7 @@
             <a href="home/admin/home/form/<?php echo $row->id?>">
                 <img src="themes/admin/images/edit.png" width="24" height="24" class="vtip" title="แก้ไขรายการนี้" />
             </a> 
-            <a href="home/admin/home/delete/<?php echo $row->id?>">
+            <a href="home/admin/home/delete/<?php echo $row->id?>" onclick="return confirm('<?php echo lang('notice_confirm_delete');?>')">
                 <img src="themes/admin/images/remove.png" width="32" height="32" class="vtip" title="ลบรายการนี้" />
             </a>
         </td>

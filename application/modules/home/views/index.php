@@ -49,7 +49,7 @@
             <th>วันเดือนปีเกิด <span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
-                <input name="birthdate" type="text" class="form-control fdate" id="textarea4" value="" style="width:120px;" />
+                <input name="birthdate" type="text" class="form-control fdate" value="" style="width:120px;" />
                 <img src="themes/child_celebrate/admin/images/calendar.png" />
                 (อายุ xx ปี)
               </div>
@@ -57,7 +57,7 @@
           </tr>
           <tr>
             <th>ที่อยู่<span class="Txt_red_12"> *</span></th>
-            <td><input name="address" type="text" class="form-control" id="textarea8" value="" placeholder="บ้านเลขที่ หมู่ ซอย ถนน"
+            <td><input name="address" type="text" class="form-control" value="" placeholder="บ้านเลขที่ หมู่ ซอย ถนน"
                 style="width:500px; margin-bottom:5px;" />
               <div class="form-inline">
                 
@@ -75,7 +75,7 @@
                   </select>
                 </span>
 
-                <input name="postcode" type="text" class="form-control" id="textarea4" placeholder="รหัสไปรษณีย์" style="width:120px;"
+                <input name="postcode" type="text" class="form-control" placeholder="รหัสไปรษณีย์" style="width:120px;"
                   value="" maxlength="5" />
               </div>
             </td>
@@ -307,27 +307,25 @@
           </tr>
           <tr>
             <th>สถานที่ติดต่อ <span class="Txt_red_12"> *</span></th>
-            <td><input name="g_address" type="text" class="form-control" id="textarea8" value="" placeholder="บ้านเลขที่ หมู่ ซอย ถนน"
+            <td><input name="g_address" type="text" class="form-control" value="" placeholder="บ้านเลขที่ หมู่ ซอย ถนน"
                 style="width:500px; margin-bottom:5px;" />
               <div class="form-inline">
-                <select id="lunch" class="selectpicker" data-live-search="true" title="เลือกจังหวัด">
-                  <option>กรุงเทพมหานคร</option>
-                  <option>กระบี่</option>
-                  <option>กาญจนบุรี</option>
-                </select>
+                
+                <?php echo form_dropdown('g_province_id', get_option('id','name','st_provinces order by name asc'), '','class="selectpicker province" data-live-search="true" data-size="7" title="เลือกจังหวัด"');?>
 
-                <select id="lunch" class="selectpicker" data-live-search="true" title="เลือกอำเภอ">
-                  <option>ปทุมวัน</option>
-                  <option>พญาไท</option>
-                  <option>สามเสน</option>
-                </select>
+                <span class="spang_District">
+                  <select name="g_district_id" class="selectpicker" data-live-search="true" title="เลือกอำเภอ" disabled="disabled">
+                      <option>--</option>
+                  </select>
+                </span>
 
-                <select id="lunch" class="selectpicker" data-live-search="true" title="เลือกตำบล">
-                  <option></option>
-                  <option></option>
-                  <option></option>
-                </select>
-                <input type="text" class="form-control" id="textarea4" placeholder="รหัสไปรษณีย์" style="width:120px;"
+                <span class="spang_Subdistrict">
+                  <select name="g_subdistrict_id" class="selectpicker" data-live-search="true" title="เลือกตำบล" disabled="disabled">
+                      <option>--</option>
+                  </select>
+                </span>
+
+                <input name="g_postcode" type="text" class="form-control" placeholder="รหัสไปรษณีย์" style="width:120px;"
                   value="" maxlength="5" />
               </div>
             </td>
@@ -336,9 +334,9 @@
             <th>โทรศัพท์ / มือถือ<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
-                <input name="textarea8" type="text" class="form-control" value="" style="width:250px;"
+                <input name="g_tel" type="text" class="form-control" value="" style="width:250px;"
                   placeholder="โทรศัพท์" />/
-                <input name="textarea8" type="text" class="form-control" value="" style="width:250px;"
+                <input name="g_mobile" type="text" class="form-control" value="" style="width:250px;"
                   placeholder="มือถือ" />
               </div>
             </td>
@@ -347,9 +345,9 @@
             <th>โทรสาร / อีเมล์<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
-                <input name="textarea8" type="text" class="form-control" value="" style="width:250px;"
+                <input name="g_fax" type="text" class="form-control" value="" style="width:250px;"
                   placeholder="โทรสาร" />/
-                <input name="textarea8" type="text" class="form-control" value="" style="width:250px;"
+                <input name="g_email" type="text" class="form-control" value="" style="width:250px;"
                   placeholder="อีเมล์" />
               </div>
             </td>
@@ -364,9 +362,9 @@
             <th>เลขบัตรประชาชน / ชื่อ-สกุล (ประธานกลุ่ม/ผู้ก่อตั้ง)<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
-                <input name="textarea3" type="text" class="form-control fidcard" value="" style="width:200px;"
+                <input name="gp_id_card" type="text" class="form-control fidcard" value="" style="width:200px;"
                   placeholder="เลขบัตรประชาชน ประธานกลุ่ม" />
-                <input name="textarea7" type="text" class="form-control" value="" style="width:300px;"
+                <input name="gp_fullname" type="text" class="form-control" value="" style="width:300px;"
                   placeholder="ชื่อและนามสกุล ประธานกลุ่ม" />
               </div>
             </td>
@@ -374,7 +372,7 @@
           <tr>
             <th>โทรศัพท์/มือถือ (ประธานกลุ่ม)<span class="Txt_red_12"> *</span></th>
             <td>
-              <input name="textarea8" type="text" class="form-control" value="" style="width:250px;"
+              <input name="gp_tel" type="text" class="form-control" value="" style="width:250px;"
                 placeholder="โทรศัพท์/มือถือ ประธานกลุ่ม" />
             </td>
           </tr>
@@ -382,9 +380,9 @@
             <th>เลขบัตรประชาชน / ชื่อ-สกุล (บุคคลอ้างอิง)</th>
             <td>
               <div class="form-inline">
-                <input name="textarea3" type="text" class="form-control fidcard" value="" style="width:200px;"
+                <input name="gpr_id_card" type="text" class="form-control fidcard" value="" style="width:200px;"
                   placeholder="เลขบัตรประชาชน บุคคลอ้างอิง" />
-                <input name="textarea7" type="text" class="form-control" value="" style="width:300px;"
+                <input name="gpr_fullname" type="text" class="form-control" value="" style="width:300px;"
                   placeholder="ชื่อและนามสกุล บุคคลอ้างอิง" />
               </div>
             </td>
@@ -392,7 +390,7 @@
           <tr>
             <th>โทรศัพท์/มือถือ (บุคคลอ้างอิง)</th>
             <td>
-              <input name="textarea8" type="text" class="form-control" value="" style="width:250px;"
+              <input name="gpr_tel" type="text" class="form-control" value="" style="width:250px;"
                 placeholder="โทรศัพท์/มือถือ บุคคลอ้างอิง" />
             </td>
           </tr>
@@ -404,36 +402,38 @@
         <table class="tbRegister">
           <tr>
             <th>ประวัติการก่อตั้ง (โดยสรุป)</th>
-            <td><textarea name="" cols="" rows="" class="form-control"></textarea>
+            <td><textarea name="g_history" cols="" rows="" class="form-control"></textarea>
             </td>
           </tr>
           <tr>
             <th>วัตถุประสงค์/ภารกิจการดำเนินงาน </th>
             <td>
-              <textarea name="" cols="" rows="" class="form-control"></textarea>
+              <textarea name="g_objective" cols="" rows="" class="form-control"></textarea>
             </td>
           </tr>
           <tr>
             <th>ลักษณะของกลุ่ม / องค์กร/หน่วยงาน </th>
             <td>
-              <div><input name="1" type="radio" value=""> เป็นกลุ่มองค์กรอิสระไม่สังกัดหน่วยงานใด ๆ</div>
-              <div class="form-inline"><input name="1" type="radio" value=""> เป็นกลุ่ม/องค์กร/สังกัดหน่วยงาน <input
-                  name="textarea8" type="text" class="form-control" value="" style="width:350px;"
-                  placeholder="ระบุชื่อหน่วยงาน" /></div>
+              <div>
+                <input name="g_nature_type" type="radio" value="1"> เป็นกลุ่มองค์กรอิสระไม่สังกัดหน่วยงานใด ๆ
+              </div>
+              <div class="form-inline">
+                <input name="g_nature_type" type="radio" value="2"> เป็นกลุ่ม/องค์กร/สังกัดหน่วยงาน 
+                <input name="g_nature_name" type="text" class="form-control" value="" style="width:350px;" placeholder="ระบุชื่อหน่วยงาน" /></div>
             </td>
           </tr>
           <tr>
             <th>ปรัชญาการดำเนินงาน </th>
             <td>
-              <textarea name="" cols="" rows="" class="form-control"></textarea>
+              <textarea name="g_philo" cols="" rows="" class="form-control"></textarea>
             </td>
           </tr>
           <tr>
             <th>จำนวนสมาชิกกลุ่ม / ผู้บริหารงานองค์กร </th>
             <td>
-              <div class="form-inline" style="margin-bottom:5px;"><input name="textarea8" type="text" class="form-control"
+              <div class="form-inline" style="margin-bottom:5px;"><input name="g_member_count" type="text" class="form-control"
                   value="" style="width:80px;" placeholder="จำนวน" /> คน</div>
-              <textarea name="" cols="" rows="" class="form-control" placeholder="กรุณาแนบรายชื่อ"></textarea>
+              <textarea name="g_member_detail" cols="" rows="" class="form-control" placeholder="กรุณาแนบรายชื่อ"></textarea>
             </td>
           </tr>
         </table>
@@ -491,10 +491,10 @@
             <th>ผู้รับรองผลงาน <span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
-                <input name="textarea2" type="text" class="form-control" id="textarea2" value="" style="width:300px;" placeholder="ชื่อและนามสกุล" />
-                <input name="textarea5" type="text" class="form-control" id="textarea5" value="" style="width:300px;" placeholder="ตำแหน่ง" />
-                <input name="textarea9" type="text" class="form-control" id="textarea6" value="" style="width:300px;" placeholder="สังกัด" />
-                <input name="textarea10" type="text" class="form-control" id="textarea10" value="" style="width:300px;"
+                <input name="contributor_name" type="text" class="form-control" id="textarea2" value="" style="width:300px;" placeholder="ชื่อและนามสกุล" />
+                <input name="contributor_position" type="text" class="form-control" id="textarea5" value="" style="width:300px;" placeholder="ตำแหน่ง" />
+                <input name="contributor_aff" type="text" class="form-control" id="textarea6" value="" style="width:300px;" placeholder="สังกัด" />
+                <input name="contributor_tel" type="text" class="form-control" id="textarea10" value="" style="width:300px;"
                   placeholder="เบอร์ติดต่อ" />
               </div>
             </td>

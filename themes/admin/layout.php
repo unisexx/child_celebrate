@@ -8,6 +8,7 @@
 	</title>
 	<? include '_meta.php'?>
 	<? include '_script.php'?>
+	<?php echo $template['metadata']; ?>
 <body>
 <? include '_header.php'?>
 <div id="page">

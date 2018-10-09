@@ -45,6 +45,17 @@ class Home extends Admin_Controller {
             set_notify('success', lang('save_data_complete'));
         }
         redirect('home/admin/home/form/'.@$id);
+    }
+    
+    function delete($id=FALSE)
+	{
+		if($id)
+		{
+			$applicant = new Applicant($id);
+			$applicant->delete();
+			set_notify('success', lang('delete_data_complete'));
+		}
+		redirect('home/admin/home');
 	}
 
 }
