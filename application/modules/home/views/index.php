@@ -1,4 +1,4 @@
-<form method="post" action="home/save" enctype="multipart/form-data">
+<form id="regisFrm" method="post" action="home/save" enctype="multipart/form-data">
 
   <h3 style="text-align:center; margin:0; padding:15px 0; background:#FFF;">ลงทะเบียนแบบเสนอผลงาน <br>กิจกรรมสรรหาและเชิดชูเด็กและเยาวชนดีเด่นแห่งชาติ
     และผู้ทำคุณประโยชน์ต่อเด็กและเยาวชน</h3>
@@ -603,3 +603,130 @@ function AjaxSelectSubdistrict($province_id,$district_id,$sudistrict_name,$subdi
   }
 }
 </script>
+
+<script type="text/javascript">
+  // $.validator.setDefaults( {
+  //   submitHandler: function () {
+  //     alert( "submitted!" );
+  //   }
+  // } );
+
+  $( document ).ready( function () {
+    $( "#regisFrm" ).validate( {
+      rules: {
+        image: "required",
+        id_card: "required",
+        fullname: "required",
+        birthdate: "required",
+        address: "required",
+        province_id: "required",
+        district_id: "required",
+        subdistrict_id: "required",
+        postcode: "required",
+        tel: "required",
+        mobile: "required",
+        fax: "required",
+        email: "required",
+        f_id_card: "required",
+        f_fullname: "required",
+        f_tel: "required",
+        m_id_card: "required",
+        m_fullname: "required",
+        m_tel: "required",
+        r_id_card: "required",
+        r_fullname: "required",
+        r_tel: "required",
+        owner: "required",
+        contributor_name: "required",
+        contributor_position: "required",
+        contributor_aff: "required",
+        contributor_tel: "required",
+        g_name: "required",
+        g_create: "required",
+        g_age: "required",
+        g_address: "required",
+        g_province_id: "required",
+        g_district_id: "required",
+        g_subdistrict_id: "required",
+        g_postcode: "required",
+        g_tel: "required",
+        g_mobile: "required",
+        g_fax: "required",
+        g_email: "required",
+        gp_id_card: "required",
+        gp_fullname: "required",
+        gp_tel: "required",
+      },
+      messages: {
+        image: "ห้ามเป็นค่าว่าง",
+        id_card: "ห้ามเป็นค่าว่าง",
+        fullname: "ห้ามเป็นค่าว่าง",
+        birthdate: "ห้ามเป็นค่าว่าง",
+        address: "ห้ามเป็นค่าว่าง",
+        province_id: "ห้ามเป็นค่าว่าง",
+        district_id: "ห้ามเป็นค่าว่าง",
+        subdistrict_id: "ห้ามเป็นค่าว่าง",
+        postcode: "ห้ามเป็นค่าว่าง",
+        tel: "ห้ามเป็นค่าว่าง",
+        mobile: "ห้ามเป็นค่าว่าง",
+        fax: "ห้ามเป็นค่าว่าง",
+        email: "ห้ามเป็นค่าว่าง",
+        f_id_card: "ห้ามเป็นค่าว่าง",
+        f_fullname: "ห้ามเป็นค่าว่าง",
+        f_tel: "ห้ามเป็นค่าว่าง",
+        m_id_card: "ห้ามเป็นค่าว่าง",
+        m_fullname: "ห้ามเป็นค่าว่าง",
+        m_tel: "ห้ามเป็นค่าว่าง",
+        r_id_card: "ห้ามเป็นค่าว่าง",
+        r_fullname: "ห้ามเป็นค่าว่าง",
+        r_tel: "ห้ามเป็นค่าว่าง",
+        owner: "ห้ามเป็นค่าว่าง",
+        contributor_name: "ห้ามเป็นค่าว่าง",
+        contributor_position: "ห้ามเป็นค่าว่าง",
+        contributor_aff: "ห้ามเป็นค่าว่าง",
+        contributor_tel: "ห้ามเป็นค่าว่าง",
+        g_name: "ห้ามเป็นค่าว่าง",
+        g_create: "ห้ามเป็นค่าว่าง",
+        g_age: "ห้ามเป็นค่าว่าง",
+        g_address: "ห้ามเป็นค่าว่าง",
+        g_province_id: "ห้ามเป็นค่าว่าง",
+        g_district_id: "ห้ามเป็นค่าว่าง",
+        g_subdistrict_id: "ห้ามเป็นค่าว่าง",
+        g_postcode: "ห้ามเป็นค่าว่าง",
+        g_tel: "ห้ามเป็นค่าว่าง",
+        g_mobile: "ห้ามเป็นค่าว่าง",
+        g_fax: "ห้ามเป็นค่าว่าง",
+        g_email: "ห้ามเป็นค่าว่าง",
+        gp_id_card: "ห้ามเป็นค่าว่าง",
+        gp_fullname: "ห้ามเป็นค่าว่าง",
+        gp_tel: "ห้ามเป็นค่าว่าง",
+      },
+      errorElement: "em",
+      errorPlacement: function ( error, element ) {
+        // Add the `help-block` class to the error element
+        error.addClass( "help-block" );
+
+        if ( element.prop( "type" ) === "checkbox" ) {
+          error.insertAfter( element.parent( "label" ) );
+        } else {
+          error.insertAfter( element );
+        }
+      },
+      highlight: function ( element, errorClass, validClass ) {
+        $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+      },
+      unhighlight: function (element, errorClass, validClass) {
+        $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+      }
+    } );
+  } );
+</script>
+
+<style>
+.error ,.has-error .checkbox, .has-error .checkbox-inline, .has-error .control-label, .has-error .help-block, .has-error .radio, .has-error .radio-inline, .has-error.checkbox label, .has-error.checkbox-inline label, .has-error.radio label, .has-error.radio-inline label {
+    color: red;
+}
+i, cite, em, var, address, dfn {
+    font-style: italic;
+}
+</style>

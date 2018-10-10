@@ -8,6 +8,7 @@
 	</title>
 	<? include '_meta.php'?>
 	<? include '_script.php'?>
+	<?php echo $template['metadata']; ?>
 	<style>
 	html,body { padding:0; margin:0;}
 	legend { padding-top:20px; margin:0; font-size:16px; color:#999}

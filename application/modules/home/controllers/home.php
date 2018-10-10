@@ -33,12 +33,27 @@ class Home extends Public_Controller {
 				$_POST['g_image'] = $applicant->upload($_FILES['g_image'],'uploads/applicant/');
 			}
 			
-            $_POST['status'] = 'รอการตรวจสอบ';
+			$_POST['status'] = 'รอการตรวจสอบ';
+			$_POST['code'] = generateRandomString();
             $applicant->from_array($_POST);
-            $applicant->save();
+			$applicant->save();
+			
+			// $applicant->select_max('id');
+			// $applicant->get();
+			
             set_notify('success', lang('save_data_complete'));
         }
-        redirect($_POST['referer']);
+        // redirect($_POST['referer']);
+	}
+
+	function success(){
+		$this->template->build('success');
+	}
+
+	function chkstatus($code=false){
+		$applicant = new Applicant();
+		$data['rs'] = $applicant->where('code = "'.$code.'"')->get();
+		echo $data['rs']->status;
 	}
 
 }
