@@ -4,7 +4,7 @@
 </style>
 <div style="padding-top: 150px;">
     <div class="wrap">
-        ระบบบันทึกข้อมูลเรียบร้อยแล้ว รหัสการตรวจสอบของท่าน คือ <b class="red">Ae243</b> 
-        ท่านสามารถเช็คสถานะได้ที่ URL : <a href=""><?php echo site_url('home/chkstatus/'); ?></a>
+        ระบบบันทึกข้อมูลเรียบร้อยแล้ว รหัสการตรวจสอบของท่าน คือ <b class="red"><?php echo @$code?></b> 
+        ท่านสามารถเช็คสถานะได้ที่ URL : <a href="<?php echo site_url('home/chkstatus?code='.@$code); ?>"><?php echo site_url('home/chkstatus?code='.@$code); ?></a>
     </div>
 </div>

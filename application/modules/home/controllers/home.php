@@ -38,22 +38,21 @@ class Home extends Public_Controller {
             $applicant->from_array($_POST);
 			$applicant->save();
 			
-			// $applicant->select_max('id');
-			// $applicant->get();
-			
             set_notify('success', lang('save_data_complete'));
         }
-        // redirect($_POST['referer']);
+		// redirect($_POST['referer']);
+		redirect('home/success/'.$_POST['code']);
 	}
 
-	function success(){
-		$this->template->build('success');
+	function success($code=false){
+		$data['code'] = $code;
+		$this->template->build('success',$data);
 	}
 
-	function chkstatus($code=false){
+	function chkstatus(){
 		$applicant = new Applicant();
-		$data['rs'] = $applicant->where('code = "'.$code.'"')->get();
-		echo $data['rs']->status;
+		$data['rs'] = $applicant->where('code = "'.$_GET['code'].'"')->get();
+		$this->template->build('chkstatus',$data);
 	}
 
 }
