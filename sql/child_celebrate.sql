@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2018-10-03 15:16:54
+Date: 2018-10-12 16:18:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,7 +21,9 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `applicants`;
 CREATE TABLE `applicants` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `career` varchar(255) DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `id_card` varchar(30) DEFAULT NULL,
   `fullname` varchar(255) DEFAULT NULL,
   `birthdate` date DEFAULT NULL,
@@ -62,9 +64,14 @@ CREATE TABLE `applicants` (
   `owner` text,
   `attitude` text,
   `moral` text,
+  `contributor_name` varchar(255) DEFAULT NULL,
+  `contributor_position` varchar(255) DEFAULT NULL,
+  `contributor_aff` varchar(255) DEFAULT NULL,
+  `contributor_tel` varchar(255) DEFAULT NULL,
   `status` varchar(100) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `updated` datetime DEFAULT NULL,
+  `g_image` varchar(255) DEFAULT NULL,
   `g_name` varchar(255) DEFAULT NULL,
   `g_create` varchar(255) DEFAULT NULL,
   `g_age` varchar(255) DEFAULT NULL,
@@ -90,14 +97,21 @@ CREATE TABLE `applicants` (
   `g_philo` text,
   `g_member_count` varchar(255) DEFAULT NULL,
   `g_member_detail` text,
+  `code` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of applicants
 -- ----------------------------
-INSERT INTO `applicants` VALUES ('1', '2', 'id_card', 'fullname', '0000-00-00', 'address', '0', '0', '0', 'postc', '1234567890', 'mobile', 'fax', 'example@example.com', 'f_id_card', 'f_fullname', '1234567890', 'm_id_card', 'm_fullname', '1234567890', 'p_id_card', 'p_fullname', '1234567890', 'r_id_card', 'r_fullname', '1234567890', 'r_fax', 'example@example.com', 'a', 'studying_name', 'a', 'graduate_name', 'position', null, 'way', 'outstand', 'contest_1', 'contest_2', 'behavior', 'owner', 'attitude', 'moral', 'รอการตรวจสอบ', '2018-10-01 14:45:28', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `applicants` VALUES ('2', '2', '1-1111-11111-11-1', 'fullname', '1984-08-14', 'address', '10', '1030', '10300500', '99999', '1234567890', 'mobile', 'fax', 'example@example.com', '2-2222-22222-22-2', 'f_fullname', '1234567890', '3-3333-33333-33-3', 'm_fullname', '1234567890', '4-4444-44444-44-4', 'p_fullname', '1234567890', '5-5555-55555-55-5', 'r_fullname', '1234567890', 'r_fax', 'example@example.com', 'b', 'studying_name', 'b', 'graduate_name', 'position', 'mindful', 'way', 'outstand', 'contest_1', 'contest_2', 'behavior', 'owner', 'attitude', 'moral', 'ผ่านการตรวจสอบ', '2018-10-02 14:45:35', '2018-10-03 14:25:15', '', '2560', '', '', null, null, null, '', '', '', '', '', '', '', '', '', '', '', '', '', null, '', '', '', '');
+INSERT INTO `applicants` VALUES ('1', '1', '1', '5bbad7e7c8f8d.jpg', '1-1111-11111-11-1', 'fullname', '1984-08-14', 'address', '63', '6307', '63070400', '11111', '1234567890', 'mobile', 'fax', 'example@example.com', '2-2222-22222-22-2', 'f_fullname', '1234567890', '3-3333-33333-33-3', 'm_fullname', '1234567890', '4-4444-44444-44-4', 'p_fullname', '1234567890', '5-5555-55555-55-5', 'r_fullname', '1234567890', 'r_fax', 'example@example.com', '4', 'studying_name', '7', 'graduate_name', 'position', 'mindful', 'way', 'outstand', 'contest_1', 'contest_2', 'behavior', 'owner', 'attitude', 'moral', 'contributor_name', 'contributor_position', 'contributor_aff', '1234567890', 'ไม่ผ่านการตรวจสอบ', '2018-10-01 14:45:28', '2018-10-08 14:03:15', '5bbaf9d424419.jpg', 'g_name', '2560', '12', 'g_address', '10', '1043', '10430100', 'g_pos', '1234567890', 'g_mobile', 'g_fax', 'example@example.com', '7-7777-77777-77-7', 'gp_fullname', '1234567890', '8-8888-88888-88-8', 'gpr_fullname', '1234567890', 'g_history', 'g_objective', '1', 'g_nature_name', 'g_philo', 'g_member_count', 'g_member_detail', null);
+INSERT INTO `applicants` VALUES ('3', '1', '1', '5bbc16f9aea2b.jpg', '1-1111-11111-11-1', 'fullname', '1984-08-14', 'address', '71', '7109', '71090500', '99999', '1234567890', 'mobile', 'fax', 'example@example.com', '2-2222-22222-22-2', 'f_fullname', '1234567890', '3-3333-33333-33-3', 'm_fullname', '1234567890', '4-4444-44444-44-4', 'p_fullname', '1234567890', '5-5555-55555-55-5', 'r_fullname', '1234567890', 'r_fax', 'example@example.com', '4', 'studying_name', '8', 'graduate_name', 'position', 'mindful', 'way', 'outstand', 'contest_1', 'contest_2', 'behavior', 'owner', 'attitude', null, 'contributor_name', 'contributor_position', 'contributor_aff', '1234567890', 'รอการตรวจสอบ', '2018-10-09 09:48:25', '2018-10-09 09:48:25', null, 'g_name', '2560', 'g_a', 'g_address', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `applicants` VALUES ('4', '1', '3', null, '', 'fullname', '0000-00-00', 'address', '81', '0', null, 'postc', '1234567890', 'mobile', 'fax', 'example@example.com', '', 'f_fullname', '1234567890', '', 'm_fullname', '1234567890', '', 'p_fullname', '1234567890', '', 'r_fullname', '1234567890', 'r_fax', 'example@example.com', '1', 'studying_name', '1', 'graduate_name', 'position', 'mindful', 'way', 'outstand', 'contest_1', 'contest_2', 'behavior', 'owner', 'attitude', null, 'contributor_name', 'contributor_position', 'contributor_aff', '1234567890', 'รอการตรวจสอบ', '2018-10-09 10:07:18', '2018-10-09 11:54:18', '5bbc1b664bd7e.jpg', 'g_name', '2560', '20', 'g_address', '60', '6010', '60100500', '99999', '1234567890', 'g_mobile', 'g_fax', 'example@example.com', '7-7777-77777-77-7', 'gp_fullname', '1234567890', '8-8888-88888-88-8', 'gpr_fullname', '1234567890', 'g_history', 'g_objective', '2', 'g_nature_name', 'g_philo', '9', 'g_member_detail', null);
+INSERT INTO `applicants` VALUES ('6', '1', '1', '5bbd7fe18149a.jpg', '1-1111-11111-11-1', 'fullname', '1984-08-14', 'address', '71', '7113', '71130200', 'postc', '1234567890', 'mobile', 'fax', 'example@example.com', '2-2222-22222-22-2', 'f_fullname', '1234567890', '3-3333-33333-33-3', 'm_fullname', '1234567890', '4-4444-44444-44-4', 'p_fullname', '1234567890', '5-5555-55555-55-5', 'r_fullname', '1234567890', 'r_fax', 'example@example.com', '4', 'studying_name', '8', 'graduate_name', 'position', 'mindful', 'way', 'outstand', 'contest_1', 'contest_2', 'behavior', 'owner', 'attitude', null, 'contributor_name', 'contributor_position', 'contributor_aff', '1234567890', 'รอการตรวจสอบ', '2018-10-10 11:28:18', '2018-10-10 11:28:18', null, 'g_name', '2560', 'g_a', 'g_address', '81', null, null, 'g_pos', '1234567890', 'g_mobile', 'g_fax', 'example@example.com', 'gp_id_card', 'gp_fullname', '1234567890', 'gpr_id_card', 'gpr_fullname', '1234567890', 'g_history', 'g_objective', '2', 'g_nature_name', 'g_philo', 'g_member_count', 'g_member_detail', null);
+INSERT INTO `applicants` VALUES ('7', '1', '3', null, '', 'fullname', '0000-00-00', 'address', '81', '0', null, 'postc', '1234567890', 'mobile', 'fax', 'example@example.com', '', 'f_fullname', '1234567890', '', 'm_fullname', '1234567890', '', 'p_fullname', '1234567890', '', 'r_fullname', '1234567890', 'r_fax', 'example@example.com', '1', 'studying_name', '1', 'graduate_name', 'position', 'mindful', 'way', 'outstand', 'contest_1', 'contest_2', 'behavior', 'owner', 'attitude', null, 'contributor_name', 'contributor_position', 'contributor_aff', '1234567890', 'ผ่านการตรวจสอบ', '2018-10-10 11:37:40', '2018-10-10 11:38:25', '5bbd82145f865.jpg', 'g_name', '2560', '30', '-จ', '60', '6007', '60070800', '99999', '1234567890', 'g_mobile', 'g_fax', 'example@example.com', '7-7777-77777-77-7', 'gp_fullname', '1234567890', '8-8888-88888-88-8', 'gpr_fullname', '1234567890', 'g_history', 'g_objective', '2', 'g_nature_name', 'g_philo', '88', 'g_member_detail', null);
+INSERT INTO `applicants` VALUES ('8', '1', '1', '5bbda6d6e438d.jpg', '1-1111-11111-11-1', 'fullname', '1984-08-14', 'address', '96', '9611', '96110500', 'postc', '1234567890', 'mobile', 'fax', 'example@example.com', '2-2222-22222-22-2', 'f_fullname', '1234567890', '3-3333-33333-33-3', 'm_fullname', '1234567890', '4-4444-44444-44-4', 'p_fullname', '1234567890', '5-5555-55555-55-5', 'r_fullname', '1234567890', 'r_fax', 'example@example.com', '4', 'studying_name', '7', 'graduate_name', 'position', 'mindful', 'way', 'outstand', 'contest_1', 'contest_2', 'behavior', 'owner', 'attitude', null, 'contributor_name', 'contributor_position', 'contributor_aff', '1234567890', 'รอการตรวจสอบ', '2018-10-10 14:14:31', '2018-10-10 14:14:31', null, 'g_name', '2560', 'g_a', 'g_address', '81', null, null, 'g_pos', '1234567890', 'g_mobile', 'g_fax', 'example@example.com', 'gp_id_card', 'gp_fullname', '1234567890', 'gpr_id_card', 'gpr_fullname', '1234567890', 'g_history', 'g_objective', '2', 'g_nature_name', 'g_philo', 'g_member_count', 'g_member_detail', 'hmnC');
+INSERT INTO `applicants` VALUES ('9', '1', '1', '5bbeb425d88f5.jpg', '1-1111-11111-11-1', 'fullname', '0000-00-00', 'address', '46', '4611', '46110100', 'postc', '1234567890', 'mobile', 'fax', 'example@example.com', '2-2222-22222-22-2', 'f_fullname', '1234567890', '3-3333-33333-33-3', 'm_fullname', '1234567890', '4-4444-44444-44-4', 'p_fullname', '1234567890', '5-5555-55555-55-5', 'r_fullname', '1234567890', 'r_fax', 'example@example.com', '2', 'studying_name', '7', 'graduate_name', 'position', 'mindful', 'way', 'outstand', 'contest_1', 'contest_2', 'behavior', 'owner', 'attitude', null, 'contributor_name', 'contributor_position', 'contributor_aff', '1234567890', 'รอการตรวจสอบ', '2018-10-11 09:23:34', '2018-10-11 09:23:34', null, 'g_name', '2560', 'g_a', 'g_address', '81', null, null, 'g_pos', '1234567890', 'g_mobile', 'g_fax', 'example@example.com', 'gp_id_card', 'gp_fullname', '1234567890', 'gpr_id_card', 'gpr_fullname', '1234567890', 'g_history', 'g_objective', '2', 'g_nature_name', 'g_philo', 'g_member_count', 'g_member_detail', 'HaSd');
+INSERT INTO `applicants` VALUES ('10', '1', '1', '5bbefe02dd283.jpg', 'id_card', 'fullname', '1984-08-14', 'address', '10', '1046', '10460100', 'postc', '1234567890', 'mobile', 'fax', 'example@example.com', '2-2222-22222-22-2', 'f_fullname', '1234567890', '3-3333-33333-33-3', 'm_fullname', '1234567890', '4-4444-44444-44-4', 'p_fullname', '1234567890', '5-5555-55555-55-5', 'r_fullname', '1234567890', 'r_fax', 'example@example.com', '7', 'studying_name', '9', 'graduate_name', 'position', 'mindful', 'way', 'outstand', 'contest_1', 'contest_2', 'behavior', 'owner', 'attitude', null, 'contributor_name', 'contributor_position', 'contributor_aff', '1234567890', 'รอการตรวจสอบ', '2018-10-11 14:38:42', '2018-10-11 14:38:42', null, 'g_name', '2560', 'g_a', 'g_address', '81', null, null, 'g_pos', '1234567890', 'g_mobile', 'g_fax', 'example@example.com', 'gp_id_card', 'gp_fullname', '1234567890', 'gpr_id_card', 'gpr_fullname', '1234567890', 'g_history', 'g_objective', '2', 'g_nature_name', 'g_philo', 'g_member_count', 'g_member_detail', 'FQ8S');
 
 -- ----------------------------
 -- Table structure for levels
@@ -114,6 +128,23 @@ CREATE TABLE `levels` (
 -- ----------------------------
 INSERT INTO `levels` VALUES ('1', 'Administrator');
 INSERT INTO `levels` VALUES ('2', 'Member');
+
+-- ----------------------------
+-- Table structure for statuses
+-- ----------------------------
+DROP TABLE IF EXISTS `statuses`;
+CREATE TABLE `statuses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `applicant_id` int(11) DEFAULT NULL,
+  `status_date` date DEFAULT NULL,
+  `status_note` text,
+  `status` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of statuses
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for st_districts

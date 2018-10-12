@@ -3,7 +3,7 @@
 <h3 style="text-align:center; margin:0; padding:15px 0; background:#FFF;">เสนอผลงานกิจกรรมสรรหาและเชิดชูเด็กและเยาวชนดีเด่นแห่งชาติ
     และผู้ทำคุณประโยชน์ต่อเด็กและเยาวชน</h3>
 <div style="margin-left:40%">
-    <select name="career" class="form-control" style="width:auto; margin-top:10px; background:#FF9">
+    <select disabled name="career" class="form-control" style="width:auto; margin-top:10px; background:#FF9">
         <option value="1" <?php echo $rs->career == 1 ? 'selected=selected' : '';?>>สาขากฏหมายและการปกป้องคุ้มครองสิทธิเด็กและเยาวชน</option>
         <option value="2" <?php echo $rs->career == 2 ? 'selected=selected' : '';?>>สาขาการศึกษาและวิชาการ</option>
         <option value="3" <?php echo $rs->career == 3 ? 'selected=selected' : '';?>>สาขากีฬาและนันทนาการ</option>
@@ -16,7 +16,7 @@
         <option value="10" <?php echo $rs->career == 10 ? 'selected=selected' : '';?>>สาขาสือมวลชนเพื่อเด็กและเยาวชนที่ป้องกันปัญหาสังคม</option>
     </select>
     
-    <select name="type" class="form-control" style="width:auto; margin-top:10px; background:#FF9">
+    <select disabled name="type" class="form-control" style="width:auto; margin-top:10px; background:#FF9">
         <option value="1" <?php echo $rs->type == 1 ? 'selected=selected' : '';?>>ประเภท เด็กและเยาวชนดีเด่นแห่งชาติ</option>
         <option value="2" <?php echo $rs->type == 2 ? 'selected=selected' : '';?>>ประเภท บุคคลผู้ทำคุณประโยชน์ต่อเด็กและเยาวชน</option>
         <option value="3" <?php echo $rs->type == 3 ? 'selected=selected' : '';?>>ประเภท กลุ่มเด็กและเยาวชนดีเด่นแห่งชาติ</option>
@@ -28,6 +28,10 @@
         <fieldset>
             <legend>พิจารณาสถานะ</legend>
             <table class="tbRegister">
+                <tr>
+                    <th>รหัสตรวจสอบ</th>
+                    <td><?php echo $rs->code?></td>
+                </tr>
                 <tr>
                     <th>วันเวลาที่ลงทะเบียน</th>
                     <td>
@@ -49,6 +53,18 @@
                             </select> <input name="input" type="submit" title="บันทึก" value="บันทึก" class="btn btn-primary"
                                 style="width:100px;" />
                         </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>วันที่ลงสถานะ</th>
+                    <td>
+                        <input name="status_date" class="datepicker form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <th>หมายเหตุ</th>
+                    <td>
+                        <textarea class="form-control" name="status_note"></textarea>
                     </td>
                 </tr>
             </table>
@@ -97,9 +113,7 @@
                     <th>วันเดือนปีเกิด <span class="Txt_red_12"> *</span></th>
                     <td>
                         <div class="form-inline">
-                            <input name="birthdate" type="text" class="form-control fdate" value="<?php echo DB2Date($rs->birthdate) ?>"
-                                style="width:120px;" />
-                            <img src="themes/admin/images/calendar.png" />
+                            <input name="birthdate" type="text" class="form-control fdate datepicker" value="<?php echo DB2Date($rs->birthdate) ?>" style="width:120px;" /> 
                             (อายุ <?php echo calAge(@$rs->birthdate) ?> ปี)
                         </div>
                     </td>

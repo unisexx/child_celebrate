@@ -49,8 +49,7 @@
             <th>วันเดือนปีเกิด <span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
-                <input name="birthdate" type="text" class="form-control fdate" value="" style="width:120px;" />
-                <img src="themes/child_celebrate/admin/images/calendar.png" />
+                <input name="birthdate" type="text" class="form-control fdate datepicker" value="" style="width:120px;" />
                 (อายุ xx ปี)
               </div>
             </td>
@@ -120,7 +119,7 @@
             </td>
           </tr>
           <tr>
-            <th>โทรศัพท์/มือถือ (บิดา)<span class="Txt_red_12"> *</span></th>
+            <th>โทรศัพท์/มือถือ (บิดา)</th>
             <td>
               <input name="f_tel" type="text" class="form-control" value="" style="width:250px;"
                 placeholder="โทรศัพท์/มือถือ บิดา" />
@@ -138,7 +137,7 @@
             </td>
           </tr>
           <tr>
-            <th>โทรศัพท์/มือถือ (มารดา)<span class="Txt_red_12"> *</span></th>
+            <th>โทรศัพท์/มือถือ (มารดา)</th>
             <td>
               <input name="m_tel" type="text" class="form-control" value="" style="width:250px;"
                 placeholder="โทรศัพท์/มือถือ มารดา" />
@@ -180,7 +179,7 @@
             </td>
           </tr>
           <tr>
-            <th>โทรศัพท์/มือถือ<span class="Txt_red_12"> *</span></th>
+            <th>โทรศัพท์/มือถือ</th>
             <td>
               <input name="r_tel" type="text" class="form-control" value="" style="width:250px;"
                 placeholder="โทรศัพท์/มือถือ ผู้ปกครอง" />
@@ -623,19 +622,19 @@ function AjaxSelectSubdistrict($province_id,$district_id,$sudistrict_name,$subdi
         district_id: "required",
         subdistrict_id: "required",
         postcode: "required",
-        tel: "required",
+        // tel: "required",
         mobile: "required",
-        fax: "required",
+        // fax: "required",
         email: "required",
-        f_id_card: "required",
+        // f_id_card: "required",
         f_fullname: "required",
-        f_tel: "required",
-        m_id_card: "required",
+        // f_tel: "required",
+        // m_id_card: "required",
         m_fullname: "required",
-        m_tel: "required",
+        // m_tel: "required",
         r_id_card: "required",
         r_fullname: "required",
-        r_tel: "required",
+        // r_tel: "required",
         owner: "required",
         contributor_name: "required",
         contributor_position: "required",
@@ -667,19 +666,19 @@ function AjaxSelectSubdistrict($province_id,$district_id,$sudistrict_name,$subdi
         district_id: "ห้ามเป็นค่าว่าง",
         subdistrict_id: "ห้ามเป็นค่าว่าง",
         postcode: "ห้ามเป็นค่าว่าง",
-        tel: "ห้ามเป็นค่าว่าง",
+        // tel: "ห้ามเป็นค่าว่าง",
         mobile: "ห้ามเป็นค่าว่าง",
-        fax: "ห้ามเป็นค่าว่าง",
+        // fax: "ห้ามเป็นค่าว่าง",
         email: "ห้ามเป็นค่าว่าง",
-        f_id_card: "ห้ามเป็นค่าว่าง",
+        // f_id_card: "ห้ามเป็นค่าว่าง",
         f_fullname: "ห้ามเป็นค่าว่าง",
-        f_tel: "ห้ามเป็นค่าว่าง",
-        m_id_card: "ห้ามเป็นค่าว่าง",
+        // f_tel: "ห้ามเป็นค่าว่าง",
+        // m_id_card: "ห้ามเป็นค่าว่าง",
         m_fullname: "ห้ามเป็นค่าว่าง",
-        m_tel: "ห้ามเป็นค่าว่าง",
+        // m_tel: "ห้ามเป็นค่าว่าง",
         r_id_card: "ห้ามเป็นค่าว่าง",
         r_fullname: "ห้ามเป็นค่าว่าง",
-        r_tel: "ห้ามเป็นค่าว่าง",
+        // r_tel: "ห้ามเป็นค่าว่าง",
         owner: "ห้ามเป็นค่าว่าง",
         contributor_name: "ห้ามเป็นค่าว่าง",
         contributor_position: "ห้ามเป็นค่าว่าง",

@@ -109,11 +109,38 @@ $(document).ready(function(){
 <script src="js/bootstrap-select.js"></script>
 
 
-
-
-
-
-
-
-
-
+<script src="media/js/bootstrap-datepicker-thai/js/bootstrap-datepicker.js"></script>
+<script src="media/js/bootstrap-datepicker-thai/js/bootstrap-datepicker-thai.js"></script>
+<script src="media/js/bootstrap-datepicker-thai/js/locales/bootstrap-datepicker.th.js"></script>
+<link rel='stylesheet' type='text/css' href="media/js/bootstrap-datepicker-thai/css/datepicker.css" />
+<script type="text/javascript">
+	function datepicker_active(obj) {
+		$(obj).datepicker({
+			format:'dd/mm/yyyy',
+			autoclose:true,
+			language:'th-th',
+			clearBtn: true
+		});
+		$(obj).each(function(k, v){
+			$(this).addClass('form-control').css({'display':'inline-block', 'width':'120px'}); //.attr('readonly',true);
+			$(this).attr('placeholder',(!$(this).attr('placeholder')?'วัน/เดือน/ปี':$(this).attr('placeholder')));
+			$(this).after(' <img src="themes/admin/images/calendar.png" alt="" width="32" height="32" /> ');
+		});
+	}
+	$(function(){
+		datepicker_active('.datepicker');
+		/*
+		$('.datepicker').datepicker({
+			format:'dd/mm/yyyy',
+			autoclose:true,
+			language:'th-th',
+			clearBtn: true
+		});
+		$('.datepicker').each(function(k, v){
+			$(this).addClass('form-control').css({'display':'inline-block', 'width':'120px'}); //.attr('readonly',true);
+			$(this).attr('placeholder',(!$(this).attr('placeholder')?'วัน/เดือน/ปี':$(this).attr('placeholder')));
+			$(this).after(' <img src="{{url('images/calendar.png')}}" alt="" width="24" height="24" /> ');
+		})
+		*/
+	});
+</script>

@@ -45,7 +45,8 @@ class Home extends Public_Controller {
 	}
 
 	function success($code=false){
-		$data['code'] = $code;
+		$applicant = new Applicant();
+		$data['rs'] = $applicant->where('code = "'.$code.'"')->get();
 		$this->template->build('success',$data);
 	}
 

@@ -2,22 +2,28 @@
 <div id="search">
     <div id="searchBox">
         <form class="form-inline">
-            <input type="text" class="form-control " id="exampleInputName2" placeholder="ชื่อ/เลขบัจรประชาชน ผู้ลงทะเบียน / รหัสหรือชื่อหลักสูตร"
-                style="width:400px;">
-            <select name="select2" class="form-control" style="width:auto">
-                <option>-- สถานะ --</option>
+            <input name="txtsearch" type="text" class="form-control" placeholder="ชื่อ/เลขบัตรประชาชน ผู้ลงทะเบียน / รหัสหรือชื่อหลักสูตร" style="width:400px;">
+            <select name="status" class="form-control" style="width:auto">
+                <option value="">-- สถานะ --</option>
+                <option value="รอการตรวจสอบ" <?php echo @$_GET['status'] == 'รอการตรวจสอบ' ? 'selected=selected' : '';?>>รอการตรวจสอบ</option>
+                <option value="ผ่านการตรวจสอบ" <?php echo @$_GET['status'] == 'ผ่านการตรวจสอบ' ? 'selected=selected' : '';?>>ผ่านการตรวจสอบ</option>
+                <option value="ไม่ผ่านการตรวจสอบ" <?php echo @$_GET['status'] == 'ไม่ผ่านการตรวจสอบ' ? 'selected=selected' : '';?>>ไม่ผ่านการตรวจสอบ</option>
             </select>
-            <select name="" class="form-control" style="width:auto">
-                <option>-- จังหวัด --</option>
-                <option>กระบี่</option>
-                <option>กรุงเทพฯ </option>
-            </select>
-            <select name="select" class="form-control" style="width:auto">
-                <option>-- อำเภอ --</option>
-            </select>
+            
+            <?php echo form_dropdown('province_id', get_option('id','name','st_provinces order by name asc'), @$_GET['province_id'],'class="selectpicker province" data-live-search="true" data-size="7" title="-- จังหวัด --" style="width:auto"');?>
+
+            <span class="spanDistrict">
+            <?php if(@$_GET['province_id']):?>
+                <?php echo form_dropdown('district_id', get_option('id','name','st_districts where st_province_id = '.$_GET['province_id'].' and status = 1 order by name asc'), @$_GET['district_id'],'class="selectpicker" data-live-search="true" data-size="7" title="-- อำเภอ --" style="width:auto"');?>
+            <?php else:?>
+                <select name="district_id" class="selectpicker" data-live-search="true" title="-- อำเภอ --" disabled="disabled" style="width:auto">
+                    <option>-- อำเภอ --</option>
+                </select>
+            <?php endif;?>
+            </span>
+
             วันที่ลงทะเบียน
-            <input name="textarea5" type="text" class="form-control fdate" id="textarea6" value="" style="width:120px;" />
-            <img src="themes/admin/images/calendar.png" />
+            <input name="created" type="text" class="datepicker form-control fdate" value="" style="width:120px;" />
             <button type="submit" class="btn btn-info"><img src="themes/admin/images/search.png" width="16" height="16" />ค้นหา</button>
         </form>
 
@@ -29,9 +35,9 @@
 </div>-->
 
 <div id="status">
-    <span><img src="themes/admin/images/ico_pedding.png" width="24" height="24" /> <a href="#">รอการตรวจสอบ (10)</a></span>
-    <span><img src="themes/admin/images/ico_passed.png" width="24" height="24" /> <a href="#">ผ่านการตรวจสอบ (349)</a></span>
-    <span><img src="themes/admin/images/ico_reject.png" width="24" height="24" /> <a href="#">ไม่ผ่าน (2)</a></span>
+    <span><img src="themes/admin/images/ico_pedding.png" width="24" height="24" /> <a href="#">รอการตรวจสอบ (<?php echo $count->where("status = 'รอการตรวจสอบ'")->count()?>)</a></span>
+    <span><img src="themes/admin/images/ico_passed.png" width="24" height="24" /> <a href="#">ผ่านการตรวจสอบ (<?php echo $count->where("status = 'ผ่านการตรวจสอบ'")->count()?>)</a></span>
+    <span><img src="themes/admin/images/ico_reject.png" width="24" height="24" /> <a href="#">ไม่ผ่าน (<?php echo $count->where("status = 'ไม่ผ่านการตรวจสอบ'")->count()?>)</a></span>
 </div>
 
 <!-- <div class="paginationTG">
@@ -197,3 +203,68 @@
         <li><a href="">21</a></li>
     </ul>
 </div> -->
+
+
+<script>
+$(document).ready(function(){
+
+  // select จังหวัด หา อำเภอ
+  $(document).on('change', "select[name=province_id]", function() {
+    var province_id = $(this).val();
+    var district_name = 'district_id';
+    var district_element = $('.spanDistrict');
+    AjaxSelectDistrict(province_id,district_name,district_element);
+
+    // disable all child Element
+    $('.spanSubdistrict').find('select').val('เลือกตำบล');
+    $('.spanSubdistrict').find('select').prop('disabled', true);
+    $('.spanSubdistrict').find('select').selectpicker('refresh');
+  });
+
+  // select อำเภอ หา ตำบล
+  $(document).on('change', "select[name=district_id]", function() {
+    var province_id = $('select[name=province_id]').val();
+    var district_id = $(this).val();
+    var subdistrict_name = 'subdistrict_id';
+    var subdistrict_element = $('.spanSubdistrict');
+    AjaxSelectSubdistrict(province_id,district_id,subdistrict_name,subdistrict_element);
+  });
+
+});
+
+
+// เลือกจังหวัด แสดงอำเภอ
+function AjaxSelectDistrict($province_id,$district_name,$district_element){
+  if($province_id == ""){
+    $district_element.find('select').val('').attr("disabled", true);
+    $district_element.find('select').selectpicker('refresh');
+  }else{
+    $.get('ajax/ajaxselectdistrict',{
+      'province_id' : $province_id,
+      'district_name' : $district_name,
+    },function(data){
+      $district_element.html(data);
+      $district_element.find('select option:contains("เลือกอำเภอ")').text('+ เลือกอำเภอ +');
+      $district_element.find('select').selectpicker('refresh');
+    });
+  }
+}
+
+// เลือกอำเภอ แสดงตำบล
+function AjaxSelectSubdistrict($province_id,$district_id,$sudistrict_name,$subdistrict_element){
+  if($district_id == ""){
+    $subdistrict_element.find('select').val('').attr("disabled", true);
+    $subdistrict_element.find('select').selectpicker('refresh');
+  }else{
+    $.get('ajax/ajaxselectsubdistrict',{
+      'province_id' : $province_id,
+      'district_id' :  $district_id,
+      'subdistrict_name' : $sudistrict_name,
+    },function(data){
+        $subdistrict_element.html(data);
+        $subdistrict_element.find('select option:contains("เลือกตำบล")').text('+ เลือกตำบล +');
+        $subdistrict_element.find('select').selectpicker('refresh');
+    });
+  }
+}
+</script>

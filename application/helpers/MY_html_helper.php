@@ -379,7 +379,7 @@ function calAge($birth_date){
 
 }
 
-function generateRandomString($length = 4) {
+function generateRandomString($length = 5) {
     $characters = '123456789abcdefghijklmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
