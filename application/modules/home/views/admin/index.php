@@ -35,9 +35,9 @@
 </div>-->
 
 <div id="status">
-    <span><img src="themes/admin/images/ico_pedding.png" width="24" height="24" /> <a href="#">รอการตรวจสอบ (<?php echo $count->where("status = 'รอการตรวจสอบ'")->count()?>)</a></span>
-    <span><img src="themes/admin/images/ico_passed.png" width="24" height="24" /> <a href="#">ผ่านการตรวจสอบ (<?php echo $count->where("status = 'ผ่านการตรวจสอบ'")->count()?>)</a></span>
-    <span><img src="themes/admin/images/ico_reject.png" width="24" height="24" /> <a href="#">ไม่ผ่าน (<?php echo $count->where("status = 'ไม่ผ่านการตรวจสอบ'")->count()?>)</a></span>
+    <span><img src="themes/admin/images/ico_pedding.png" width="24" height="24" /> <a href="#">รอการตรวจสอบ (<?php echo $count->where("last_status = 'รอการตรวจสอบ'")->count()?>)</a></span>
+    <span><img src="themes/admin/images/ico_passed.png" width="24" height="24" /> <a href="#">ผ่านการตรวจสอบ (<?php echo $count->where("last_status = 'ผ่านการตรวจสอบ'")->count()?>)</a></span>
+    <span><img src="themes/admin/images/ico_reject.png" width="24" height="24" /> <a href="#">ไม่ผ่าน (<?php echo $count->where("last_status = 'ไม่ผ่านการตรวจสอบ'")->count()?>)</a></span>
 </div>
 
 <!-- <div class="paginationTG">
@@ -105,11 +105,11 @@
             <?php endif;?>
         </td>
         <td class="txtCen">
-            <?php if($row->status == 'รอการตรวจสอบ') :?>
+            <?php if($row->last_status == 'รอการตรวจสอบ') :?>
                 <img src="themes/admin/images/ico_pedding.png" width="32" height="32" class="vtip" title="รอการตรวจสอบ" />
-            <?php elseif($row->status == 'ผ่านการตรวจสอบ'):?>
+            <?php elseif($row->last_status == 'ผ่านการตรวจสอบ'):?>
                 <img src="themes/admin/images/ico_passed.png" width="32" height="32" class="vtip" title="ผ่านการตรวจสอบ">
-            <?php elseif($row->status == 'ไม่ผ่านการตรวจสอบ'):?>
+            <?php elseif($row->last_status == 'ไม่ผ่านการตรวจสอบ'):?>
                 <img src="themes/admin/images/ico_reject.png" width="32" height="32" class="vtip" title="ไม่ผ่าน">
             <?php endif;?>
         </td>
@@ -123,67 +123,6 @@
         </td>
     </tr>
     <?php endforeach;?>
-
-    <!-- <tr>
-        <td>1</td>
-        <td>นายธันยกร หลีสันติพงศ์<br />
-            3-1007-00134-08-1</td>
-        <td>01/07/2560<br />
-            14.50 น.</td>
-        <td>52 หมู่ 6 ต . จรเข้เผือก อ. ด่านมะขามเตี้ย จ . กาญจนบุรี 71260</td>
-        <td class="txtCen"><img src="themes/admin/images/ico_pedding.png" width="32" height="32" class="vtip" title="รอการตรวจสอบ" /></td>
-        <td><a href="<?=basename($_SERVER['PHP_SELF'])?>?act=form"><img src="themes/admin/images/edit.png" width="24" height="24"
-                    class="vtip" title="แก้ไขรายการนี้" /></a> <img src="themes/admin/images/remove.png" width="32" height="32"
-                class="vtip" title="ลบรายการนี้" /></td>
-    </tr>
-    <tr class="odd">
-        <td>2</td>
-        <td>นางสาวประภาศรี ทองกิ่งแก้ว<br />
-            3-3071-10141-09-2</td>
-        <td>01/07/2560<br />
-            15.20 น.</td>
-        <td>1296/105-7 ถ.กรุงเทพ-นนทบุรี เขต บางซื่อ กทม. 10800</td>
-        <td class="txtCen"><img src="themes/admin/images/ico_passed.png" width="32" height="32" class="vtip" title="ผ่านการตรวจสอบ" /></td>
-        <td><a href="<?=basename($_SERVER['PHP_SELF'])?>?act=form"><img src="themes/admin/images/edit.png" width="24" height="24"
-                    class="vtip" title="แก้ไขรายการนี้" /></a> <img src="themes/admin/images/remove.png" width="32" height="32"
-                class="vtip" title="ลบรายการนี้" /></td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>นางสาววันเพ็ญ แซ่เอีย<br />
-            3-1017-01343-81-7</td>
-        <td>05/07/2560<br />
-            11.10 น.</td>
-        <td>924. ถ.พระราม9. แขวงบางกะปิ เขตห้วยขวาง กทม.10310</td>
-        <td class="txtCen"><img src="themes/admin/images/ico_reject.png" width="32" height="32" class="vtip" title="ไม่ผ่าน" /></td>
-        <td><a href="<?=basename($_SERVER['PHP_SELF'])?>?act=form"><img src="themes/admin/images/edit.png" width="24" height="24"
-                    class="vtip" title="แก้ไขรายการนี้" /></a> <img src="themes/admin/images/remove.png" width="32" height="32"
-                class="vtip" title="ลบรายการนี้" /></td>
-    </tr>
-    <tr class="odd">
-        <td>4</td>
-        <td>นางวลัยพร ติ้วเจริญสกุล<br />
-            3-1007-22414-34-9</td>
-        <td>06/07/2560<br />
-            08.09 น.</td>
-        <td>65 แสงทองวิลล่า ถ.พระปิ่นเกล้า 4 บางยี่ขัน บางพลัด กทม. 10700 </td>
-        <td class="txtCen"><img src="themes/admin/images/ico_pedding.png" width="32" height="32" class="vtip" title="รอการตรวจสอบ" /></td>
-        <td><a href="<?=basename($_SERVER['PHP_SELF'])?>?act=form"><img src="themes/admin/images/edit.png" width="24" height="24"
-                    class="vtip" title="แก้ไขรายการนี้" /></a> <img src="themes/admin/images/remove.png" width="32" height="32"
-                class="vtip" title="ลบรายการนี้" /></td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td class="odd">นายสมพร สุขธรรมนิตย์<br />
-            3-1107-02134-81-7</td>
-        <td class="odd">07/07/2560<br />
-            12.27 น.</td>
-        <td>69 ม.5 แขวงออเงิน เขตสายไหม กทม. 10220</td>
-        <td class="txtCen"><img src="themes/admin/images/ico_passed.png" width="32" height="32" class="vtip" title="ผ่านการตรวจสอบ" /></td>
-        <td><a href="<?=basename($_SERVER['PHP_SELF'])?>?act=form"><img src="themes/admin/images/edit.png" width="24" height="24"
-                    class="vtip" title="แก้ไขรายการนี้" /></a> <img src="themes/admin/images/remove.png" width="32" height="32"
-                class="vtip" title="ลบรายการนี้" /></td>
-    </tr> -->
 
 </table>
 

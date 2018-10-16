@@ -33,11 +33,19 @@ class Home extends Public_Controller {
 				$_POST['g_image'] = $applicant->upload($_FILES['g_image'],'uploads/applicant/');
 			}
 			
-			$_POST['status'] = 'รอการตรวจสอบ';
+			$_POST['last_status'] = 'รอการตรวจสอบ';
 			$_POST['code'] = generateRandomString();
             $applicant->from_array($_POST);
 			$applicant->save();
-			
+
+			// อัพเดท status log
+			$status = new Status();
+			$_POST['applicant_id'] = $applicant->id;
+			$_POST['status_date'] = date("Y-m-d");
+			$_POST['status'] = 'รอการตรวจสอบ';
+			$status->from_array($_POST);
+			$status->save();
+
             set_notify('success', lang('save_data_complete'));
         }
 		// redirect($_POST['referer']);

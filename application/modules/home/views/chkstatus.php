@@ -34,7 +34,25 @@
 
             <?php endif;?>
         </div> 
-        <div>สถานะ : <strong><?php echo $rs->status?></strong></div>
+        <!-- <div>สถานะ : <strong><?php echo $rs->status?></strong></div> -->
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>วันที่</th>
+                    <th>สถานะ</th>
+                    <th>หมายเหตุ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($rs->status->order_by('status_date','desc')->get() as $row):?>
+                <tr>
+                    <td style="width:25% !important;"><?php echo DB2Date($row->status_date) ?></td>
+                    <td style="width:25% !important;"><?php echo $row->status?></td>
+                    <td style="width:50% !important;"><?php echo empty($row->status_note) ? '-' : $row->status_note ?></td>
+                </tr>
+                <?php endforeach;?>
+            </tbody>
+        </table>
     </div>
 </div>
 

@@ -276,22 +276,33 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
     <div id="groupchild">
       <fieldset>
         <legend>ข้อมูลเบื้องต้น</legend>
         <table class="tbRegister">
           <tr>
-            <th>แนบไฟล์รูปประจำกลุ่ม / สัญลักษณ์ <span class="Txt_red_12"> *</span></th>
+            <th><span class="txt4"></span> <span class="Txt_red_12"> *</span></th>
             <td>
                 <input type="file" name="g_image" class="form-control" style="width:auto">
             </td>
           </tr>
           <tr>
-            <th>ชื่อกลุ่ม/องค์กร<span class="Txt_red_12"> *</span></th>
+            <th><span class="txt1"></span><span class="Txt_red_12"> *</span></th>
             <td><input name="g_name" type="text" class="form-control" value="<?php echo @$rs->g_name?>" style="width:500px;" placeholder="ชื่อกลุ่ม" /></td>
           </tr>
           <tr>
-            <th>พ.ศ.ที่ก่อตั้ง / อายุกลุ่ม<span class="Txt_red_12"> *</span></th>
+            <th>พ.ศ.ที่ก่อตั้ง / <span class="txt2"></span><span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
                 <select name="g_create" class="form-control" style="width:auto">
@@ -355,10 +366,10 @@
       </fieldset>
 
       <fieldset>
-        <legend>ข้อมูลประธานกลุ่ม/ผู้ก่อตั้ง และบุคคลอ้างอิง</legend>
+        <legend>ข้อมูล<span class="txt3"></span> และบุคคลอ้างอิง</legend>
         <table class="tbRegister">
           <tr>
-            <th>เลขบัตรประชาชน / ชื่อ-สกุล (ประธานกลุ่ม/ผู้ก่อตั้ง)<span class="Txt_red_12"> *</span></th>
+            <th>เลขบัตรประชาชน / ชื่อ-สกุล (<span class="txt3"></span>)<span class="Txt_red_12"> *</span></th>
             <td>
               <div class="form-inline">
                 <input name="gp_id_card" type="text" class="form-control fidcard" value="" style="width:200px;"
@@ -369,7 +380,7 @@
             </td>
           </tr>
           <tr>
-            <th>โทรศัพท์/มือถือ (ประธานกลุ่ม)<span class="Txt_red_12"> *</span></th>
+            <th>โทรศัพท์/มือถือ (<span class="txt3"></span>)<span class="Txt_red_12"> *</span></th>
             <td>
               <input name="gp_tel" type="text" class="form-control" value="" style="width:250px;"
                 placeholder="โทรศัพท์/มือถือ ประธานกลุ่ม" />
@@ -439,6 +450,19 @@
       </fieldset>
 
     </div> <!-- groupchild -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <div id="summary">
@@ -729,3 +753,38 @@ i, cite, em, var, address, dfn {
     font-style: italic;
 }
 </style>
+
+<script>
+$(document).on('change', "select[name=type]", function() {
+  var $type = $(this).val();
+  if($type == '3'){
+    type3();
+  }else if($type == '4'){
+    type4();
+  }
+});
+
+function type3(){
+  $('.txt1').text('ชื่อกลุ่ม');
+  $('.txt2').text('อายุกลุ่ม');
+  $('.txt3').text('ประธานกลุ่ม');
+  $('.txt4').text('แนบไฟล์รูปประจำกลุ่ม / สัญลักษณ์');
+
+  $('input[name=g_name]').attr('placeholder','ชื่อกลุ่ม');
+  $('input[name=gp_id_card]').attr('placeholder','เลขบัตรประชาชน ประธานกลุ่ม');
+  $('input[name=gp_fullname]').attr('placeholder','ชื่อและนามสกุล ประธานกลุ่ม');
+  $('input[name=gp_tel]').attr('placeholder','โทรศัพท์/มือถือ ประธานกลุ่ม');
+}
+
+function type4(){
+  $('.txt1').text('ชื่อองค์กร');
+  $('.txt2').text('อายุองค์กร');
+  $('.txt3').text('ผู้ก่อตั้ง');
+  $('.txt4').text('แนบไฟล์รูปประจำองค์กร / สัญลักษณ์');
+
+  $('input[name=g_name]').attr('placeholder','ชื่อองค์กร');
+  $('input[name=gp_id_card]').attr('placeholder','เลขบัตรประชาชน ผู้ก่อตั้ง');
+  $('input[name=gp_fullname]').attr('placeholder','ชื่อและนามสกุล ผู้ก่อตั้ง');
+  $('input[name=gp_tel]').attr('placeholder','โทรศัพท์/มือถือ ผู้ก่อตั้ง');
+}
+</script>

@@ -50,8 +50,7 @@
                                     '';?>>ผ่านการตรวจสอบ</option>
                                 <option value="ไม่ผ่านการตรวจสอบ" <?php echo $rs->status == 'ไม่ผ่านการตรวจสอบ' ?
                                     'selected=selected' : '';?>>ไม่ผ่านการตรวจสอบ</option>
-                            </select> <input name="input" type="submit" title="บันทึก" value="บันทึก" class="btn btn-primary"
-                                style="width:100px;" />
+                            </select>
                         </div>
                     </td>
                 </tr>
@@ -67,6 +66,31 @@
                         <textarea class="form-control" name="status_note"></textarea>
                     </td>
                 </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <input name="input" type="submit" title="บันทึก" value="บันทึก" class="btn btn-primary" style="width:100px;" />
+                        <a href="home/admin/home"><input name="input" type="button" title="บันทึก" value="กลับหน้าลิสต์รายการ" class="btn"/></a>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <fieldset>
+            <legend>ประวัติสถานะ</legend>
+            <table class="tbRegister">
+                <tr style="background:#eee;">
+                    <th style="width:25% !important;">วันที่</th>
+                    <th style="width:25% !important;">สถานะ</th>
+                    <th style="width:50% !important;">หมายเหตุ</th>
+                </tr>
+                <?php foreach($rs->status->order_by('status_date','desc')->get() as $row):?>
+                <tr>
+                    <td style="width:25% !important;"><?php echo DB2Date($row->status_date) ?></td>
+                    <td style="width:25% !important;"><?php echo $row->status?></td>
+                    <td style="width:50% !important;"><?php echo empty($row->status_note) ? '-' : $row->status_note ?></td>
+                </tr>
+                <?php endforeach?>
             </table>
         </fieldset>
 
@@ -348,23 +372,33 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
     <div id="groupchild">
         <fieldset>
             <legend>ข้อมูลเบื้องต้น</legend>
             <table class="tbRegister">
                 <tr>
-                    <th>แนบไฟล์รูปประจำกลุ่ม / สัญลักษณ์ <span class="Txt_red_12"> *</span></th>
+                    <th><span class="txt4"></span> <span class="Txt_red_12"> *</span></th>
                     <td>
                         <?=is_file('uploads/applicant/'.$rs->g_image)?"<a href='uploads/applicant/".$rs->g_image."' target='_blank'><img src='uploads/applicant/".$rs->g_image."' width='90'></a>":"";?>
                         <input type="file" name="g_image" class="form-control" style="width:auto">
                     </td>
                 </tr>
                 <tr>
-                    <th>ชื่อกลุ่ม/องค์กร<span class="Txt_red_12"> *</span></th>
+                    <th><span class="txt1"></span><span class="Txt_red_12"> *</span></th>
                     <td><input name="g_name" type="text" class="form-control" value="<?php echo @$rs->g_name?>" style="width:500px;" placeholder="ชื่อกลุ่ม" /></td>
                 </tr>
                 <tr>
-                    <th>พ.ศ.ที่ก่อตั้ง / อายุกลุ่ม<span class="Txt_red_12"> *</span></th>
+                    <th>พ.ศ.ที่ก่อตั้ง / <span class="txt2"></span><span class="Txt_red_12"> *</span></th>
                     <td>
                         <div class="form-inline">
                             <select name="g_create" class="form-control" style="width:auto">
@@ -436,7 +470,7 @@
         </fieldset>
 
         <fieldset>
-            <legend>ข้อมูลประธานกลุ่ม/ผู้ก่อตั้ง และบุคคลอ้างอิง</legend>
+            <legend>ข้อมูล<span class="txt3"></span> และบุคคลอ้างอิง</legend>
             <table class="tbRegister">
                 <tr>
                     <th>เลขบัตรประชาชน / ชื่อ-สกุล (ประธานกลุ่ม/ผู้ก่อตั้ง)<span class="Txt_red_12"> *</span></th>
@@ -522,6 +556,16 @@
         </fieldset>
 
     </div> <!-- groupchild -->
+
+
+
+
+
+
+
+
+
+
 
 
     <div id="summary">
@@ -682,5 +726,38 @@ function AjaxSelectSubdistrict($province_id,$district_id,$sudistrict_name,$subdi
         $subdistrict_element.find('select').selectpicker('refresh');
     });
   }
+}
+</script>
+
+<script>
+var $type = "<?php echo $rs->type?>";
+if($type == '3'){
+    type3();
+}else if($type == '4'){
+    type4();
+}
+
+function type3(){
+  $('.txt1').text('ชื่อกลุ่ม');
+  $('.txt2').text('อายุกลุ่ม');
+  $('.txt3').text('ประธานกลุ่ม');
+  $('.txt4').text('แนบไฟล์รูปประจำกลุ่ม / สัญลักษณ์');
+
+  $('input[name=g_name]').attr('placeholder','ชื่อกลุ่ม');
+  $('input[name=gp_id_card]').attr('placeholder','เลขบัตรประชาชน ประธานกลุ่ม');
+  $('input[name=gp_fullname]').attr('placeholder','ชื่อและนามสกุล ประธานกลุ่ม');
+  $('input[name=gp_tel]').attr('placeholder','โทรศัพท์/มือถือ ประธานกลุ่ม');
+}
+
+function type4(){
+  $('.txt1').text('ชื่อองค์กร');
+  $('.txt2').text('อายุองค์กร');
+  $('.txt3').text('ผู้ก่อตั้ง');
+  $('.txt4').text('แนบไฟล์รูปประจำองค์กร / สัญลักษณ์');
+
+  $('input[name=g_name]').attr('placeholder','ชื่อองค์กร');
+  $('input[name=gp_id_card]').attr('placeholder','เลขบัตรประชาชน ผู้ก่อตั้ง');
+  $('input[name=gp_fullname]').attr('placeholder','ชื่อและนามสกุล ผู้ก่อตั้ง');
+  $('input[name=gp_tel]').attr('placeholder','โทรศัพท์/มือถือ ผู้ก่อตั้ง');
 }
 </script>
