@@ -2,12 +2,12 @@
 <div id="search">
     <div id="searchBox">
         <form class="form-inline">
-            <input name="txtsearch" type="text" class="form-control" placeholder="ชื่อ/เลขบัตรประชาชน ผู้ลงทะเบียน / รหัสหรือชื่อหลักสูตร" style="width:400px;">
-            <select name="status" class="form-control" style="width:auto">
+            <input name="txtsearch" type="text" class="form-control" placeholder="ชื่อ/เลขบัตรประชาชน ผู้ลงทะเบียน / รหัสหรือชื่อหลักสูตร" style="width:400px;" value="<?php echo @$_GET['txtsearch']?>">
+            <select name="last_status" class="form-control" style="width:auto">
                 <option value="">-- สถานะ --</option>
-                <option value="รอการตรวจสอบ" <?php echo @$_GET['status'] == 'รอการตรวจสอบ' ? 'selected=selected' : '';?>>รอการตรวจสอบ</option>
-                <option value="ผ่านการตรวจสอบ" <?php echo @$_GET['status'] == 'ผ่านการตรวจสอบ' ? 'selected=selected' : '';?>>ผ่านการตรวจสอบ</option>
-                <option value="ไม่ผ่านการตรวจสอบ" <?php echo @$_GET['status'] == 'ไม่ผ่านการตรวจสอบ' ? 'selected=selected' : '';?>>ไม่ผ่านการตรวจสอบ</option>
+                <option value="รอการตรวจสอบ" <?php echo @$_GET['last_status'] == 'รอการตรวจสอบ' ? 'selected=selected' : '';?>>รอการตรวจสอบ</option>
+                <option value="ผ่านการตรวจสอบ" <?php echo @$_GET['last_status'] == 'ผ่านการตรวจสอบ' ? 'selected=selected' : '';?>>ผ่านการตรวจสอบ</option>
+                <option value="ไม่ผ่านการตรวจสอบ" <?php echo @$_GET['last_status'] == 'ไม่ผ่านการตรวจสอบ' ? 'selected=selected' : '';?>>ไม่ผ่านการตรวจสอบ</option>
             </select>
             
             <?php echo form_dropdown('province_id', get_option('id','name','st_provinces order by name asc'), @$_GET['province_id'],'class="selectpicker province" data-live-search="true" data-size="7" title="-- จังหวัด --" style="width:auto"');?>
@@ -23,7 +23,7 @@
             </span>
 
             วันที่ลงทะเบียน
-            <input name="created" type="text" class="datepicker form-control fdate" value="" style="width:120px;" />
+            <input name="created" type="text" class="datepicker form-control fdate" value="<?php echo @$_GET['created']?>" style="width:120px;" />
             <button type="submit" class="btn btn-info"><img src="themes/admin/images/search.png" width="16" height="16" />ค้นหา</button>
         </form>
 

@@ -7,9 +7,29 @@ class Home extends Admin_Controller {
 	}
 
 	function index(){
-		$rs = new Applicant();
-		$data['count'] = $rs;
-        $data['rs'] = $rs->order_by('id','desc')->get_paged();
+		$data['rs'] = new Applicant();
+		$data['count'] = $data['rs'];
+
+		// ค้นหา
+		if(@$_GET['txtsearch']){
+			$data['rs'] = $data['rs']->where("(fullname like '%".$_GET['txtsearch']."%' or g_name like '%".$_GET['txtsearch']."%' or id_card like '%".$_GET['txtsearch']."%')");
+		}
+		if(@$_GET['last_status']){
+			$data['rs'] = $data['rs']->where("last_status",$_GET['last_status']);
+		}
+		if(@$_GET['province_id']){
+			$data['rs'] = $data['rs']->where("(province_id = ".$_GET['province_id']." or g_province_id = ".$_GET['province_id'].")");
+		}
+		if(@$_GET['district_id']){
+			$data['rs'] = $data['rs']->where("(district_id = ".$_GET['district_id']." or g_district_id = ".$_GET['district_id'].")");
+		}
+		if(@$_GET['created']){
+			$data['rs'] = $data['rs']->where("created like '%".Date2DB($_GET['created'])."%'");
+		}
+
+		$data['rs'] = $data['rs']->order_by('id','desc')->get_paged(20);
+		
+		// echo $this->db->last_query();
         $this->template->build('admin/index',$data);
     }
     
