@@ -35,6 +35,9 @@
 						<th>แนบไฟล์รูปภาพ <span class="Txt_red_12"> *</span></th>
 						<td>
 							<input type="file" name="image" id="fileField" class="form-control" style="width:auto">
+							<!-- validate error msg -->
+							<div id="image-error"></div>
+							<!-- validate error msg -->
 						</td>
 					</tr>
 					<tr>
@@ -43,6 +46,10 @@
 							<div class="form-inline">
 								<input name="id_card" type="text" class="form-control fidcard" value="" style="width:200px;" placeholder="เลขบัตรประชาชน" />
 								<input name="fullname" type="text" class="form-control" value="" style="width:300px;" placeholder="ชื่อและนามสกุล" />
+								<!-- validate error msg -->
+								<div id="id_card-error"></div>
+								<div id="fullname-error"></div>
+								<!-- validate error msg -->
 							</div>
 						</td>
 					</tr>
@@ -52,6 +59,9 @@
 							<div class="form-inline">
 								<input name="birthdate" type="text" class="form-control fdate datepicker" value="" style="width:120px;" />
 								(อายุ xx ปี)
+								<!-- validate error msg -->
+								<div id="birthdate-error"></div>
+								<!-- validate error msg -->
 							</div>
 						</td>
 					</tr>
@@ -75,6 +85,14 @@
 								</span>
 
 								<input name="postcode" type="text" class="form-control" placeholder="รหัสไปรษณีย์" style="width:120px;" value="" maxlength="5" />
+
+								<!-- validate error msg -->
+								<div id="address-error"></div>
+								<div id="province_id-error"></div>
+								<div id="district_id-error"></div>
+								<div id="subdistrict_id-error"></div>
+								<div id="postcode-error"></div>
+								<!-- validate error msg -->
 							</div>
 						</td>
 					</tr>
@@ -84,6 +102,9 @@
 							<div class="form-inline">
 								<input name="tel" type="text" class="form-control" value="" style="width:250px;" placeholder="โทรศัพท์" />/
 								<input name="mobile" type="text" class="form-control" value="" style="width:250px;" placeholder="มือถือ" />
+								<!-- validate error msg -->
+								<div id="mobile-error"></div>
+								<!-- validate error msg -->
 							</div>
 						</td>
 					</tr>
@@ -93,6 +114,9 @@
 							<div class="form-inline">
 								<input name="fax" type="text" class="form-control" value="" style="width:250px;" placeholder="โทรสาร" />/
 								<input name="email" type="text" class="form-control" value="" style="width:250px;" placeholder="อีเมล์" />
+								<!-- validate error msg -->
+								<div id="email-error"></div>
+								<!-- validate error msg -->
 							</div>
 						</td>
 					</tr>
@@ -108,6 +132,9 @@
 							<div class="form-inline">
 								<input name="f_id_card" type="text" class="form-control fidcard" value="" style="width:200px;" placeholder="เลขบัตรประชาชน บิดา" />
 								<input name="f_fullname" type="text" class="form-control" value="" style="width:300px;" placeholder="ชื่อและนามสกุล บิดา" />
+								<!-- validate error msg -->
+								<div id="f_fullname-error"></div>
+								<!-- validate error msg -->
 							</div>
 						</td>
 					</tr>
@@ -123,6 +150,9 @@
 							<div class="form-inline">
 								<input name="m_id_card" type="text" class="form-control fidcard" value="" style="width:200px;" placeholder="เลขบัตรประชาชน มารดา" />
 								<input name="m_fullname" type="text" class="form-control" value="" style="width:300px;" placeholder="ชื่อและนามสกุล มารดา" />
+								<!-- validate error msg -->
+								<div id="m_fullname-error"></div>
+								<!-- validate error msg -->
 							</div>
 						</td>
 					</tr>
@@ -159,6 +189,10 @@
 							<div class="form-inline">
 								<input name="r_id_card" type="text" class="form-control fidcard" value="" style="width:200px;" placeholder="เลขบัตรประชาชน" />
 								<input name="r_fullname" type="text" class="form-control" value="" style="width:300px;" placeholder="ชื่อและนามสกุล" />
+								<!-- validate error msg -->
+								<div id="r_id_card-error"></div>
+								<div id="r_fullname-error"></div>
+								<!-- validate error msg -->
 							</div>
 						</td>
 					</tr>
@@ -410,8 +444,7 @@
 					<tr>
 						<th>จำนวนสมาชิกกลุ่ม / ผู้บริหารงานองค์กร </th>
 						<td>
-							<div class="form-inline" style="margin-bottom:5px;"><input name="g_member_count" type="text" class="form-control"
-								 value="" style="width:80px;" placeholder="จำนวน" /> คน</div>
+							<div class="form-inline" style="margin-bottom:5px;"><input name="g_member_count" type="text" class="form-control" value="" style="width:80px;" placeholder="จำนวน" /> คน</div>
 							<textarea name="g_member_detail" cols="" rows="" class="form-control" placeholder="กรุณาแนบรายชื่อ"></textarea>
 						</td>
 					</tr>
@@ -470,6 +503,9 @@
 								ยินดีเข้าร่วมกิจกรรมกับกรมกิจการเด็กและเยาวชน
 								ขอรับรองว่าผลงานและเอกสารที่เสนอข้างต้นเป็นความจริงทุกประการ</span>
 							<input name="owner" type="text" class="form-control" value="" style="width:300px;" placeholder="ชื่อเจ้าของผลงาน" />
+							<!-- validate error msg -->
+							<div id="owner-error"></div>
+							<!-- validate error msg -->
 						</td>
 					</tr>
 					<!-- <tr>
@@ -482,14 +518,16 @@
 						<th>ผู้รับรองผลงาน <span class="Txt_red_12"> *</span></th>
 						<td>
 							<div class="form-inline">
-								<input name="contributor_name" type="text" class="form-control" id="textarea2" value="" style="width:300px;"
-								 placeholder="ชื่อและนามสกุล" />
-								<input name="contributor_position" type="text" class="form-control" id="textarea5" value="" style="width:300px;"
-								 placeholder="ตำแหน่ง" />
-								<input name="contributor_aff" type="text" class="form-control" id="textarea6" value="" style="width:300px;"
-								 placeholder="สังกัด" />
-								<input name="contributor_tel" type="text" class="form-control" id="textarea10" value="" style="width:300px;"
-								 placeholder="เบอร์ติดต่อ" />
+								<input name="contributor_name" type="text" class="form-control" id="textarea2" value="" style="width:300px;" placeholder="ชื่อและนามสกุล" />
+								<input name="contributor_position" type="text" class="form-control" id="textarea5" value="" style="width:300px;" placeholder="ตำแหน่ง" />
+								<input name="contributor_aff" type="text" class="form-control" id="textarea6" value="" style="width:300px;" placeholder="สังกัด" />
+								<input name="contributor_tel" type="text" class="form-control" id="textarea10" value="" style="width:300px;" placeholder="เบอร์ติดต่อ" />
+								<!-- validate error msg -->
+								<div id="contributor_name-error"></div>
+								<div id="contributor_position-error"></div>
+								<div id="contributor_aff-error"></div>
+								<div id="contributor_tel-error"></div>
+								<!-- validate error msg -->
 							</div>
 						</td>
 					</tr>
@@ -655,36 +693,36 @@
 				gp_tel: "required",
 			},
 			messages: {
-				image: "ห้ามเป็นค่าว่าง",
-				id_card: "ห้ามเป็นค่าว่าง",
-				fullname: "ห้ามเป็นค่าว่าง",
-				birthdate: "ห้ามเป็นค่าว่าง",
-				address: "ห้ามเป็นค่าว่าง",
-				province_id: "ห้ามเป็นค่าว่าง",
-				district_id: "ห้ามเป็นค่าว่าง",
-				subdistrict_id: "ห้ามเป็นค่าว่าง",
+				image: "แนบไฟล์รูปภาพ ห้ามเป็นค่าว่าง",
+				id_card: "เลขบัตรประชาชน ห้ามเป็นค่าว่าง",
+				fullname: "ชื่อ-สกุล ห้ามเป็นค่าว่าง",
+				birthdate: "วันเดือนปีเกิด ห้ามเป็นค่าว่าง",
+				address: "บ้านเลขที่ ห้ามเป็นค่าว่าง",
+				province_id: "จังหวัด ห้ามเป็นค่าว่าง",
+				district_id: "อำเภอ ห้ามเป็นค่าว่าง",
+				subdistrict_id: "ตำบล ห้ามเป็นค่าว่าง",
 				postcode: {
-					required: 'ห้ามเป็นค่าว่าง',
-					number: 'เป็นตัวเลขเท่านั้น',
+					required: 'รหัสไปรษณีย์ ห้ามเป็นค่าว่าง',
+					number: 'รหัสไปรษณีย์ เป็นตัวเลขเท่านั้น',
 				},
 				// tel: "ห้ามเป็นค่าว่าง",
-				mobile: "ห้ามเป็นค่าว่าง",
+				mobile: "มือถือ ห้ามเป็นค่าว่าง",
 				// fax: "ห้ามเป็นค่าว่าง",
-				email: "ห้ามเป็นค่าว่าง",
+				email: "อีเมล์ ห้ามเป็นค่าว่าง",
 				// f_id_card: "ห้ามเป็นค่าว่าง",
-				f_fullname: "ห้ามเป็นค่าว่าง",
+				f_fullname: "ชื่อ-สกุล (บิดา) ห้ามเป็นค่าว่าง",
 				// f_tel: "ห้ามเป็นค่าว่าง",
 				// m_id_card: "ห้ามเป็นค่าว่าง",
-				m_fullname: "ห้ามเป็นค่าว่าง",
+				m_fullname: "ชื่อ-สกุล (มารดา) ห้ามเป็นค่าว่าง",
 				// m_tel: "ห้ามเป็นค่าว่าง",
-				r_id_card: "ห้ามเป็นค่าว่าง",
-				r_fullname: "ห้ามเป็นค่าว่าง",
+				r_id_card: "เลขบัตรประชาชนบุคคลอ้างอิง ห้ามเป็นค่าว่าง",
+				r_fullname: "ชื่อ-สกุลบุคคลอ้างอิง ห้ามเป็นค่าว่าง",
 				// r_tel: "ห้ามเป็นค่าว่าง",
-				owner: "ห้ามเป็นค่าว่าง",
-				contributor_name: "ห้ามเป็นค่าว่าง",
-				contributor_position: "ห้ามเป็นค่าว่าง",
-				contributor_aff: "ห้ามเป็นค่าว่าง",
-				contributor_tel: "ห้ามเป็นค่าว่าง",
+				owner: "ชื่อเจ้าของผลงาน ห้ามเป็นค่าว่าง",
+				contributor_name: "ชื่อและนามสกุลผู้รับรองผลงาน ห้ามเป็นค่าว่าง",
+				contributor_position: "ตำแหน่งผู้รับรองผลงาน ห้ามเป็นค่าว่าง",
+				contributor_aff: "สังกัดผู้รับรองผลงาน ห้ามเป็นค่าว่าง",
+				contributor_tel: "เบอร์ติดต่อผู้รับรองผลงาน ห้ามเป็นค่าว่าง",
 				g_name: "ห้ามเป็นค่าว่าง",
 				g_create: "ห้ามเป็นค่าว่าง",
 				g_age: "ห้ามเป็นค่าว่าง",
@@ -704,13 +742,15 @@
 			errorElement: "em",
 			errorPlacement: function (error, element) {
 				// Add the `help-block` class to the error element
-				error.addClass("help-block");
+				// error.addClass("help-block");
 
-				if (element.prop("type") === "checkbox") {
-					error.insertAfter(element.parent("label"));
-				} else {
-					error.insertAfter(element);
-				}
+				// if (element.prop("type") === "checkbox") {
+				// 	error.insertAfter(element.parent("label"));
+				// } else {
+				// 	error.insertAfter(element);
+				// }
+				
+				error.insertAfter( $('#'+element.attr("name")+'-error') );
 			},
 			highlight: function (element, errorClass, validClass) {
 				$(element).parents(".col-sm-5").addClass("has-error").removeClass("has-success");
