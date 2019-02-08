@@ -38,13 +38,13 @@
 | the active record class
 */
 
-$active_group = 'local';
+$active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'c11preschool';
-$db['default']['password'] = 'hprs@20!3';
-$db['default']['database'] = 'thgcd_preschool';
+$db['default']['hostname'] = 'mysql1.favouritehosting.com';
+$db['default']['username'] = 'c1child_celeb';
+$db['default']['password'] = 'cH1lD2018';
+$db['default']['database'] = 'c1child_celeb';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

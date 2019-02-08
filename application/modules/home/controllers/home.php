@@ -60,8 +60,10 @@ class Home extends Public_Controller {
 
 	function chkstatus(){
 		$applicant = new Applicant();
-		$data['rs'] = $applicant->where('code = "'.$_GET['code'].'"')->get();
-		$this->template->build('chkstatus',$data);
+		if(@$_GET['code']){
+			$data['rs'] = $applicant->where('code = "'.$_GET['code'].'"')->get();
+		}
+		$this->template->build('chkstatus',@$data);
 	}
 
 }

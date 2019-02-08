@@ -5,7 +5,7 @@
             <h2>ตรวจสอบสถานะ</h2>
             <div id="custom-search-input">
                 <div class="input-group col-md-3">
-                    <input name="code" type="text" class="search-query form-control" placeholder="รหัสตรวจสอบ" value="<?php echo $_GET['code']?>" />
+                    <input name="code" type="text" class="search-query form-control" placeholder="รหัสตรวจสอบ" value="<?php echo @$_GET['code']?>" />
                     <span class="input-group-btn">
                         <input class="btn" type="submit" value="ตรวจสอบ">
                     </span>
@@ -24,13 +24,13 @@
     <div class="wrap">
         <div>
             ชื่อ-สกุล / กลุ่ม/องค์กร : 
-            <?php if($rs->type == 1 || $rs->type == 2):?>
+            <?php if(@$rs->type == 1 || @$rs->type == 2):?>
 
-                <strong><?php echo $rs->fullname?></strong>
+                <strong><?php echo @$rs->fullname?></strong>
 
-            <?php elseif(($rs->type == 3 || $rs->type == 4)):?>
+            <?php elseif((@$rs->type == 3 || @$rs->type == 4)):?>
 
-                <strong><?php echo $rs->g_name?></strong>
+                <strong><?php echo @$rs->g_name?></strong>
 
             <?php endif;?>
         </div> 
@@ -44,13 +44,15 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($rs->status->order_by('status_date','desc')->get() as $row):?>
-                <tr>
-                    <td style="width:25% !important;"><?php echo DB2Date($row->status_date) ?></td>
-                    <td style="width:25% !important;"><?php echo $row->status?></td>
-                    <td style="width:50% !important;"><?php echo empty($row->status_note) ? '-' : $row->status_note ?></td>
-                </tr>
-                <?php endforeach;?>
+                <?php if(@$_GET['code']):?>
+                    <?php foreach($rs->status->order_by('status_date','desc')->get() as $row):?>
+                        <tr>
+                            <td style="width:25% !important;"><?php echo DB2Date($row->status_date) ?></td>
+                            <td style="width:25% !important;"><?php echo $row->status?></td>
+                            <td style="width:50% !important;"><?php echo empty($row->status_note) ? '-' : $row->status_note ?></td>
+                        </tr>
+                    <?php endforeach;?>
+                <?php endif;?>
             </tbody>
         </table>
     </div>

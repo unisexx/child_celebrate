@@ -109,8 +109,8 @@ $(document).ready(function(){
 
 <link rel="stylesheet" href="themes/child_celebrate/css/bootstrap-select.css">
 <script src="themes/child_celebrate/js/bootstrap-select.js"></script>
-<script src="media/js/jquery-validation-1.17.0/dist/jquery.validate.js"></script>
-<script src="media/js/jquery-validation-1.17.0/dist/additional-methods.js"></script>
+<script src="media/js/jquery-validation-1.19.0/dist/jquery.validate.js"></script>
+<script src="media/js/jquery-validation-1.19.0/dist/additional-methods.js"></script>
 
 
 <script src="media/js/bootstrap-datepicker-thai/js/bootstrap-datepicker.js"></script>
