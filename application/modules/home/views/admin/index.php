@@ -2,15 +2,16 @@
 <div id="search">
     <div id="searchBox">
         <form class="form-inline">
-            <input name="txtsearch" type="text" class="form-control" placeholder="ชื่อ/เลขบัตรประชาชน ผู้ลงทะเบียน / รหัสหรือชื่อหลักสูตร" style="width:400px;" value="<?php echo @$_GET['txtsearch']?>">
+            <input name="txtsearch" type="text" class="form-control" placeholder="ชื่อ / เลขบัตรผู้สมัคร / รหัสตรวจสอบ" style="width:400px;" value="<?php echo @$_GET['txtsearch']?>">
             <select name="last_status" class="form-control" style="width:auto">
                 <option value="">-- สถานะ --</option>
                 <option value="รอการตรวจสอบ" <?php echo @$_GET['last_status'] == 'รอการตรวจสอบ' ? 'selected=selected' : '';?>>รอการตรวจสอบ</option>
                 <option value="ผ่านการตรวจสอบ" <?php echo @$_GET['last_status'] == 'ผ่านการตรวจสอบ' ? 'selected=selected' : '';?>>ผ่านการตรวจสอบ</option>
                 <option value="ไม่ผ่านการตรวจสอบ" <?php echo @$_GET['last_status'] == 'ไม่ผ่านการตรวจสอบ' ? 'selected=selected' : '';?>>ไม่ผ่านการตรวจสอบ</option>
+                <option value="รอเอกสาร" <?php echo @$_GET['last_status'] == 'รอเอกสาร' ? 'selected=selected' : '';?>>รอเอกสาร</option>
             </select>
             
-            <?php echo form_dropdown('province_id', get_option('id','name','st_provinces order by name asc'), @$_GET['province_id'],'class="selectpicker province" data-live-search="true" data-size="7" title="-- จังหวัด --" style="width:auto"');?>
+            <?php echo form_dropdown('province_id', get_option('id','name','st_provinces order by name asc'), @$_GET['province_id'],'class="selectpicker province" data-live-search="true" data-size="7" title="-- จังหวัด --" style="width:auto"','ทุกจังหวัด');?>
 
             <span class="spanDistrict">
             <?php if(@$_GET['province_id']):?>
@@ -111,6 +112,8 @@
                 <img src="themes/admin/images/ico_passed.png" width="32" height="32" class="vtip" title="ผ่านการตรวจสอบ">
             <?php elseif($row->last_status == 'ไม่ผ่านการตรวจสอบ'):?>
                 <img src="themes/admin/images/ico_reject.png" width="32" height="32" class="vtip" title="ไม่ผ่าน">
+            <?php elseif($row->last_status == 'รอเอกสาร'):?>
+                <img src="themes/admin/images/document.png" width="32" height="32" class="vtip" title="รอเอกสาร">
             <?php endif;?>
         </td>
         <td>

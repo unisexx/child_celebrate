@@ -12,7 +12,7 @@ class Home extends Admin_Controller {
 
 		// ค้นหา
 		if(@$_GET['txtsearch']){
-			$data['rs'] = $data['rs']->where("(fullname like '%".$_GET['txtsearch']."%' or g_name like '%".$_GET['txtsearch']."%' or id_card like '%".$_GET['txtsearch']."%')");
+			$data['rs'] = $data['rs']->where("(fullname like '%".$_GET['txtsearch']."%' or g_name like '%".$_GET['txtsearch']."%' or id_card like '%".$_GET['txtsearch']."%'  or code like '%".$_GET['txtsearch']."%')");
 		}
 		if(@$_GET['last_status']){
 			$data['rs'] = $data['rs']->where("last_status",$_GET['last_status']);
@@ -69,6 +69,7 @@ class Home extends Admin_Controller {
 			$status = new Status();
 			$_POST['applicant_id'] = $id;
 			$_POST['status_date'] = Date2DB($_POST['status_date']);
+			$_POST['user_id'] = user()->id;
             $status->from_array($_POST);
 			$status->save();
 

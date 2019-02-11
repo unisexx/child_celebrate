@@ -44,13 +44,10 @@
                     <td>
                         <div class="form-inline">
                             <select name="status" class="form-control" style="width:auto;">
-                                <option value="รอการตรวจสอบ" <?php echo $rs->status == 'รอการตรวจสอบ' ? 'selected=selected' :
-                                    '';?>>รอการตรวจสอบ</option>
-                                <option value="ผ่านการตรวจสอบ" <?php echo $rs->status == 'ผ่านการตรวจสอบ' ? 'selected=selected'
-                                    :
-                                    '';?>>ผ่านการตรวจสอบ</option>
-                                <option value="ไม่ผ่านการตรวจสอบ" <?php echo $rs->status == 'ไม่ผ่านการตรวจสอบ' ?
-                                    'selected=selected' : '';?>>ไม่ผ่านการตรวจสอบ</option>
+                                <option value="รอการตรวจสอบ" <?php echo $rs->status == 'รอการตรวจสอบ' ? 'selected=selected' : '';?>>รอการตรวจสอบ</option>
+                                <option value="ผ่านการตรวจสอบ" <?php echo $rs->status == 'ผ่านการตรวจสอบ' ? 'selected=selected' : '';?>>ผ่านการตรวจสอบ</option>
+                                <option value="ไม่ผ่านการตรวจสอบ" <?php echo $rs->status == 'ไม่ผ่านการตรวจสอบ' ? 'selected=selected' : '';?>>ไม่ผ่านการตรวจสอบ</option>
+                                <option value="รอเอกสาร" <?php echo $rs->status == 'รอเอกสาร' ? 'selected=selected' : '';?>>รอเอกสาร</option>
                             </select>
                         </div>
                     </td>
@@ -81,15 +78,17 @@
             <legend>ประวัติสถานะ</legend>
             <table class="tbRegister">
                 <tr style="background:#eee;">
-                    <th style="width:25% !important;">วันที่</th>
-                    <th style="width:25% !important;">สถานะ</th>
+                    <th style="width:15% !important;">วันที่</th>
+                    <th style="width:15% !important;">สถานะ</th>
                     <th style="width:50% !important;">หมายเหตุ</th>
+                    <th style="width:20% !important;">เจ้าหน้าที่ผู้ตรวจสอบ</th>
                 </tr>
                 <?php foreach($rs->status->order_by('status_date','desc')->get() as $row):?>
                 <tr>
-                    <td style="width:25% !important;"><?php echo DB2Date($row->status_date) ?></td>
-                    <td style="width:25% !important;"><?php echo $row->status?></td>
+                    <td style="width:15% !important;"><?php echo DB2Date($row->status_date) ?></td>
+                    <td style="width:15% !important;"><?php echo $row->status?></td>
                     <td style="width:50% !important;"><?php echo empty($row->status_note) ? '-' : $row->status_note ?></td>
+                    <td style="width:20% !important;"><?php echo $row->user->name?></td>
                 </tr>
                 <?php endforeach?>
             </table>
