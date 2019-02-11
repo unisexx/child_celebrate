@@ -14,12 +14,13 @@
         <option value="8" <?php echo $rs->career == 8 ? 'selected=selected' : '';?>>สาขาศีลธรรม จริยธรรม และคุณธรรม</option>
         <option value="9" <?php echo $rs->career == 9 ? 'selected=selected' : '';?>>สาขาสิ่งประดิษฐ์และนวัตกรรม</option>
         <option value="10" <?php echo $rs->career == 10 ? 'selected=selected' : '';?>>สาขาสือมวลชนเพื่อเด็กและเยาวชนที่ป้องกันปัญหาสังคม</option>
+        <option value="11" <?php echo $rs->career == 11 ? 'selected=selected' : '';?>>สาขาอาชีพ</option>
     </select>
     
     <select disabled name="type" class="form-control" style="width:auto; margin-top:10px; background:#FF9">
         <option value="1" <?php echo $rs->type == 1 ? 'selected=selected' : '';?>>ประเภท เด็กและเยาวชนดีเด่นแห่งชาติ</option>
-        <option value="2" <?php echo $rs->type == 2 ? 'selected=selected' : '';?>>ประเภท บุคคลผู้ทำคุณประโยชน์ต่อเด็กและเยาวชน</option>
         <option value="3" <?php echo $rs->type == 3 ? 'selected=selected' : '';?>>ประเภท กลุ่มเด็กและเยาวชนดีเด่นแห่งชาติ</option>
+        <option value="2" <?php echo $rs->type == 2 ? 'selected=selected' : '';?>>ประเภท บุคคลผู้ทำคุณประโยชน์ต่อเด็กและเยาวชน</option>
         <option value="4" <?php echo $rs->type == 4 ? 'selected=selected' : '';?>>ประเภท องค์กรที่ทำคุณประโยชน์ต่อเด็กและเยาวชน</option>
     </select>
 </div>
@@ -143,7 +144,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>ที่อยู่<span class="Txt_red_12"> *</span></th>
+                    <th>สถานที่ติดต่อ<span class="Txt_red_12"> *</span></th>
                     <td><input name="address" type="text" class="form-control" value="<?php echo @$rs->address?>" placeholder="บ้านเลขที่ หมู่ ซอย ถนน"
                             style="width:500px; margin-bottom:5px;" />
                         <div class="form-inline">
@@ -197,6 +198,15 @@
                         </div>
                     </td>
                 </tr>
+                <tr>
+                    <th>เฟสบุ๊ค / ไอดีไลน์</th>
+                    <td>
+                        <div class="form-inline">
+                            <input name="facebook" type="text" class="form-control" value="<?php echo @$rs->facebook?>" style="width:250px;" placeholder="เฟสบุ๊ค" />/
+                            <input name="line" type="text" class="form-control" value="<?php echo @$rs->line?>" style="width:250px;" placeholder="ไอดีไลน์" />
+                        </div>
+                    </td>
+                </tr>
             </table>
         </fieldset>
 
@@ -204,11 +214,11 @@
             <legend>ข้อมูลบิดา มารดา และผู้ปกครอง</legend>
             <table class="tbRegister">
                 <tr>
-                    <th>เลขบัตรประชาชน / ชื่อ-สกุล (บิดา)<span class="Txt_red_12"> *</span></th>
+                    <th><!--เลขบัตรประชาชน / -->ชื่อ-สกุล (บิดา)<span class="Txt_red_12"> *</span></th>
                     <td>
                         <div class="form-inline">
-                            <input name="f_id_card" type="text" class="form-control fidcard" value="<?php echo @$rs->f_id_card?>"
-                                style="width:200px;" placeholder="เลขบัตรประชาชน บิดา" />
+                            <!-- <input name="f_id_card" type="text" class="form-control fidcard" value="<?php echo @$rs->f_id_card?>"
+                                style="width:200px;" placeholder="เลขบัตรประชาชน บิดา" /> -->
                             <input name="f_fullname" type="text" class="form-control" value="<?php echo @$rs->f_fullname?>" style="width:300px;"
                                 placeholder="ชื่อและนามสกุล บิดา" />
                         </div>
@@ -222,11 +232,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>เลขบัตรประชาชน / ชื่อ-สกุล (มารดา)<span class="Txt_red_12"> *</span></th>
+                    <th><!--เลขบัตรประชาชน / -->ชื่อ-สกุล (มารดา)<span class="Txt_red_12"> *</span></th>
                     <td>
                         <div class="form-inline">
-                            <input name="m_id_card" type="text" class="form-control fidcard" value="<?php echo @$rs->m_id_card?>"
-                                style="width:200px;" placeholder="เลขบัตรประชาชน มารดา" />
+                            <!-- <input name="m_id_card" type="text" class="form-control fidcard" value="<?php echo @$rs->m_id_card?>"
+                                style="width:200px;" placeholder="เลขบัตรประชาชน มารดา" /> -->
                             <input name="m_fullname" type="text" class="form-control" value="<?php echo @$rs->m_fullname?>" style="width:300px;"
                                 placeholder="ชื่อและนามสกุล มารดา" />
                         </div>
@@ -239,12 +249,13 @@
                             placeholder="โทรศัพท์/มือถือ มารดา" />
                     </td>
                 </tr>
+                <?php if($rs->type <> 2):?>
                 <tr>
-                    <th>เลขบัตรประชาชน / ชื่อ-สกุล (ผู้ปกครอง)</th>
+                    <th><!--เลขบัตรประชาชน / -->ชื่อ-สกุล (ผู้ปกครอง)</th>
                     <td>
                         <div class="form-inline">
-                            <input name="p_id_card" type="text" class="form-control fidcard" value="<?php echo @$rs->p_id_card?>"
-                                style="width:200px;" placeholder="เลขบัตรประชาชน ผู้ปกครอง" />
+                            <!-- <input name="p_id_card" type="text" class="form-control fidcard" value="<?php echo @$rs->p_id_card?>"
+                                style="width:200px;" placeholder="เลขบัตรประชาชน ผู้ปกครอง" /> -->
                             <input name="p_fullname" type="text" class="form-control" value="<?php echo @$rs->p_fullname?>" style="width:300px;"
                                 placeholder="ชื่อและนามสกุล ผู้ปกครอง" />
                         </div>
@@ -257,6 +268,7 @@
                             placeholder="โทรศัพท์/มือถือ ผู้ปกครอง" />
                     </td>
                 </tr>
+                <?php endif;?>
             </table>
         </fieldset>
 
@@ -264,11 +276,11 @@
             <legend>ข้อมูลบุคคลอ้างอิง (ไม่ใช่บุคคลในครอบครัว)</legend>
             <table class="tbRegister">
                 <tr>
-                    <th>เลขบัตรประชาชน / ชื่อ-สกุล<span class="Txt_red_12"> *</span></th>
+                    <th><!--เลขบัตรประชาชน / -->ชื่อ-สกุล<span class="Txt_red_12"> *</span></th>
                     <td>
                         <div class="form-inline">
-                            <input name="r_id_card" type="text" class="form-control fidcard" value="<?php echo @$rs->r_id_card?>"
-                                style="width:200px;" placeholder="เลขบัตรประชาชน" />
+                            <!-- <input name="r_id_card" type="text" class="form-control fidcard" value="<?php echo @$rs->r_id_card?>"
+                                style="width:200px;" placeholder="เลขบัตรประชาชน" /> -->
                             <input name="r_fullname" type="text" class="form-control" value="<?php echo @$rs->r_fullname?>" style="width:300px;"
                                 placeholder="ชื่อและนามสกุล" />
                         </div>
@@ -314,9 +326,15 @@
                                 <option value="9" <?php echo $rs->studying_type == 9 ? 'selected=selected' : '';?>>บัณฑิตปี 3 (ปริญญาตรี)</option>
                                 <option value="10" <?php echo $rs->studying_type == 10 ? 'selected=selected' : '';?>>บัณฑิตปี 4 (ปริญญาตรี)</option>
                                 <option value="11" <?php echo $rs->studying_type == 11 ? 'selected=selected' : '';?>>มหาบัณฑิต (ปริญญาโท)</option>
+                                <option value="12" <?php echo $rs->studying_type == 12 ? 'selected=selected' : '';?>>ดุษฎีบัณฑิต (ปริญญาเอก)</option>
+                                <option value="99" <?php echo $rs->studying_type == 99 ? 'selected=selected' : '';?>>อื่นๆ</option>
                             </select>
-                            <input name="studying_name" type="text" class="form-control" value="<?php echo @$rs->studying_name?>" style="width:300px;"
-                                placeholder="ชื่อสถานศึกษา" />
+
+                            <?php if($rs->studying_type == 99):?>
+                                <input name="studying_other" type="text" class="form-control" value="<?php echo @$rs->studying_other?>" style="width:300px;" placeholder="ระบุ">
+                            <?php endif;?>
+
+                            <input name="studying_name" type="text" class="form-control" value="<?php echo @$rs->studying_name?>" style="width:300px;" placeholder="ชื่อสถานศึกษา" />
                         </div>
                     </td>
                 </tr>
@@ -336,9 +354,15 @@
                                 <option value="9" <?php echo $rs->graduate_type == 9 ? 'selected=selected' : '';?>>บัณฑิตปี 3 (ปริญญาตรี)</option>
                                 <option value="10" <?php echo $rs->graduate_type == 10 ? 'selected=selected' : '';?>>บัณฑิตปี 4 (ปริญญาตรี)</option>
                                 <option value="11" <?php echo $rs->graduate_type == 11 ? 'selected=selected' : '';?>>มหาบัณฑิต (ปริญญาโท)</option>
+                                <option value="12" <?php echo $rs->graduate_type == 12 ? 'selected=selected' : '';?>>ดุษฎีบัณฑิต (ปริญญาเอก)</option>
+                                <option value="99" <?php echo $rs->graduate_type == 99 ? 'selected=selected' : '';?>>อื่นๆ</option>
                             </select>
-                            <input name="graduate_name" type="text" class="form-control" value="<?php echo @$rs->graduate_name?>" style="width:300px;"
-                                placeholder="ชื่อสถานศึกษา" /></div>
+
+                            <?php if($rs->graduate_type == 99):?>
+                                <input name="graduate_type" type="text" class="form-control" value="<?php echo @$rs->graduate_type?>" style="width:300px;" placeholder="ระบุ">
+                            <?php endif;?>
+
+                            <input name="graduate_name" type="text" class="form-control" value="<?php echo @$rs->graduate_name?>" style="width:300px;" placeholder="ชื่อสถานศึกษา" /></div>
                     </td>
                 </tr>
 
@@ -406,7 +430,7 @@
                                 <option>2559</option>
                                 <option>2558</option>
                             </select> /
-                            <input name="g_age" type="text" class="form-control" placeholder="อายุกลุ่ม"
+                            <input name="g_age" type="text" class="form-control" placeholder="อายุองค์กร"
                                 style="width:80px;" value="<?php echo @$rs->g_age?>" maxlength="3" /> ปี
                         </div>
                     </td>
@@ -466,6 +490,26 @@
                         </div>
                     </td>
                 </tr>
+                <!-- ประเภทกลุ่มเด็ก -->
+                <tr id="trFbLineBlock">
+                    <th>เฟสบุ๊ค / ไอดีไลน์</th>
+                    <td>
+                        <div class="form-inline">
+                            <input name="g_facebook" type="text" class="form-control" value="<?php echo @$rs->g_facebook?>" style="width:250px;" placeholder="เฟสบุ๊ค" />/
+                            <input name="g_line" type="text" class="form-control" value="<?php echo @$rs->g_line?>" style="width:250px;" placeholder="ไอดีไลน์" />
+                        </div>
+                    </td>
+                </tr>
+                <!-- ประเภทองค์กร -->
+                <tr id="trFbWebBlock">
+                    <th>เฟสบุ๊ค / เว็บไซต์</th>
+                    <td>
+                        <div class="form-inline">
+                            <input name="g_facebook" type="text" class="form-control" value="<?php echo @$rs->g_facebook?>" style="width:250px;" placeholder="เฟสบุ๊ค" />/
+                            <input name="g_website" type="text" class="form-control" value="<?php echo @$rs->g_website?>" style="width:250px;" placeholder="เว็บไซต์" />
+                        </div>
+                    </td>
+                </tr>
             </table>
         </fieldset>
 
@@ -473,11 +517,11 @@
             <legend>ข้อมูล<span class="txt3"></span> และบุคคลอ้างอิง</legend>
             <table class="tbRegister">
                 <tr>
-                    <th>เลขบัตรประชาชน / ชื่อ-สกุล (ประธานกลุ่ม/ผู้ก่อตั้ง)<span class="Txt_red_12"> *</span></th>
+                    <th><!--เลขบัตรประชาชน / -->ชื่อ-สกุล (ประธานกลุ่ม/ผู้ก่อตั้ง)<span class="Txt_red_12"> *</span></th>
                     <td>
                         <div class="form-inline">
-                            <input name="gp_id_card" type="text" class="form-control fidcard" value="<?php echo @$rs->gp_id_card?>"
-                                style="width:200px;" placeholder="เลขบัตรประชาชน ประธานกลุ่ม" />
+                            <!-- <input name="gp_id_card" type="text" class="form-control fidcard" value="<?php echo @$rs->gp_id_card?>"
+                                style="width:200px;" placeholder="เลขบัตรประชาชน ประธานกลุ่ม" /> -->
                             <input name="gp_fullname" type="text" class="form-control" value="<?php echo @$rs->gp_fullname?>" style="width:300px;"
                                 placeholder="ชื่อและนามสกุล ประธานกลุ่ม" />
                         </div>
@@ -491,11 +535,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>เลขบัตรประชาชน / ชื่อ-สกุล (บุคคลอ้างอิง)</th>
+                    <th><!--เลขบัตรประชาชน / -->ชื่อ-สกุล (บุคคลอ้างอิง)</th>
                     <td>
                         <div class="form-inline">
-                            <input name="gpr_id_card" type="text" class="form-control fidcard" value="<?php echo @$rs->gpr_id_card?>"
-                                style="width:200px;" placeholder="เลขบัตรประชาชน บุคคลอ้างอิง" />
+                            <!-- <input name="gpr_id_card" type="text" class="form-control fidcard" value="<?php echo @$rs->gpr_id_card?>"
+                                style="width:200px;" placeholder="เลขบัตรประชาชน บุคคลอ้างอิง" /> -->
                             <input name="gpr_fullname" type="text" class="form-control" value="<?php echo @$rs->gpr_fullname?>" style="width:300px;"
                                 placeholder="ชื่อและนามสกุล บุคคลอ้างอิง" />
                         </div>
@@ -506,6 +550,12 @@
                     <td>
                         <input name="gpr_tel" type="text" class="form-control" value="<?php echo @$rs->gpr_tel?>" style="width:250px;"
                             placeholder="โทรศัพท์/มือถือ บุคคลอ้างอิง" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>อีเมล์ (บุคคลอ้างอิง)</th>
+                    <td>
+                        <input name="gpr_email" type="text" class="form-control" value="<?php echo @$rs->gpr_email?>" style="width:250px;" placeholder="อีเมล์ บุคคลอ้างอิง" />
                     </td>
                 </tr>
             </table>
@@ -526,30 +576,30 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>ลักษณะของกลุ่ม / องค์กร/หน่วยงาน </th>
+                    <th>ลักษณะขององค์กร/หน่วยงาน </th>
                     <td>
                         <div>
-                            <input name="g_nature_type" type="radio" value="1" <?php echo $rs->g_nature_type == 1 ? 'checked' : '' ;?>> เป็นกลุ่มองค์กรอิสระไม่สังกัดหน่วยงานใด ๆ
+                            <input name="g_nature_type" type="radio" value="1" <?php echo $rs->g_nature_type == 1 ? 'checked' : '' ;?>> เป็นองค์กรอิสระไม่สังกัดหน่วยงานใดๆ
                         </div>
                         <div class="form-inline">
                             <input name="g_nature_type" type="radio" value="2" <?php echo $rs->g_nature_type == 2 ? 'checked' : '' ;?>> 
-                            เป็นกลุ่ม/องค์กร/สังกัดหน่วยงาน
+                            เป็นองค์กร/สังกัดหน่วยงาน
 
                             <input name="g_nature_name" type="text" class="form-control" value="<?php echo @$rs->g_nature_name?>" style="width:350px;" placeholder="ระบุชื่อหน่วยงาน" />
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <th>ปรัชญาการดำเนินงาน </th>
-                    <td>
-                        <textarea name="g_philo" cols="" rows="" class="form-control"><?php echo @$rs->g_philo?></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <th>จำนวนสมาชิกกลุ่ม / ผู้บริหารงานองค์กร </th>
+                    <th>ผู้บริหารงานองค์กร </th>
                     <td>
                         <div class="form-inline" style="margin-bottom:5px;"><input name="g_member_count" type="text" class="form-control" value="<?php echo @$rs->g_member_count?>" style="width:80px;" placeholder="จำนวน" /> คน</div>
                         <textarea name="g_member_detail" cols="" rows="" class="form-control" placeholder="กรุณาแนบรายชื่อ"><?php echo @$rs->g_member_detail?></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th>ปรัชญาการดำเนินงาน </th>
+                    <td>
+                        <textarea name="g_philo" cols="" rows="" class="form-control"><?php echo @$rs->g_philo?></textarea>
                     </td>
                 </tr>
             </table>
@@ -578,23 +628,23 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>ผลงานที่ผ่านการประกวดหรือแข่งขัน </th>
+                    <th>ผลงานที่ผ่านการประกวดแข่งขัน หรือสร้างชื่อเสียง </th>
                     <td>
                         <textarea name="contest_1" cols="" rows="" class="form-control" placeholder="ผลงานระดับนานาชาติ" style="margin-bottom:5px;"><?php echo @$rs->contest_1?></textarea>
                         <textarea name="contest_2" cols="" rows="" class="form-control" placeholder="ผลงานระดับชาติ"><?php echo @$rs->contest_2?></textarea>
                     </td>
                 </tr>
                 <tr>
-                    <th>สรุปพฤติกรรมดีเด่นอันเป็นรูปธรรมฯ </th>
+                    <th>ให้คัดเลือกผลงานดีเด่นที่เป็นรูปธรรม </th>
                     <td>
-                        <textarea name="behavior" cols="" rows="" class="form-control" placeholder="สรุปพฤติกรรมดีเด่นอันเป็นรูปธรรมเกี่ยวกับกระบวนการพัฒนาและคุณภาพของงานในการสร้างคุณงามความดีของเด็กและเยาวชน  กลุ่มเด็กและเยาวชน บุคคล  (อธิบายถึงความวิริยะอุตสาหะ)"
+                        <textarea name="behavior" cols="" rows="" class="form-control" placeholder="ให้คัดเลือกผลงานดีเด่นที่เป็นรูปธรรมเกี่ยวกับกระบวนการพัฒนาและคุณภาพของงานในการสร้างคุณงามความดีของเด็กและเยาวชน  กลุ่มเด็กและเยาวชน บุคคล  (อธิบายถึงความวิริยะอุตสาหะ)"
                             style="height:80px;"><?php echo @$rs->behavior?></textarea>
                     </td>
                 </tr>
                 <tr>
-                    <th>ทัศนคติของผู้สมัครฯ</th>
+                    <th>ทัศนคติของเจ้าของผลงาน</th>
                     <td>
-                        <textarea name="attitude" cols="" rows="" class="form-control" placeholder="ทัศนคติของผู้สมัครในเรื่องการทำประโยชน์หรือการเสียสละต่อสังคม"><?php echo @$rs->attitude?></textarea>
+                        <textarea name="attitude" cols="" rows="" class="form-control" placeholder="ทัศนคติของเจ้าของผลงานในเรื่องการทำประโยชน์หรือการเสียสละต่อสังคม"><?php echo @$rs->attitude?></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -737,27 +787,35 @@ if($type == '3'){
     type4();
 }
 
-function type3(){
-  $('.txt1').text('ชื่อกลุ่ม');
-  $('.txt2').text('อายุกลุ่ม');
-  $('.txt3').text('ประธานกลุ่ม');
-  $('.txt4').text('แนบไฟล์รูปประจำกลุ่ม / สัญลักษณ์');
+function type3() {
+    $('.txt1').text('ชื่อกลุ่ม');
+    $('.txt2').text('อายุกลุ่ม');
+    $('.txt3').text('ประธานกลุ่ม');
+    $('.txt4').text('แนบไฟล์รูปประจำกลุ่ม / สัญลักษณ์');
 
-  $('input[name=g_name]').attr('placeholder','ชื่อกลุ่ม');
-  $('input[name=gp_id_card]').attr('placeholder','เลขบัตรประชาชน ประธานกลุ่ม');
-  $('input[name=gp_fullname]').attr('placeholder','ชื่อและนามสกุล ประธานกลุ่ม');
-  $('input[name=gp_tel]').attr('placeholder','โทรศัพท์/มือถือ ประธานกลุ่ม');
+    $('input[name=g_name]').attr('placeholder', 'ชื่อกลุ่ม');
+    $('input[name=g_age]').attr('placeholder', 'อายุกลุ่ม');
+    $('input[name=gp_id_card]').attr('placeholder', 'เลขบัตรประชาชน ประธานกลุ่ม');
+    $('input[name=gp_fullname]').attr('placeholder', 'ชื่อและนามสกุล ประธานกลุ่ม');
+    $('input[name=gp_tel]').attr('placeholder', 'โทรศัพท์/มือถือ ประธานกลุ่ม');
+
+    $('#trFbLineBlock').show();
+    $('#trFbWebBlock').hide();
 }
 
-function type4(){
-  $('.txt1').text('ชื่อองค์กร');
-  $('.txt2').text('อายุองค์กร');
-  $('.txt3').text('ผู้ก่อตั้ง');
-  $('.txt4').text('แนบไฟล์รูปประจำองค์กร / สัญลักษณ์');
+function type4() {
+    $('.txt1').text('ชื่อองค์กร');
+    $('.txt2').text('อายุองค์กร');
+    $('.txt3').text('ผู้ก่อตั้ง');
+    $('.txt4').text('แนบไฟล์รูปประจำองค์กร / สัญลักษณ์');
 
-  $('input[name=g_name]').attr('placeholder','ชื่อองค์กร');
-  $('input[name=gp_id_card]').attr('placeholder','เลขบัตรประชาชน ผู้ก่อตั้ง');
-  $('input[name=gp_fullname]').attr('placeholder','ชื่อและนามสกุล ผู้ก่อตั้ง');
-  $('input[name=gp_tel]').attr('placeholder','โทรศัพท์/มือถือ ผู้ก่อตั้ง');
+    $('input[name=g_name]').attr('placeholder', 'ชื่อองค์กร');
+    $('input[name=g_age]').attr('placeholder', 'อายุองค์กร');
+    $('input[name=gp_id_card]').attr('placeholder', 'เลขบัตรประชาชน ผู้ก่อตั้ง');
+    $('input[name=gp_fullname]').attr('placeholder', 'ชื่อและนามสกุล ผู้ก่อตั้ง');
+    $('input[name=gp_tel]').attr('placeholder', 'โทรศัพท์/มือถือ ผู้ก่อตั้ง');
+
+    $('#trFbLineBlock').hide();
+    $('#trFbWebBlock').show();
 }
 </script>
