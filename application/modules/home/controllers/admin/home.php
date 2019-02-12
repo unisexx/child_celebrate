@@ -73,6 +73,9 @@ class Home extends Admin_Controller {
             $status->from_array($_POST);
 			$status->save();
 
+			// ส่งเมล์
+			$this->send_mail($applicant);
+
 			set_notify('success', lang('save_data_complete'));
         }
 		redirect('home/admin/home/form/'.@$id);
@@ -88,6 +91,43 @@ class Home extends Admin_Controller {
 			set_notify('success', lang('delete_data_complete'));
 		}
 		redirect('home/admin/home');
+	}
+
+	function send_mail($applicant=false){
+
+	    // ###### PHPMailer ####
+		require_once("PHPMailer_v5.1/class.phpmailer.php"); // ประกาศใช้ class phpmailer 
+		
+		$mail = new PHPMailer();
+
+		$mail->IsSMTP();                                      // set mailer to use SMTP
+		$mail->SMTPAuth = true;     // turn on SMTP authentication
+		$mail->SMTPSecure = "tls";
+		$mail->Host = "smtp.gmail.com";  // specify main and backup server
+		$mail->Port = 587;
+		$mail->Username = "fdsiakrin@gmail.com";  // SMTP username
+		$mail->Password = "K2aP5GY5"; // SMTP password
+		$mail->CharSet = "utf-8";
+
+		$mail->From = "myemail@gmail.com";
+		$mail->FromName = "กิจกรรมสรรหาและเชิดชูเด็กและเยาวชนดีเด่นแห่งชาติ";
+		$mail->AddAddress($applicant->email, "สำนัก...");
+
+		$mail->WordWrap = 50;                                 // set word wrap to 50 characters
+		$mail->IsHTML(true);                                  // set email format to HTML
+
+		$mail->Subject = "ผลการพิจารณาสถานะ";
+		$mail->Body    = "รหัสตรวจสอบ : ".$applicant->code."<br>สถานะ : ".$applicant->last_status."<br>วันที่ลงสถานะ : ".DB2Date($applicant->updated);
+
+		if(!$mail->Send())
+		{
+			echo "Message could not be sent. <p>";
+			echo "Mailer Error: " . $mail->ErrorInfo;
+			exit;
+		}
+
+		echo "Message has been sent";
+
 	}
 
 }

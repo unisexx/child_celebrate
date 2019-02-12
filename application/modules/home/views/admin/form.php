@@ -83,7 +83,7 @@
                     <th style="width:50% !important;">หมายเหตุ</th>
                     <th style="width:20% !important;">เจ้าหน้าที่ผู้ตรวจสอบ</th>
                 </tr>
-                <?php foreach($rs->status->order_by('status_date','desc')->get() as $row):?>
+                <?php foreach($rs->status->order_by('id','asc')->get() as $row):?>
                 <tr>
                     <td style="width:15% !important;"><?php echo DB2Date($row->status_date) ?></td>
                     <td style="width:15% !important;"><?php echo $row->status?></td>

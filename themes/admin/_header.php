@@ -13,7 +13,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-          	<li><a href="registered.php">ข้อมูลการสมัคร</a></li>
+          	<li><a href="home/admin/home">ข้อมูลการสมัคร</a></li>
           </ul>	
           <!--<ul class="nav navbar-nav">
             <li class="dropdown">

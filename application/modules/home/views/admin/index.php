@@ -39,6 +39,7 @@
     <span><img src="themes/admin/images/ico_pedding.png" width="24" height="24" /> <a href="#">รอการตรวจสอบ (<?php echo $count->where("last_status = 'รอการตรวจสอบ'")->count()?>)</a></span>
     <span><img src="themes/admin/images/ico_passed.png" width="24" height="24" /> <a href="#">ผ่านการตรวจสอบ (<?php echo $count->where("last_status = 'ผ่านการตรวจสอบ'")->count()?>)</a></span>
     <span><img src="themes/admin/images/ico_reject.png" width="24" height="24" /> <a href="#">ไม่ผ่าน (<?php echo $count->where("last_status = 'ไม่ผ่านการตรวจสอบ'")->count()?>)</a></span>
+    <span><img src="themes/admin/images/document.png" width="24" height="24" /> <a href="#">รอเอกสาร (<?php echo $count->where("last_status = 'รอเอกสาร'")->count()?>)</a></span>
 </div>
 
 <!-- <div class="paginationTG">
