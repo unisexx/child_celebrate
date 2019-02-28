@@ -35,11 +35,39 @@
   <input type="button" title="เพิ่มหลักสูตร" value="เพิ่มหลักสูตร" onclick="document.location='<?=basename($_SERVER['PHP_SELF'])?>?act=form'" class="btn btn-warning vtip" />
 </div>-->
 
+<?php
+    $txtsearch = 'txtsearch='.@$_GET['txtsearch'];
+    $province_id = 'province_id='.@$_GET['province_id'];
+    $district_id = 'district_id='.@$_GET['district_id'];
+    $created = 'created='.@$_GET['created'];
+    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?".$txtsearch.'&'.$province_id.'&'.$district_id.'&'.$created;
+
+    // $count = $count;
+    $condition = " 1=1 ";
+    if(@$_GET['txtsearch']){
+        $condition .= " and (fullname like '%".$_GET['txtsearch']."%' or g_name like '%".$_GET['txtsearch']."%' or id_card like '%".$_GET['txtsearch']."%'  or code like '%".$_GET['txtsearch']."%') ";
+    }
+    if(@$_GET['province_id']){
+        $condition .= " and (province_id = ".$_GET['province_id']." or g_province_id = ".$_GET['province_id'].") ";
+    }
+    if(@$_GET['district_id']){
+        $condition .= " and (district_id = ".$_GET['district_id']." or g_district_id = ".$_GET['district_id'].") ";
+    }
+    if(@$_GET['created']){
+        $condition .= " and created like '%".Date2DB($_GET['created'])."%' ";
+    }
+    
+    // echo $condition;
+    $count1 = $this->db->query("SELECT * FROM applicants WHERE ".$condition." and last_status = 'รอการตรวจสอบ'")->num_rows();
+    $count2 = $this->db->query("SELECT * FROM applicants WHERE ".$condition." and last_status = 'ผ่านการตรวจสอบ'")->num_rows();
+    $count3 = $this->db->query("SELECT * FROM applicants WHERE ".$condition." and last_status = 'ไม่ผ่านการตรวจสอบ'")->num_rows();
+    $count4 = $this->db->query("SELECT * FROM applicants WHERE ".$condition." and last_status = 'รอเอกสาร'")->num_rows();
+?>
 <div id="status">
-    <span><img src="themes/admin/images/ico_pedding.png" width="24" height="24" /> <a href="#">รอการตรวจสอบ (<?php echo $count->where("last_status = 'รอการตรวจสอบ'")->count()?>)</a></span>
-    <span><img src="themes/admin/images/ico_passed.png" width="24" height="24" /> <a href="#">ผ่านการตรวจสอบ (<?php echo $count->where("last_status = 'ผ่านการตรวจสอบ'")->count()?>)</a></span>
-    <span><img src="themes/admin/images/ico_reject.png" width="24" height="24" /> <a href="#">ไม่ผ่าน (<?php echo $count->where("last_status = 'ไม่ผ่านการตรวจสอบ'")->count()?>)</a></span>
-    <span><img src="themes/admin/images/document.png" width="24" height="24" /> <a href="#">รอเอกสาร (<?php echo $count->where("last_status = 'รอเอกสาร'")->count()?>)</a></span>
+    <span><img src="themes/admin/images/ico_pedding.png" width="24" height="24" /> <a href="<?php echo $actual_link.'&last_status=รอการตรวจสอบ'?>">รอการตรวจสอบ (<?php echo @$count1?>)</a></span>
+    <span><img src="themes/admin/images/ico_passed.png" width="24" height="24" /> <a href="<?php echo $actual_link.'&last_status=ผ่านการตรวจสอบ'?>">ผ่านการตรวจสอบ (<?php echo @$count2?>)</a></span>
+    <span><img src="themes/admin/images/ico_reject.png" width="24" height="24" /> <a href="<?php echo $actual_link.'&last_status=ไม่ผ่านการตรวจสอบ'?>">ไม่ผ่าน (<?php echo @$count3?>)</a></span>
+    <span><img src="themes/admin/images/document.png" width="24" height="24" /> <a href="<?php echo $actual_link.'&last_status=รอเอกสาร'?>">รอเอกสาร (<?php echo @$count4?>)</a></span>
 </div>
 
 <!-- <div class="paginationTG">

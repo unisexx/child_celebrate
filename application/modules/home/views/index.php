@@ -58,7 +58,7 @@
 						<td>
 							<div class="form-inline">
 								<input name="birthdate" type="text" class="form-control fdate datepicker" value="" style="width:120px;" />
-								(อายุ xx ปี)
+								<span class="showAge"></span>
 								<!-- validate error msg -->
 								<div id="birthdate-error"></div>
 								<!-- validate error msg -->
@@ -955,4 +955,75 @@
 		$('#trFbLineBlock').hide();
 		$('#trFbWebBlock').show();
 	}
+</script>
+
+<script>
+$(document).ready(function(){
+    function checkID(id)
+	{
+		if(id.length != 13) return false;
+		for(i=0, sum=0; i < 12; i++)
+		sum += parseFloat(id.charAt(i))*(13-i); if((11-sum%11)%10!=parseFloat(id.charAt(12)))
+		return false; return true;
+	}
+    
+	// เช็กรหัสบัตรประชาชน
+    $('body').on('focusout', '.fidcard', function(){
+        var id = $(this).val();
+        var value = id.replace(/\_/g, '');
+		var chk_citizen = $(this).attr('chk_citizen_id');
+
+        value = value.replace(/\-/g, '');
+        if (value.length == 13) {
+            if(!checkID(value) && $.isNumeric( value )){
+                $(this).focus();
+                $(this).val('');
+                alert('รหัสประชาชนไม่ถูกต้อง');
+            } else {
+				if (chk_citizen == 'true') {
+					$('.citizen_id_loading').show();
+					var this_input = $(this);
+					// var ref_id = this_input.attr('ref_id')
+					$.get(
+						'ajax/ajaxselectsubdistrict/'+ref_id,
+						{
+							citizen_id : value
+						},
+						function (data) {
+							if (data == 'false') {
+								this_input.focus();
+				                this_input.val('');
+								alert('เลขบัตรประจำตัวประชาชน นี้ถูกใช้แล้ว');
+							}
+							$('.citizen_id_loading').hide();
+						}
+					);
+				}
+			}
+        } else {
+            if(value){
+                $(this).focus();
+                $(this).val('');
+                alert('กรุณาระบุรหัสประชาชนให้ครบถ้วน');
+            }
+        }
+    });
+})
+</script>
+<script>
+$(document).on('change', "[name=birthdate]", function () {
+	var result = $(this).val().split('/');
+	// alert( result[2] );
+	age = calculate_age(new Date( (result[2]-543) , result[1], result[0]));
+	$('.showAge').text('(อายุ '+age+' ปี)');
+});
+
+function calculate_age(dob) { 
+	var diff_ms = Date.now() - dob.getTime();
+	var age_dt = new Date(diff_ms); 
+
+	return Math.abs(age_dt.getUTCFullYear() - 1970);
+}
+// console.log(calculate_age(new Date(1984, 8, 14)));
+// console.log(calculate_age(new Date(1962, 1, 1)));
 </script>

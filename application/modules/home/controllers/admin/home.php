@@ -8,7 +8,7 @@ class Home extends Admin_Controller {
 
 	function index(){
 		$data['rs'] = new Applicant();
-		$data['count'] = $data['rs'];
+		$data['count'] = new Applicant();
 
 		// ค้นหา
 		if(@$_GET['txtsearch']){
@@ -119,12 +119,12 @@ class Home extends Admin_Controller {
 		$mail->Subject = "ผลการพิจารณาสถานะ";
 		$mail->Body    = "รหัสตรวจสอบ : ".$applicant->code."<br>สถานะ : ".$applicant->last_status."<br>วันที่ลงสถานะ : ".DB2Date($applicant->updated);
 
-		if(!$mail->Send())
-		{
-			echo "Message could not be sent. <p>";
-			echo "Mailer Error: " . $mail->ErrorInfo;
-			exit;
-		}
+		// if(!$mail->Send())
+		// {
+		// 	echo "Message could not be sent. <p>";
+		// 	echo "Mailer Error: " . $mail->ErrorInfo;
+		// 	exit;
+		// }
 
 		echo "Message has been sent";
 
