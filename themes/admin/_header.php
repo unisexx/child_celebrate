@@ -9,7 +9,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" style="color:#06C">Child-Celebrate</a>
+          <a class="navbar-brand" style="color:#06C">ระบบลงทะเบียนแบบเสนอผลงาน</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -51,7 +51,7 @@
               </ul>
             </li>-->
           <li><a href="user.php?act=form" class="vtip" title="นางวัญญา ประคำทอง (ศูนย์เทคโนโลยีสารสนเทศมรดกศิลปวัฒนธรรม) "><img src="themes/admin/images/user.png" width="24" height="24" /></a></li>
-            <li><a href="product.php" style="color:#C30">Log out</a></li>
+            <li><a href="users/admin/auth/logout" style="color:#C30">Log out</a></li>
           </ul>
           
           <!--<ul class="nav navbar-nav navbar-right">

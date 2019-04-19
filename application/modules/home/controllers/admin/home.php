@@ -27,7 +27,7 @@ class Home extends Admin_Controller {
 			$data['rs'] = $data['rs']->where("created like '%".Date2DB($_GET['created'])."%'");
 		}
 
-		$data['rs'] = $data['rs']->order_by('id','desc')->get_paged(20);
+		$data['rs'] = $data['rs']->order_by('id','desc')->get_page();
 		
 		// echo $this->db->last_query();
         $this->template->build('admin/index',$data);

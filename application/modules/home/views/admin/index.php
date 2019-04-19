@@ -70,20 +70,6 @@
     <span><img src="themes/admin/images/document.png" width="24" height="24" /> <a href="<?php echo $actual_link.'&last_status=รอเอกสาร'?>">รอเอกสาร (<?php echo @$count4?>)</a></span>
 </div>
 
-<!-- <div class="paginationTG">
-    <ul>
-        <li style="margin-right:10px;">หน้าที่</li>
-        <li class="currentpage">1</li>
-        <li><a href=''>2</a></li>
-        <li><a href="">3</a></li>
-        <li><a href="">4</a></li>
-        <li><a href="">5</a></li>
-        <li><a href="">6</a></li>
-        <li><a href="">7</a></li> . . . <li><a href="">19</a></li>
-        <li><a href="">20</a></li>
-        <li><a href="">21</a></li>
-    </ul>
-</div> -->
 
 <?php echo $rs->pagination()?>
 
@@ -159,21 +145,6 @@
 </table>
 
 <?php echo $rs->pagination()?>
-
-<!-- <div class="paginationTG">
-    <ul>
-        <li style="margin-right:10px;">หน้าที่</li>
-        <li class="currentpage">1</li>
-        <li><a href=''>2</a></li>
-        <li><a href="">3</a></li>
-        <li><a href="">4</a></li>
-        <li><a href="">5</a></li>
-        <li><a href="">6</a></li>
-        <li><a href="">7</a></li> . . . <li><a href="">19</a></li>
-        <li><a href="">20</a></li>
-        <li><a href="">21</a></li>
-    </ul>
-</div> -->
 
 
 <script>

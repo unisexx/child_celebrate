@@ -55,7 +55,7 @@ $(document).ready(function(){
 <form method="post" action="users/admin/auth/check_login">
 <div class="container">
     <div class="row vertical-offset-100">
-		<center><h2>ระบบคณะบริหารสภาเด็กและเยาวชน</h2></center>
+		<center><h2>ระบบลงทะเบียนแบบเสนอผลงาน<br>กิจกรรมสรรหาและเชิดชูเด็กและเยาวชนดีเด่นแห่งชาติ และผู้ทำคุณประโยชน์ต่อเด็กและเยาวชน</h2></center>
     	<div class="col-md-4 col-md-offset-4">
     		<div class="panel panel-default">
 			  	<div class="panel-heading">

@@ -21,18 +21,18 @@ h3 { text-transform:uppercase; }
 #search img { margin-right:5px;}
 
 
-#newMailL { display:inline-block; float:left; width:30%;padding:0 20px; margin-top:45px;}
+#newMailL { display:inline-block; width:30%;padding:0 20px; margin-top:45px;}
 #newMailL .imgDisplay { display:inline-block; width:50px; height:50px; vertical-align:top;}
 #newMailL .namemail { display:inline-block;}
 #newMailL p { font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif; margin:0; padding:0;}
-#newMailR { display:inline-block; float:left; width:65%}
+#newMailR { display:inline-block; width:65%}
 #mailto { margin-top:10px;}
 #mailto a:link { text-decoration:none;}
 
 #menuSend { border-top:0px solid #ccc; border-bottom:1px solid #ccc; padding:5px 0; margin:1px 0; font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif; width:100%;}
 
 #bghead { background:#fff; width:100%;}
-#header { height:77px; width:100% padding:0 20px;  background:url(../images/head_edirdep.jpg) no-repeat;}
+#header { height:77px; width:100%; padding:0 20px;  background:url("../images/head_edirdep.jpg") no-repeat;}
 #header p { position:absolute; top:38px; left:815px;}
 #page { padding:0 10px; width:100%; margin:0 auto;}
 #btnBox { float:right; text-align:right; width:100%;}
@@ -45,7 +45,7 @@ h3 { text-transform:uppercase; }
 #status a:link { color:#999; text-decoration:none;}
 #status a:hover { color:#999; text-decoration:underline;}
 #status a:visited { color:#999; text-decoration:none;}
-select option .optstatus .orange { color:#C60;} !important
+select option .optstatus .orange { color:#C60 !important;}
 
 .printpage { width:800px; margin:0 auto; position:relative; font-family:'Conv_THSarabun',Sans-Serif; font-size:19px; color:#000;}
 .printpage p { margin:0; padding:0;}
@@ -53,7 +53,7 @@ select option .optstatus .orange { color:#C60;} !important
 .printpage ol li {list-style-type: thai}
 
 
-.infoReg .topic { color:#630; font-weight:700; height:40px; background:url(../images/gplaypattern.png); padding-left:20px;padding-top:10px;}
+.infoReg .topic { color:#630; font-weight:700; height:40px; background:url("../images/gplaypattern.png"); padding-left:20px;padding-top:10px;}
 .infoReg div { border-bottom:1px solid #CCC; margin:0px; padding:10px 10px 10px 30px; color:#333;}
 .infoReg div p { width:400px; display:inline-block;}
 .infoReg div p span { margin-left:20px; color:#ccc; background:#999; padding:5px; margin-right:5px;}
@@ -456,3 +456,40 @@ fieldset{
 }
 
 legend{margin-bottom:0px !important;}
+
+
+.pagination {
+	padding: 3px;
+	margin: 3px;
+	text-align:center;
+}
+
+.pagination a {
+	padding: 2px 8px 2px 8px;
+	margin: 2px;
+	border: 1px solid #EEE;
+	text-decoration: none; /* no underline */
+	color: #036CB4;
+	background:#F0F0F0;
+}
+
+.pagination a:hover,
+.pagination a:active {
+	border: 1px solid #999;
+	color: #666;
+}
+.pagination .current {
+	padding: 2px 8px 2px 8px;
+	margin: 2px;
+	border: 1px solid #0085DB;
+	font-weight: bold;
+	background-color: #0085DB;
+	color: #FFF;
+}
+.pagination .disabled {
+	padding: 2px 8px 2px 8px;
+	margin: 2px;
+	border: 1px solid #EEE;
+	color: #DDD;
+	background:#F0F0F0;
+}
