@@ -11,6 +11,12 @@ class Home extends Admin_Controller {
 		$data['count'] = new Applicant();
 
 		// ค้นหา
+		if(@$_GET['career']){
+			$data['rs'] = $data['rs']->where("career",$_GET['career']);
+		}
+		if(@$_GET['type']){
+			$data['rs'] = $data['rs']->where("type",$_GET['type']);
+		}
 		if(@$_GET['txtsearch']){
 			$data['rs'] = $data['rs']->where("(fullname like '%".$_GET['txtsearch']."%' or g_name like '%".$_GET['txtsearch']."%' or id_card like '%".$_GET['txtsearch']."%'  or code like '%".$_GET['txtsearch']."%')");
 		}
@@ -26,11 +32,24 @@ class Home extends Admin_Controller {
 		if(@$_GET['created']){
 			$data['rs'] = $data['rs']->where("created like '%".Date2DB($_GET['created'])."%'");
 		}
-
-		$data['rs'] = $data['rs']->order_by('id','desc')->get_page();
 		
+        $data['export'] = @$_GET['export'];
+        if (@$_GET['export'] == 'excel') {
+            header("Content-Type: application/vnd.ms-excel; charset=utf-8");
+            header("Content-Disposition: attachment; filename=ข้อมูลลงทะเบียนเสนอผลงาน._".date('Ymdhis').".xls");  //File name extension was wrong
+            header("Expires: 0");
+            header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+            header("Cache-Control: private",false);
+
+			$data['rs'] = $data['rs']->order_by('id','desc')->get();
+            $this->load->view('admin/index',$data);
+        } else {
+			$data['rs'] = $data['rs']->order_by('id','desc')->get_page();
+            $this->template->build('admin/index',$data);
+        }
+
 		// echo $this->db->last_query();
-        $this->template->build('admin/index',$data);
+        // $this->template->build('admin/index',$data);
     }
     
     function form($id=false){

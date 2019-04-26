@@ -971,7 +971,6 @@ $(document).ready(function(){
     $('body').on('focusout', '.fidcard', function(){
         var id = $(this).val();
         var value = id.replace(/\_/g, '');
-		var chk_citizen = $(this).attr('chk_citizen_id');
 
         value = value.replace(/\-/g, '');
         if (value.length == 13) {
@@ -980,25 +979,19 @@ $(document).ready(function(){
                 $(this).val('');
                 alert('รหัสประชาชนไม่ถูกต้อง');
             } else {
-				if (chk_citizen == 'true') {
-					$('.citizen_id_loading').show();
-					var this_input = $(this);
-					// var ref_id = this_input.attr('ref_id')
-					$.get(
-						'ajax/ajaxselectsubdistrict/'+ref_id,
-						{
-							citizen_id : value
-						},
-						function (data) {
-							if (data == 'false') {
-								this_input.focus();
-				                this_input.val('');
-								alert('เลขบัตรประจำตัวประชาชน นี้ถูกใช้แล้ว');
-							}
-							$('.citizen_id_loading').hide();
+				var this_input = $(this);
+				$.get('ajax/checkDupID/',
+					{
+						id_card : id
+					},
+					function (data) {
+						if (data == 'false') {
+							this_input.focus();
+							this_input.val('');
+							alert('เลขบัตรประจำตัวประชาชน นี้ถูกใช้แล้ว');
 						}
-					);
-				}
+					}
+				);
 			}
         } else {
             if(value){
@@ -1007,6 +1000,26 @@ $(document).ready(function(){
                 alert('กรุณาระบุรหัสประชาชนให้ครบถ้วน');
             }
         }
+    });
+
+	// เช็กชื่อกลุ่ม
+	$('body').on('focusout', 'input[name=g_name]', function(){
+		var this_input = $(this);
+        var value = $(this).val();
+		if(value != ''){
+			$.get('ajax/checkDupGName/',
+				{
+					g_name : value
+				},
+				function (data) {
+					if (data == 'false') {
+						this_input.focus();
+						this_input.val('');
+						alert('ชื่อกลุ่มนี้ถูกใช้แล้ว');
+					}
+				}
+			);
+		}
     });
 })
 </script>

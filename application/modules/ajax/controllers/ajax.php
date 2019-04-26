@@ -46,5 +46,32 @@ Class Ajax extends Public_Controller
         else { return $rs; }
     }
 
+    public function checkDupID(){
+        $applicant = new Applicant();
+        $applicant->where("id_card = '".$_GET['id_card']."' ")->get();
+        
+        if($applicant->exists())
+        {
+            echo 'false';
+        }
+        else
+        {
+            echo 'true';
+        }
+    }
+
+    public function checkDupGName(){
+        $applicant = new Applicant();
+        $applicant->where("g_name = '".$_GET['g_name']."' ")->get();
+        
+        if($applicant->exists())
+        {
+            echo 'false';
+        }
+        else
+        {
+            echo 'true';
+        }
+    }
 }
 ?>

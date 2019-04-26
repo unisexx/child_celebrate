@@ -1,7 +1,35 @@
 <h3>ข้อมูลลงทะเบียนแบบเสนอผลงาน</h3>
+
+<?php if(empty($export)):?>
+
 <div id="search">
     <div id="searchBox">
         <form class="form-inline">
+            <div>
+            <select name="career" class="form-control" style="width:auto;">
+                <option value="">-- ทุกสาขา --</option>
+                <option value="1" <?php echo @$_GET['career'] == '1' ? 'selected=selected' : '';?>>สาขากฏหมายและการปกป้องคุ้มครองสิทธิเด็กและเยาวชน</option>
+                <option value="2" <?php echo @$_GET['career'] == '2' ? 'selected=selected' : '';?>>สาขาการศึกษาและวิชาการ</option>
+                <option value="3" <?php echo @$_GET['career'] == '3' ? 'selected=selected' : '';?>>สาขากีฬาและนันทนาการ</option>
+                <option value="4" <?php echo @$_GET['career'] == '4' ? 'selected=selected' : '';?>>สาขาคณิตศาสตร์ วิทยาศาสตร์ คอมพิวเตอร์ และเทคโนโลยี</option>
+                <option value="5" <?php echo @$_GET['career'] == '5' ? 'selected=selected' : '';?>>สาขาทรัยากรธรรมชาติและสิ่งแวดล้อม</option>
+                <option value="6" <?php echo @$_GET['career'] == '6' ? 'selected=selected' : '';?>>สาขาพัฒนาเยาวชน บำเพ็ญประโยชน์ และส่งเสริมการมีส่วนร่วมของเยาวชน</option>
+                <option value="7" <?php echo @$_GET['career'] == '7' ? 'selected=selected' : '';?>>สาขาศิลปวัฒนธรรม</option>
+                <option value="8" <?php echo @$_GET['career'] == '8' ? 'selected=selected' : '';?>>สาขาศีลธรรม จริยธรรม และคุณธรรม</option>
+                <option value="9" <?php echo @$_GET['career'] == '9' ? 'selected=selected' : '';?>>สาขาสิ่งประดิษฐ์และนวัตกรรม</option>
+                <option value="10" <?php echo @$_GET['career'] == '10' ? 'selected=selected' : '';?>>สาขาสือมวลชนเพื่อเด็กและเยาวชนที่ป้องกันปัญหาสังคม</option>
+                <option value="11" <?php echo @$_GET['career'] == '11' ? 'selected=selected' : '';?>>สาขาอาชีพ</option>
+            </select>
+
+            <select name="type" class="form-control" style="width:auto;">
+                <option value="">-- ทุกประเภท --</option>
+                <option value="1" <?php echo @$_GET['type'] == '1' ? 'selected=selected' : '';?>>ประเภท เด็กและเยาวชนดีเด่นแห่งชาติ</option>
+                <option value="3" <?php echo @$_GET['type'] == '3' ? 'selected=selected' : '';?>>ประเภท กลุ่มเด็กและเยาวชนดีเด่นแห่งชาติ</option>
+                <option value="2" <?php echo @$_GET['type'] == '2' ? 'selected=selected' : '';?>>ประเภท บุคคลผู้ทำคุณประโยชน์ต่อเด็กและเยาวชน</option>
+                <option value="4" <?php echo @$_GET['type'] == '4' ? 'selected=selected' : '';?>>ประเภท องค์กรที่ทำคุณประโยชน์ต่อเด็กและเยาวชน</option>
+            </select>
+            </div>
+
             <input name="txtsearch" type="text" class="form-control" placeholder="ชื่อ / เลขบัตรผู้สมัคร / รหัสตรวจสอบ" style="width:400px;" value="<?php echo @$_GET['txtsearch']?>">
             <select name="last_status" class="form-control" style="width:auto">
                 <option value="">-- สถานะ --</option>
@@ -31,6 +59,8 @@
 
     </div>
 </div>
+
+
 <!--<div id="btnBox">
   <input type="button" title="เพิ่มหลักสูตร" value="เพิ่มหลักสูตร" onclick="document.location='<?=basename($_SERVER['PHP_SELF'])?>?act=form'" class="btn btn-warning vtip" />
 </div>-->
@@ -71,7 +101,21 @@
 </div>
 
 
+<div style="text-align:right;">
+    <?php
+        $get = '';
+        foreach (@$_GET as $key => $value) {
+            $get .= ($get) ? '&'.$key.'='.$value : $key.'='.$value;
+        }
+    ?>
+    <a href="home/admin/home?export=excel&<?php echo $get?>">
+        Excel
+    </a>
+</div>
+
 <?php echo $rs->pagination()?>
+
+<?php endif;?> <!-- export -->
 
 <table class="tblist">
     <tr>
@@ -80,7 +124,9 @@
         <th>วันเวลาที่ลงทะเบียน</th>
         <th style="width:35%">ที่อยู่</th>
         <th class="txtCen">สถานะ</th>
-        <th>จัดการ</th>
+        <?php if(empty($export)):?>
+            <th>จัดการ</th>
+        <?php endif;?>
     </tr>
     <?php foreach($rs as $key=>$row):?>
     <tr>
@@ -121,16 +167,21 @@
             <?php endif;?>
         </td>
         <td class="txtCen">
-            <?php if($row->last_status == 'รอการตรวจสอบ') :?>
-                <img src="themes/admin/images/ico_pedding.png" width="32" height="32" class="vtip" title="รอการตรวจสอบ" />
-            <?php elseif($row->last_status == 'ผ่านการตรวจสอบ'):?>
-                <img src="themes/admin/images/ico_passed.png" width="32" height="32" class="vtip" title="ผ่านการตรวจสอบ">
-            <?php elseif($row->last_status == 'ไม่ผ่านการตรวจสอบ'):?>
-                <img src="themes/admin/images/ico_reject.png" width="32" height="32" class="vtip" title="ไม่ผ่าน">
-            <?php elseif($row->last_status == 'รอเอกสาร'):?>
-                <img src="themes/admin/images/document.png" width="32" height="32" class="vtip" title="รอเอกสาร">
+            <?php if(empty($export)):?>
+                <?php if($row->last_status == 'รอการตรวจสอบ') :?>
+                    <img src="themes/admin/images/ico_pedding.png" width="32" height="32" class="vtip" title="รอการตรวจสอบ" />
+                <?php elseif($row->last_status == 'ผ่านการตรวจสอบ'):?>
+                    <img src="themes/admin/images/ico_passed.png" width="32" height="32" class="vtip" title="ผ่านการตรวจสอบ">
+                <?php elseif($row->last_status == 'ไม่ผ่านการตรวจสอบ'):?>
+                    <img src="themes/admin/images/ico_reject.png" width="32" height="32" class="vtip" title="ไม่ผ่าน">
+                <?php elseif($row->last_status == 'รอเอกสาร'):?>
+                    <img src="themes/admin/images/document.png" width="32" height="32" class="vtip" title="รอเอกสาร">
+                <?php endif;?>
+            <?php else:?>
+                <?php echo $row->last_status;?>
             <?php endif;?>
         </td>
+        <?php if(empty($export)):?>
         <td>
             <a href="home/admin/home/form/<?php echo $row->id?>">
                 <img src="themes/admin/images/edit.png" width="24" height="24" class="vtip" title="แก้ไขรายการนี้" />
@@ -139,13 +190,15 @@
                 <img src="themes/admin/images/remove.png" width="32" height="32" class="vtip" title="ลบรายการนี้" />
             </a>
         </td>
+        <?php endif;?>
     </tr>
     <?php endforeach;?>
 
 </table>
 
-<?php echo $rs->pagination()?>
+<?php if(empty($export)):?>
 
+<?php echo $rs->pagination()?>
 
 <script>
 $(document).ready(function(){
@@ -210,3 +263,5 @@ function AjaxSelectSubdistrict($province_id,$district_id,$sudistrict_name,$subdi
   }
 }
 </script>
+
+<?php endif;?>
